@@ -29,10 +29,7 @@ get_template_part('partials/seo');
 <section id="main-container">
 
   <header id="header">
-    <div class="grid-row">
-      <div class="grid-item item-s-12 item-m-12 item-l-4">
-        <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-      </div>
+    <div class="grid-row font-uppercase">
       <div class="grid-item item-s-12 item-m-12 item-l-4">
         <ul class="grid-row">
           <li><a>Programa</a></li>
@@ -41,8 +38,12 @@ get_template_part('partials/seo');
           <li><a>Visita</a></li>
         </ul>
       </div>
-      <div class="grid-item item-s-12 item-m-12 item-l-4">
+      <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-center">
+        <h1 class="font-size-basic"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+      </div>
+      <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-right">
         <span><a>English</a></span>
       </div>
     </div>
+    <?php get_template_part('partials/search'); ?>
   </header>
