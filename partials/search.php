@@ -1,5 +1,5 @@
 <div class="grid row">
   <div class="grid-item text-align-center">
-    Search
+    <?php _e('[:en]Search[:es]Buscar[:]'); ?>
   </div>
 </div>
