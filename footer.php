@@ -5,7 +5,7 @@
           <?php wp_nav_menu( array( 'menu' => 'footer' ) ); ?>
         </nav>
         <div class="grid-item item-s-12 item-l-auto">
-          LOGO
+          <img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/pleca_firma_UNAM.png" />
         </div>
       </div>
       <div class="grid-row justify-between">
