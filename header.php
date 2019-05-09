@@ -29,29 +29,31 @@ get_template_part('partials/seo');
 <section id="main-container">
 
   <header id="header">
-    <div class="grid-row font-uppercase">
-      <div class="grid-item item-s-12 item-m-12 item-l-4">
-        <ul class="grid-row">
-          <li><a>Programa</a></li>
-          <li><a>Exposiciones</a></li>
-          <li><a>El Eco</a></li>
-          <li><a>Visita</a></li>
-        </ul>
+    <div class="container">
+      <div class="grid-row font-uppercase">
+        <nav class="grid-item item-s-12 item-m-12 item-l-4">
+          <ul class="menu">
+            <li class="menu-item"><a>Programa</a></li>
+            <li class="menu-item"><a>Exposiciones</a></li>
+            <li class="menu-item"><a>El Eco</a></li>
+            <li class="menu-item"><a>Visita</a></li>
+          </ul>
+        </nav>
+        <div class="grid-item item-s-12 item-m-12 item-l-4">
+          <h1 class="font-size-basic text-align-center">
+            <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+          </h1>
+        </div>
+        <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-right">
+          <?php
+            if (qtranxf_getLanguage() == 'en') {
+              echo '<a href="?lang=es" hreflang="es">Español</a>';
+            } elseif (qtranxf_getLanguage() == 'es') {
+              echo '<a href="?lang=en" hreflang="en">English</a>';
+            }
+          ?>
+        </div>
       </div>
-      <div class="grid-item item-s-12 item-m-12 item-l-4">
-        <h1 class="font-size-basic text-align-center">
-          <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
-        </h1>
-      </div>
-      <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-right">
-        <?php
-          if (qtranxf_getLanguage() == 'en') {
-            echo '<a href="?lang=es" hreflang="es">Español</a>';
-          } elseif (qtranxf_getLanguage() == 'es') {
-            echo '<a href="?lang=en" hreflang="en">English</a>';
-          }
-        ?>
-      </div>
+      <?php get_template_part('partials/search'); ?>
     </div>
-    <?php get_template_part('partials/search'); ?>
   </header>
