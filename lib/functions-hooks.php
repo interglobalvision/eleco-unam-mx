@@ -31,3 +31,9 @@ function create_custom_pages() {
   update_option( 'show_on_front', 'page' );
 }
 add_filter( 'after_setup_theme', 'create_custom_pages' );
+
+// WP Nav Menu
+function register_igv_nav_menu() {
+  register_nav_menu('footer',__( 'Footer Menu' ));
+}
+add_action( 'init', 'register_igv_nav_menu' );

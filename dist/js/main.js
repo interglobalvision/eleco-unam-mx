@@ -207,7 +207,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	};
 
 	var triggerEvent = function triggerEvent(elem, name, detail, noBubbles, noCancelable) {
-		var event = document.createEvent('CustomEvent');
+		var event = document.createEvent('Event');
 
 		if (!detail) {
 			detail = {};
@@ -215,7 +215,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 		detail.instance = lazysizes;
 
-		event.initCustomEvent(name, !noBubbles, !noCancelable, detail);
+		event.initEvent(name, !noBubbles, !noCancelable);
+
+		event.detail = detail;
 
 		elem.dispatchEvent(event);
 		return event;
@@ -224,6 +226,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	var updatePolyfill = function updatePolyfill(el, full) {
 		var polyfill;
 		if (!supportPicture && (polyfill = window.picturefill || lazySizesConfig.pf)) {
+			if (full && full.src && !el[_getAttribute]('srcset')) {
+				el.setAttribute('srcset', full.src);
+			}
 			polyfill({ reevaluate: true, elements: [el] });
 		} else if (full && full.src) {
 			el.src = full.src;
@@ -299,14 +304,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	var throttle = function throttle(fn) {
 		var running;
 		var lastTime = 0;
-		var gDelay = 125;
+		var gDelay = lazySizesConfig.throttleDelay;
 		var rICTimeout = lazySizesConfig.ricTimeout;
 		var run = function run() {
 			running = false;
 			lastTime = Date.now();
 			fn();
 		};
-		var idleCallback = requestIdleCallback && lazySizesConfig.ricTimeout ? function () {
+		var idleCallback = requestIdleCallback && rICTimeout > 49 ? function () {
 			requestIdleCallback(run, { timeout: rICTimeout });
 
 			if (rICTimeout !== lazySizesConfig.ricTimeout) {
@@ -335,7 +340,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				delay = 0;
 			}
 
-			if (isPriority || delay < 9 && requestIdleCallback) {
+			if (isPriority || delay < 9) {
 				idleCallback();
 			} else {
 				setTimeout(idleCallback, delay);
@@ -392,7 +397,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			hFac: 0.8,
 			loadMode: 2,
 			loadHidden: true,
-			ricTimeout: 300
+			ricTimeout: 0,
+			throttleDelay: 125
 		};
 
 		lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
@@ -415,14 +421,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	var loader = function () {
 		var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
 
-		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
-
-		var defaultExpand, preloadExpand, hFac;
+		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom, isBodyHidden;
 
 		var regImg = /^img$/i;
 		var regIframe = /^iframe$/i;
 
-		var supportScroll = 'onscroll' in window && !/glebot/.test(navigator.userAgent);
+		var supportScroll = 'onscroll' in window && !/(gle|ing)bot/.test(navigator.userAgent);
 
 		var shrinkExpand = 0;
 		var currentExpand = 0;
@@ -432,19 +436,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 		var resetPreloading = function resetPreloading(e) {
 			isLoading--;
-			if (e && e.target) {
-				addRemoveLoadEvents(e.target, resetPreloading);
-			}
-
 			if (!e || isLoading < 0 || !e.target) {
 				isLoading = 0;
 			}
 		};
 
+		var isVisible = function isVisible(elem) {
+			if (isBodyHidden == null) {
+				isBodyHidden = getCSS(document.body, 'visibility') == 'hidden';
+			}
+
+			return isBodyHidden || getCSS(elem.parentNode, 'visibility') != 'hidden' && getCSS(elem, 'visibility') != 'hidden';
+		};
+
 		var isNestedVisible = function isNestedVisible(elem, elemExpand) {
 			var outerRect;
 			var parent = elem;
-			var visible = getCSS(document.body, 'visibility') == 'hidden' || getCSS(elem, 'visibility') != 'hidden';
+			var visible = isVisible(elem);
 
 			eLtop -= elemExpand;
 			eLbottom += elemExpand;
@@ -464,8 +472,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		};
 
 		var checkElements = function checkElements() {
-			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
-
+			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal, defaultExpand, preloadExpand, hFac;
 			var lazyloadElems = lazysizes.elements;
 
 			if ((loadMode = lazySizesConfig.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)) {
@@ -474,14 +481,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				lowRuns++;
 
-				if (preloadExpand == null) {
-					if (!('expand' in lazySizesConfig)) {
-						lazySizesConfig.expand = docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370;
-					}
+				defaultExpand = !lazySizesConfig.expand || lazySizesConfig.expand < 1 ? docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370 : lazySizesConfig.expand;
 
-					defaultExpand = lazySizesConfig.expand;
-					preloadExpand = defaultExpand * lazySizesConfig.expFactor;
-				}
+				lazysizes._defEx = defaultExpand;
+
+				preloadExpand = defaultExpand * lazySizesConfig.expFactor;
+				hFac = lazySizesConfig.hFac;
+				isBodyHidden = null;
 
 				if (currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden) {
 					currentExpand = preloadExpand;
@@ -515,7 +521,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 					rect = lazyloadElems[i].getBoundingClientRect();
 
-					if ((eLbottom = rect.bottom) >= elemNegativeExpand && (eLtop = rect.top) <= elvH && (eLright = rect.right) >= elemNegativeExpand * hFac && (eLleft = rect.left) <= eLvW && (eLbottom || eLright || eLleft || eLtop) && (lazySizesConfig.loadHidden || getCSS(lazyloadElems[i], 'visibility') != 'hidden') && (isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4) || isNestedVisible(lazyloadElems[i], elemExpand))) {
+					if ((eLbottom = rect.bottom) >= elemNegativeExpand && (eLtop = rect.top) <= elvH && (eLright = rect.right) >= elemNegativeExpand * hFac && (eLleft = rect.left) <= eLvW && (eLbottom || eLright || eLleft || eLtop) && (lazySizesConfig.loadHidden || isVisible(lazyloadElems[i])) && (isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4) || isNestedVisible(lazyloadElems[i], elemExpand))) {
 						unveilElement(lazyloadElems[i]);
 						loadedSomething = true;
 						if (isLoading > 9) {
@@ -535,10 +541,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		var throttledCheckElements = throttle(checkElements);
 
 		var switchLoadingClass = function switchLoadingClass(e) {
-			addClass(e.target, lazySizesConfig.loadedClass);
-			removeClass(e.target, lazySizesConfig.loadingClass);
-			addRemoveLoadEvents(e.target, rafSwitchLoadingClass);
-			triggerEvent(e.target, 'lazyloaded');
+			var elem = e.target;
+
+			if (elem._lazyCache) {
+				delete elem._lazyCache;
+				return;
+			}
+
+			resetPreloading(e);
+			addClass(elem, lazySizesConfig.loadedClass);
+			removeClass(elem, lazySizesConfig.loadingClass);
+			addRemoveLoadEvents(elem, rafSwitchLoadingClass);
+			triggerEvent(elem, 'lazyloaded');
 		};
 		var rafedSwitchLoadingClass = rAFIt(switchLoadingClass);
 		var rafSwitchLoadingClass = function rafSwitchLoadingClass(e) {
@@ -592,12 +606,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				event = { target: elem };
 
+				addClass(elem, lazySizesConfig.loadingClass);
+
 				if (firesLoad) {
-					addRemoveLoadEvents(elem, resetPreloading, true);
 					clearTimeout(resetPreloadingTimer);
 					resetPreloadingTimer = setTimeout(resetPreloading, 2500);
-
-					addClass(elem, lazySizesConfig.loadingClass);
 					addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
 				}
 
@@ -626,13 +639,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			removeClass(elem, lazySizesConfig.lazyClass);
 
 			rAF(function () {
-				if (!firesLoad || elem.complete && elem.naturalWidth > 1) {
-					if (firesLoad) {
-						resetPreloading(event);
-					} else {
-						isLoading--;
+				// Part of this can be removed as soon as this fix is older: https://bugs.chromium.org/p/chromium/issues/detail?id=7731 (2015)
+				var isLoaded = elem.complete && elem.naturalWidth > 1;
+
+				if (!firesLoad || isLoaded) {
+					if (isLoaded) {
+						addClass(elem, 'ls-is-cached');
 					}
 					switchLoadingClass(event);
+					elem._lazyCache = true;
+					setTimeout(function () {
+						if ('_lazyCache' in elem) {
+							delete elem._lazyCache;
+						}
+					}, 9);
 				}
 			}, true);
 		});
@@ -695,7 +715,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				lazysizes.elements = document.getElementsByClassName(lazySizesConfig.lazyClass);
 				preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
-				hFac = lazySizesConfig.hFac;
 
 				addEventListener('scroll', throttledCheckElements, true);
 
