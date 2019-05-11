@@ -4,37 +4,75 @@ get_header();
 
 <main id="main-content">
   <section id="posts">
-    <div class="container">
-      <div class="grid-row">
-
 <?php
 if (have_posts()) {
+  $count = $wp_query->post_count;
+
   while (have_posts()) {
     the_post();
+    $current = $wp_query->current_post;
+
+    if ($current === 0) {
 ?>
-
-        <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
-
-          <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-
-          <?php the_content(); ?>
-
-        </article>
-
+    <div class="grid-row border-bottom background-grey-lite">
+      <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
+        <a href="<?php the_permalink() ?>">
+          <?php the_post_thumbnail(); ?>
+          <div class="grid-row justify-between">
+            <div class="block-category"><span>Category</span></div>
+            <div><span>Author</span></div>
+          </div>
+          <h2 class="font-serif"><?php the_title(); ?></h2>
+          <?php the_excerpt(); ?>
+        </a>
+      </article>
+    </div>
 <?php
+      get_template_part('partials/quick-info');
+    }
+
+    if ($current === 1) {
+?>
+    <div class="grid-row border-bottom">
+      <article <?php post_class('grid-item item-s-6 item-m-8 item-l-6 text-align-center background-yellow post-highlight grid-column justify-around'); ?> id="post-<?php the_ID(); ?>">
+        <a href="<?php the_permalink() ?>">
+          <div class="grid-row justify-between">
+            <div class="block-category"><span>Category</span></div>
+            <div><span>Author</span></div>
+          </div>
+          <h2 class="font-serif"><?php the_title(); ?></h2>
+          <?php the_post_thumbnail(); ?>
+          <?php the_excerpt(); ?>
+        </a>
+      </article>
+<?php
+    }
+
+    if ($current >= 2) {
+?>
+      <article <?php post_class('grid-item item-s-6 item-m-4 item-l-3 text-align-center'); ?> id="post-<?php the_ID(); ?>" style="order: <?php echo $current - 2; ?>">
+        <a href="<?php the_permalink() ?>">
+          <div class="grid-row justify-between">
+            <div><span>Category</span></div>
+            <div><span>Author</span></div>
+          </div>
+          <?php the_post_thumbnail(); ?>
+          <h2 class="font-serif"><?php the_title(); ?></h2>
+          <?php the_excerpt(); ?>
+        </a>
+      </article>
+<?php
+    }
   }
-} else {
+}
 ?>
-        <article class="u-alert grid-item item-s-12"><?php _e('Sorry, no posts matched your criteria :{'); ?></article>
-<?php
-} ?>
-
+    </div>
+    <div class="grid-row border-bottom">
+      <div class="grid-item item-s-12 text-align-center">
+        <?php echo get_locale() === 'en_US' ? 'See more' : 'Ver más'; ?>
       </div>
     </div>
   </section>
-
-  <?php get_template_part('partials/pagination'); ?>
-
 </main>
 
 <?php
