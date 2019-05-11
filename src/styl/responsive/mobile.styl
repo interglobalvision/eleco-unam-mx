@@ -14,8 +14,33 @@ $font-size-mid = 24px
 $font-size-small = 18px
 $font-size-tiny = 8px
 
-grid-maker(96%, $gutter, s)
+grid-maker(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
 font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
+
+.border-bottom
+  border-bottom: 1px solid $color-black
+
+.background-grey-lite
+  background-color: $color-grey-lite
+
+.background-grey-dark
+  background-color: $color-grey-dark
+
+.background-yellow
+  background-color: $color-yellow
+
+#main-container
+  min-height: 100vh
+
+.flex-grow
+  flex-grow: 1
+
+.post-highlight
+  order: 0
+
+.block-category
+  border: 1px solid $color-black
+  padding: 0 .2em

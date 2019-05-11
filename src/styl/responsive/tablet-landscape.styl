@@ -11,7 +11,7 @@
 
   $font-size-basic = 16px
 
-  grid-maker(1000px, $gutter, l)
+  grid-maker(100%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -20,3 +20,9 @@
   .desktop-only
     display: initial !important
 
+  ul.menu
+    li
+      display: inline-block
+
+  .post-highlight
+    order: 2
