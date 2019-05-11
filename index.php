@@ -64,14 +64,20 @@ if (have_posts()) {
 <?php
     }
   }
-}
 ?>
     </div>
+<?php
+  if ($count > 12) {
+?>
     <div class="grid-row border-bottom">
       <div class="grid-item item-s-12 text-align-center">
         <?php echo get_locale() === 'en_US' ? 'See more' : 'Ver más'; ?>
       </div>
     </div>
+<?php
+  }
+}
+?>
   </section>
 </main>
 
