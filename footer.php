@@ -1,20 +1,18 @@
-  <footer id="footer">
-    <div class="container">
-      <div class="grid-row justify-between">
-        <nav class="grid-item item-s-12 item-l-auto">
-          <?php wp_nav_menu( array( 'menu' => 'footer' ) ); ?>
-        </nav>
-        <div class="grid-item item-s-12 item-l-auto">
-          <img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/pleca_firma_UNAM.jpg" />
-        </div>
+  <footer id="footer" class="grid-column flex-grow">
+    <div class="grid-row justify-between">
+      <nav class="grid-item item-s-12 item-l-auto">
+        <?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>
+      </nav>
+      <div class="grid-item item-s-12 item-l-auto">
+        <img src="<?php bloginfo('stylesheet_directory'); ?>/dist/img/pleca_firma_UNAM.jpg" />
       </div>
-      <div class="grid-row justify-between">
-        <div class="grid-item item-s-12 item-l-auto">
-          Bien hecho en la CDMX por <a href="https://interglobal.vision" class="link-underline">Interglobal Vision</a>
-        </div>
-        <div class="grid-item item-s-12 item-l-auto">
-          Todos los derechos reservados <?php echo date("Y"); ?>.
-        </div>
+    </div>
+    <div class="grid-row justify-between background-grey-lite flex-grow">
+      <div class="grid-item item-s-12 item-l-auto">
+        Bien hecho en la CDMX por <a href="https://interglobal.vision" class="link-underline">Interglobal Vision</a>
+      </div>
+      <div class="grid-item item-s-12 item-l-auto">
+        Todos los derechos reservados <?php echo date("Y"); ?>.
       </div>
     </div>
   </footer>
