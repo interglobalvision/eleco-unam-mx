@@ -39,5 +39,18 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
    */
 
+  $visit_page = get_page_by_path('visita');
+
+  if (!empty($visit_page) ) {
+
+    $visit_metabox = new_cmb2_box( array(
+  		'id'            => 'visit_metabox',
+  		'title'         => __( 'Options', 'cmb2' ),
+  		'object_types'  => array( 'page', ), // Post type
+      'show_on'      => array( 'key' => 'id', 'value' => array($visit_page->ID) ),
+  	) );
+
+  }
+
 }
 ?>

@@ -58,6 +58,43 @@ function igv_register_theme_options_metabox() {
     // 'save_button'     => esc_html__( 'Save Theme Options', 'cmb2' ), // The text for the options-page save button. Defaults to 'Save'.
   ) );
 
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Información General', 'cmb2' ),
+    'desc'    => esc_html__( '', 'cmb2' ),
+    'id'      => $prefix . 'generalinfo_title',
+    'type'    => 'title',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Dirección (español)', 'cmb2' ),
+    'id'      => 'generalinfo_address_es',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Dirección (inglés)', 'cmb2' ),
+    'id'      => 'generalinfo_address_en',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Horario (español)', 'cmb2' ),
+    'id'      => 'generalinfo_hours_es',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Horario (inglés)', 'cmb2' ),
+    'id'      => 'generalinfo_hours_en',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Mailchimp Action', 'cmb2' ),
+    'id'      => 'mailchimp_action',
+    'type'    => 'text',
+  ) );
+
   // Social Media variables
 
   $site_options->add_field( array(
@@ -71,18 +108,21 @@ function igv_register_theme_options_metabox() {
     'name'    => esc_html__( 'Facebook Page URL', 'cmb2' ),
     'id'      => 'socialmedia_facebook_url',
     'type'    => 'text',
+    'default' => 'https://www.facebook.com/museoexperimentaleleco/',
   ) );
 
   $site_options->add_field( array(
     'name'    => esc_html__( 'Twitter Account Handle', 'cmb2' ),
     'id'      => 'socialmedia_twitter',
     'type'    => 'text',
+    'default' => 'museo_el_eco',
   ) );
 
   $site_options->add_field( array(
     'name'    => esc_html__( 'Instagram Account Handle', 'cmb2' ),
     'id'      => 'socialmedia_instagram',
     'type'    => 'text',
+    'default' => 'museoexperimentaleleco',
   ) );
 
   // Metadata options
