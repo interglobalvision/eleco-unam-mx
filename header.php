@@ -26,34 +26,23 @@ get_template_part('partials/seo');
 <body <?php body_class(); ?>>
 <!--[if lt IE 9]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-<section id="main-container">
+<section id="main-container" class="grid-column">
 
-  <header id="header">
-    <div class="container">
-      <div class="grid-row font-uppercase">
-        <nav class="grid-item item-s-12 item-m-12 item-l-4">
-          <ul class="menu">
-            <li class="menu-item"><a>Programa</a></li>
-            <li class="menu-item"><a>Exposiciones</a></li>
-            <li class="menu-item"><a>El Eco</a></li>
-            <li class="menu-item"><a>Visita</a></li>
-          </ul>
-        </nav>
-        <div class="grid-item item-s-12 item-m-12 item-l-4">
-          <h1 class="font-size-basic text-align-center">
-            <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
-          </h1>
-        </div>
-        <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-right">
-          <?php
-            if (qtranxf_getLanguage() == 'en') {
-              echo '<a href="?lang=es" hreflang="es">Español</a>';
-            } elseif (qtranxf_getLanguage() == 'es') {
-              echo '<a href="?lang=en" hreflang="en">English</a>';
-            }
-          ?>
-        </div>
+  <header id="header" class="background-grey-lite">
+    <div class="grid-row font-uppercase border-bottom">
+      <nav class="grid-item item-s-12 item-m-12 item-l-4">
+        <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
+      </nav>
+      <div class="grid-item item-s-12 item-m-12 item-l-4">
+        <h1 class="font-size-basic text-align-center">
+          <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+        </h1>
       </div>
-      <?php get_template_part('partials/search'); ?>
+      <div class="grid-item item-s-12 item-m-12 item-l-4 text-align-right">
+        <ul>
+          <?php pll_the_languages(array('hide_current'=>1)); ?>
+        </ul>
+      </div>
     </div>
+    <?php get_template_part('partials/search'); ?>
   </header>
