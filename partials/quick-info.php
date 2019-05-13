@@ -2,9 +2,9 @@
 $options = get_site_option('_igv_site_options');
 $lang = get_locale();
 ?>
-<div class="grid-row border-bottom justify-between background-grey-lite">
+<div id="quick-info" class="grid-row border-bottom justify-between background-grey-lite font-size-small">
   <div class="grid-item item-s-12 item-m-6 item-l-auto">
-    <h4 class="font-uppercase"><?php echo $lang === 'en_US' ? 'Address' : 'Dirección'; ?></h4>
+    <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Address' : 'Dirección'; ?></h4>
     <div>
       <?php
         if ($lang === 'en_US' && !empty($options['generalinfo_address_en'])) {
@@ -16,7 +16,7 @@ $lang = get_locale();
     </div>
   </div>
   <div class="grid-item item-s-12 item-m-6 item-l-auto">
-    <h4 class="font-uppercase"><?php echo $lang === 'en_US' ? 'Hours' : 'Horario'; ?></h4>
+    <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Hours' : 'Horario'; ?></h4>
     <div>
       <?php
         if ($lang === 'en_US' && !empty($options['generalinfo_hours_en'])) {
@@ -28,12 +28,12 @@ $lang = get_locale();
     </div>
   </div>
   <div class="grid-item item-s-12 item-m-6 item-l-auto">
-    <h4 class="font-uppercase"><?php echo $lang === 'en_US' ? 'Subscribe' : 'Suscribir'; ?></h4>
+    <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Subscribe' : 'Suscribir'; ?></h4>
     <form>
     </form>
   </div>
   <div class="grid-item item-s-12 item-m-6 item-l-auto">
-    <h4 class="font-uppercase"><?php echo $lang === 'en_US' ? 'Follow' : 'Seguir'; ?></h4>
+    <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Follow' : 'Seguir'; ?></h4>
     <ul class="u-inline-list">
       <?php
         echo !empty($options['socialmedia_instagram']) ? '<li><a href="https://instagram.com/' . $options['socialmedia_instagram'] . '">IG</a></li>' : '';
