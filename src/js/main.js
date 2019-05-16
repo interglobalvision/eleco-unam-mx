@@ -16,7 +16,9 @@ class Site {
 
     $(document).ready(this.onReady.bind(this));
 
-    this.handleDesktopShare = this.handleDesktopShare.bind(this);
+    this.handleNativeShare = this.handleNativeShare.bind(this);
+    this.handleShareOption = this.handleShareOption.bind(this);
+    this.toggleShareOptions = this.toggleShareOptions.bind(this);
 
     this.windowWidth = $(window).width();
     this.windowHeight = $(window).height();
@@ -54,42 +56,49 @@ class Site {
       $(this).toggleClass('active');
     });
 
-    $('.js-trigger-share').on('click', this.handleShare);
-    $('.js-social-share').on('click', this.handleDesktopShare);
-  }
-
-  handleShare(e) {
-    e.preventDefault();
-    console.log(navigator);
-
-    if (navigator.share !== 'undefined') {
-      var url = window.location.href;
-      var title = document.title;
-
-      navigator.share({ title: title, url: url })
-        .then(function() { console.log("Share success!"); })
-        .catch(this.showDesktopShare);
+    if (navigator.share !== 'undefined' && navigator.share instanceof Function) {
+      $('.js-trigger-share').on('click', this.handleNativeShare);
     } else {
-      this.showDesktopShare();
+      $('.js-trigger-share').hover(this.toggleShareOptions);
     }
+
+    $('.js-social-share').on('click', this.handleShareOption);
   }
 
-  showDesktopShare() {
-    //show
+  handleShareMouseenter() {
+    $('.js-trigger-share').off('click');
+    this.toggleDesktopShare();
   }
 
-  handleDesktopShare(target) {
+  handleNativeShare(e) {
     e.preventDefault();
-    
-    if ($(e.target).hasClass('.js-copy-permalink')) {
-      this.copyPermalink(e.target);
+
+    var url = window.location.href;
+    var title = document.title;
+
+    navigator.share({ title: title, url: url })
+      .then(function() { console.log("Share success!"); })
+      .catch(this.showDesktopShare);
+  }
+
+  toggleShareOptions() {
+    $('.share-holder').toggleClass('show');
+  }
+
+  handleShareOption(e) {
+    e.preventDefault();
+
+    if ($(e.target).hasClass('js-copy-permalink')) {
+      this.copyPermalink();
     } else {
       this.openSharePopup(e.target);
     }
+
+    return false;
   }
 
   copyPermalink(target) {
-
+    console.log('copy', window.location.href);
   }
 
   openSharePopup(target) {
@@ -98,8 +107,9 @@ class Site {
       width = 600,
       height = 350,
       loc = window.location.href,
-      title = document.title,
+      title = encodeURIComponent(document.title),
       url;
+      console.log(title);
     if ($(target).attr('data-social') === 'facebook') {
       url = 'https://facebook.com/sharer/sharer.php?u=' + loc;
     } else if ($(target).attr('data-social') === 'twitter') {

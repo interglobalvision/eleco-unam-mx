@@ -189,7 +189,9 @@ var Site = function () {
 
     $(document).ready(this.onReady.bind(this));
 
-    this.handleDesktopShare = this.handleDesktopShare.bind(this);
+    this.handleNativeShare = this.handleNativeShare.bind(this);
+    this.handleShareOption = this.handleShareOption.bind(this);
+    this.toggleShareOptions = this.toggleShareOptions.bind(this);
 
     this.windowWidth = $(window).width();
     this.windowHeight = $(window).height();
@@ -227,45 +229,55 @@ var Site = function () {
         $(this).toggleClass('active');
       });
 
-      $('.js-trigger-share').on('click', this.handleShare);
-      $('.js-social-share').on('click', this.handleDesktopShare);
-    }
-  }, {
-    key: 'handleShare',
-    value: function handleShare(e) {
-      e.preventDefault();
-      console.log(navigator);
-
-      if (navigator.share !== 'undefined') {
-        var url = window.location.href;
-        var title = document.title;
-
-        navigator.share({ title: title, url: url }).then(function () {
-          console.log("Share success!");
-        }).catch(this.showDesktopShare);
+      if (navigator.share !== 'undefined' && navigator.share instanceof Function) {
+        $('.js-trigger-share').on('click', this.handleNativeShare);
       } else {
-        this.showDesktopShare();
+        $('.js-trigger-share').hover(this.toggleShareOptions);
       }
+
+      $('.js-social-share').on('click', this.handleShareOption);
     }
   }, {
-    key: 'showDesktopShare',
-    value: function showDesktopShare() {
-      //show
+    key: 'handleShareMouseenter',
+    value: function handleShareMouseenter() {
+      $('.js-trigger-share').off('click');
+      this.toggleDesktopShare();
     }
   }, {
-    key: 'handleDesktopShare',
-    value: function handleDesktopShare(target) {
+    key: 'handleNativeShare',
+    value: function handleNativeShare(e) {
       e.preventDefault();
 
-      if ($(e.target).hasClass('.js-copy-permalink')) {
-        this.copyPermalink(e.target);
+      var url = window.location.href;
+      var title = document.title;
+
+      navigator.share({ title: title, url: url }).then(function () {
+        console.log("Share success!");
+      }).catch(this.showDesktopShare);
+    }
+  }, {
+    key: 'toggleShareOptions',
+    value: function toggleShareOptions() {
+      $('.share-holder').toggleClass('show');
+    }
+  }, {
+    key: 'handleShareOption',
+    value: function handleShareOption(e) {
+      e.preventDefault();
+
+      if ($(e.target).hasClass('js-copy-permalink')) {
+        this.copyPermalink();
       } else {
         this.openSharePopup(e.target);
       }
+
+      return false;
     }
   }, {
     key: 'copyPermalink',
-    value: function copyPermalink(target) {}
+    value: function copyPermalink(target) {
+      console.log('copy', window.location.href);
+    }
   }, {
     key: 'openSharePopup',
     value: function openSharePopup(target) {
@@ -274,8 +286,9 @@ var Site = function () {
           width = 600,
           height = 350,
           loc = window.location.href,
-          title = document.title,
+          title = encodeURIComponent(document.title),
           url;
+      console.log(title);
       if ($(target).attr('data-social') === 'facebook') {
         url = 'https://facebook.com/sharer/sharer.php?u=' + loc;
       } else if ($(target).attr('data-social') === 'twitter') {
