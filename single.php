@@ -43,20 +43,7 @@ if (have_posts()) {
           }
         ?>
         <div class="grid-item flex-grow">
-          <div>
-            <a href="#" class="js-trigger-share"><?php echo $lang === 'en_US' ? 'Share' : 'Compartir'; ?></a>
-          </div>
-          <ul>
-            <li>
-              <a class="js-social-share" href="#" data-social="facebook">Facebook</a>
-            </li>
-            <li>
-              <a class="js-social-share" href="#" data-social="twitter">Twitter</a>
-            </li>
-            <li>
-              <a class="js-social-share js-copy-permalink" href="#"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
-            </li>
-          </ul>
+          <?php get_template_part('partials/share'); ?>
         </div>
     </article>
 <?php
