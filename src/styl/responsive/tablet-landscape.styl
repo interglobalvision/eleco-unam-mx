@@ -45,3 +45,32 @@
 
   .post-highlight
     order: 2
+
+  // ARTICLE
+  #article-content
+    p
+      padding: 0 $margin-tiny
+      margin-left: 25%
+      margin-right: 25%
+    blockquote.wp-block-quote
+      p
+        padding: 0 $margin-tiny
+        font-size: $font-size-big
+        margin-top: $margin-basic
+      &:before
+        font-size: $font-size-extra * 1.5
+        padding: 0 $margin-tiny
+    figure.wp-block-image
+      clear: both
+      img
+        max-width: 75vw
+        max-height: 90vh
+        width: auto
+        height: auto
+        padding: 0 $margin-tiny
+      figcaption
+        float: left
+        width: 25vw
+        text-align: left
+        padding: 0 $margin-tiny
+        margin: 0

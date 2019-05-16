@@ -39,8 +39,15 @@ grid-maker(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
+// BORDER
+
 .border-bottom
   border-bottom: 1px solid $color-black
+
+.border-right
+  border-right: 1px solid $color-black
+
+// BACKGROUND
 
 .background-grey-lite
   background-color: $color-grey-lite
@@ -50,6 +57,8 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 
 .background-yellow
   background-color: $color-yellow
+
+//
 
 #main-container
   min-height: 100vh
@@ -67,3 +76,45 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 #quick-info
   p
     margin-bottom: 0
+
+// ARTICLE
+#article-content
+  & > *
+    display: block
+    width: 100%
+  p
+    padding: 0 $margin-tiny
+  hr.wp-block-separator
+    flex-basis: 100%
+    max-width: 100%
+    border: 0
+    height: 1px
+    background-color: $color-black
+  blockquote.wp-block-quote
+    font-family: $font-serif
+    position: relative
+    p
+      width: calc('(100% / 12) * 10')
+      margin-left: calc('100% / 12')
+      padding: 0 $margin-tiny
+      font-size: $font-size-big
+      margin-top: $margin-basic
+    &:before
+      content: '\00201C' // left double quotation mark
+      position: absolute
+      left: 0
+      top: 0
+      padding: 0 $margin-tiny
+      font-size: $font-size-extra * 1.5
+  .swiper-container
+    max-height: 90vh
+    figure
+      margin: 0
+      width: 100%
+      height: 100%
+      position: relative
+      img
+        max-height: 100%
+        max-width: 100%
+        height: auto
+        width: auto
