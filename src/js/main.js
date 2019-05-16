@@ -89,7 +89,8 @@ class Site {
     e.preventDefault();
 
     if ($(e.target).hasClass('js-copy-permalink')) {
-      this.copyPermalink(e.target);
+      var url = $(e.target).attr('data-permalink');
+      this.copyToClipboard(url);
     } else {
       this.openSharePopup(e.target);
     }
@@ -97,11 +98,9 @@ class Site {
     return false;
   }
 
-  copyPermalink(target) {
-    var url = $(target).attr('data-permalink'),
-      textarea = document.createElement('textarea');
-      
-    textarea.value = url;
+  copyToClipboard(str) {
+    var textarea = document.createElement('textarea');
+    textarea.value = str;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand('copy');

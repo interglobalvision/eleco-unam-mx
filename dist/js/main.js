@@ -266,7 +266,8 @@ var Site = function () {
       e.preventDefault();
 
       if ($(e.target).hasClass('js-copy-permalink')) {
-        this.copyPermalink(e.target);
+        var url = $(e.target).attr('data-permalink');
+        this.copyToClipboard(url);
       } else {
         this.openSharePopup(e.target);
       }
@@ -274,12 +275,10 @@ var Site = function () {
       return false;
     }
   }, {
-    key: 'copyPermalink',
-    value: function copyPermalink(target) {
-      var url = $(target).attr('data-permalink'),
-          textarea = document.createElement('textarea');
-
-      textarea.value = url;
+    key: 'copyToClipboard',
+    value: function copyToClipboard(str) {
+      var textarea = document.createElement('textarea');
+      textarea.value = str;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
