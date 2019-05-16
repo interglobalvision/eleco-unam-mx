@@ -50,9 +50,7 @@ add_filter( 'after_setup_theme', 'create_custom_pages' );
 
 // WP Nav Menu
 function register_igv_nav_menus() {
-  register_nav_menu(array(
-    'header',__( 'Header Menu' ),
-    'footer',__( 'Footer Menu' )
-  ));
+  register_nav_menu('header',__( 'Header Menu' ));
+  register_nav_menu('footer',__( 'Footer Menu' ));
 }
 add_action( 'init', 'register_igv_nav_menus' );
