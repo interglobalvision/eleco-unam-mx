@@ -4,13 +4,13 @@
   </div>
   <ul class="share-options justify-center">
     <li class="grid-item">
-      <a class="js-social-share" href="#" data-social="facebook">Facebook</a>
+      <a class="js-social-share" href="#" data-social="facebook" data-permalink="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>">Facebook</a>
     </li>
     <li class="grid-item">
-      <a class="js-social-share" href="#" data-social="twitter">Twitter</a>
+      <a class="js-social-share" href="#" data-social="twitter" data-permalink="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>">Twitter</a>
     </li>
     <li class="grid-item">
-      <a class="js-social-share js-copy-permalink" href="#"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
+      <a class="js-social-share js-copy-permalink" href="#" data-permalink="<?php the_permalink(); ?>"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
     </li>
   </ul>
 </div>
