@@ -1,6 +1,7 @@
 <?php
 get_header();
 $lang = get_locale();
+$options = get_site_option('_igv_site_options');
 ?>
 
 <main id="main-content">
@@ -42,17 +43,18 @@ if (have_posts()) {
           }
         ?>
         <div class="grid-item flex-grow">
-          <div><?php echo $lang === 'en_US' ? 'Share' : 'Compartir'; ?></div>
+          <div>
+            <a href="#" class="js-trigger-share"><?php echo $lang === 'en_US' ? 'Share' : 'Compartir'; ?></a>
+          </div>
           <ul>
-            <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>">Facebook</a></li>
             <li>
-              <a href="<?php
-                $options = get_site_option('_igv_site_options');
-                $handle = !empty($options['socialmedia_twitter']) ? $options['socialmedia_twitter'] : 'El+Elco';
-                echo 'https://twitter.com/share?url=' . get_the_permalink() . '&text=';
-                echo $lang = 'en_US' ? 'Me%20gust%C3%B3%20este%20art%C3%ADculo%20de%20' : 'I%20liked%20this%20article%20from%20';
-                echo $handle;
-              ?>">Twitter</a>
+              <a class="js-social-share" href="#" data-social="facebook">Facebook</a>
+            </li>
+            <li>
+              <a class="js-social-share" href="#" data-social="twitter">Twitter</a>
+            </li>
+            <li>
+              <a class="js-social-share js-copy-permalink" href="#"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
             </li>
           </ul>
         </div>
