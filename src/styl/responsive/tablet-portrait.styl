@@ -9,13 +9,28 @@
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 14px
+  .font-size-extra
+    font-size: $font-size-extra * .8
+  .font-size-big
+    font-size: $font-size-big * .8
+  .font-size-large
+    font-size: $font-size-large * .8
+  .font-size-mid
+    font-size: $font-size-mid * .8
+  .font-size-basic
+    font-size: $font-size-basic * .8
+  .font-size-small
+    font-size: $font-size-small * .8
+  .font-size-tiny
+    font-size: $font-size-tiny * .8
+  .font-size-micro
+    font-size: $font-size-micro * .8
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   grid-maker(100%, $gutter, m)
 
-  font-sizes($font-size-basic)
+  font-sizes($font-size-basic * .8)
 
   .mobile-only
     display: none !important

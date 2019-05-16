@@ -18,11 +18,11 @@ if (have_posts()) {
       <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
         <a href="<?php the_permalink() ?>">
           <?php the_post_thumbnail(); ?>
-          <div class="grid-row justify-between">
+          <div class="grid-row justify-between font-size-tiny">
             <div class="block-category"><span>Category</span></div>
             <div><span>Author</span></div>
           </div>
-          <h2 class="font-serif"><?php the_title(); ?></h2>
+          <h2 class="font-serif font-size-extra"><?php the_title(); ?></h2>
           <?php the_excerpt(); ?>
         </a>
       </article>
@@ -36,13 +36,17 @@ if (have_posts()) {
     <div class="grid-row border-bottom">
       <article <?php post_class('grid-item item-s-6 item-m-8 item-l-6 text-align-center background-yellow post-highlight grid-column justify-around'); ?> id="post-<?php the_ID(); ?>">
         <a href="<?php the_permalink() ?>">
-          <div class="grid-row justify-between">
+          <div class="grid-row justify-around font-size-tiny">
             <div class="block-category"><span>Category</span></div>
             <div><span>Author</span></div>
           </div>
-          <h2 class="font-serif"><?php the_title(); ?></h2>
+          <h2 class="font-serif font-size-big"><?php the_title(); ?></h2>
           <?php the_post_thumbnail(); ?>
-          <?php the_excerpt(); ?>
+          <div class="grid-row font-size-small justify-center">
+            <div class="grid-item no-gutter item-s-12 item-m-11 item-l-10">
+              <?php the_excerpt(); ?>
+            </div>
+          </div>
         </a>
       </article>
 <?php
@@ -52,13 +56,13 @@ if (have_posts()) {
 ?>
       <article <?php post_class('grid-item item-s-6 item-m-4 item-l-3 text-align-center'); ?> id="post-<?php the_ID(); ?>" style="order: <?php echo $current - 2; ?>">
         <a href="<?php the_permalink() ?>">
-          <div class="grid-row justify-between">
+          <div class="grid-row justify-between font-size-tiny">
             <div><span>Category</span></div>
             <div><span>Author</span></div>
           </div>
           <?php the_post_thumbnail(); ?>
           <h2 class="font-serif"><?php the_title(); ?></h2>
-          <?php the_excerpt(); ?>
+          <div class="font-size-tiny"><?php the_excerpt(); ?></div>
         </a>
       </article>
 <?php

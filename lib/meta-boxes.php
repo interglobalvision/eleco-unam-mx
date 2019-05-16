@@ -39,12 +39,46 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
    */
 
+  $post_metabox = new_cmb2_box( array(
+    'id'            => $prefix . 'post_metabox',
+    'title'         => __( 'Options', 'cmb2' ),
+    'object_types'  => array( 'post', ), // Post type
+  ) );
+
+  $post_metabox->add_field( array(
+  	'name'    => 'PDF (español)',
+  	'desc'    => '',
+  	'id'      => $prefix . 'post_pdf_es',
+  	'type'    => 'file',
+  	'text'    => array(
+  		'add_upload_file_text' => 'Añadir PDF' // Change upload button text. Default: "Add or Upload File"
+  	),
+  	// query_args are passed to wp.media's library query.
+  	'query_args' => array(
+  		'type' => 'application/pdf', // Make library only display PDFs.
+  	),
+  ) );
+
+  $post_metabox->add_field( array(
+  	'name'    => 'PDF (inglés)',
+  	'desc'    => '',
+  	'id'      => $prefix . 'post_pdf_en',
+  	'type'    => 'file',
+  	'text'    => array(
+  		'add_upload_file_text' => 'Añadir PDF' // Change upload button text. Default: "Add or Upload File"
+  	),
+  	// query_args are passed to wp.media's library query.
+  	'query_args' => array(
+  		'type' => 'application/pdf', // Make library only display PDFs.
+  	),
+  ) );
+
   $visit_page = get_page_by_path('visita');
 
   if (!empty($visit_page) ) {
 
     $visit_metabox = new_cmb2_box( array(
-  		'id'            => 'visit_metabox',
+  		'id'            => $prefix . 'visit_metabox',
   		'title'         => __( 'Options', 'cmb2' ),
   		'object_types'  => array( 'page', ), // Post type
       'show_on'      => array( 'key' => 'id', 'value' => array($visit_page->ID) ),

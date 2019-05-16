@@ -9,13 +9,28 @@
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 16px
+  .font-size-extra
+    font-size: $font-size-extra * .9
+  .font-size-big
+    font-size: $font-size-big * .9
+  .font-size-large
+    font-size: $font-size-large * .9
+  .font-size-mid
+    font-size: $font-size-mid * .9
+  .font-size-basic
+    font-size: $font-size-basic * .9
+  .font-size-small
+    font-size: $font-size-small * .9
+  .font-size-tiny
+    font-size: $font-size-tiny * .9
+  .font-size-micro
+    font-size: $font-size-micro * .9
 
   grid-maker(100%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  font-sizes($font-size-basic)
+  font-sizes($font-size-basic * .9)
 
   .desktop-only
     display: initial !important
@@ -24,5 +39,38 @@
     li
       display: inline-block
 
+  #header-nav, #header-lang
+    flex: 1;
+    min-width: -webkit-min-content;
+
   .post-highlight
     order: 2
+
+  // ARTICLE
+  #article-content
+    p
+      padding: 0 $margin-tiny
+      margin-left: 25%
+      margin-right: 25%
+    blockquote.wp-block-quote
+      p
+        padding: 0 $margin-tiny
+        font-size: $font-size-big
+        margin-top: $margin-basic
+      &:before
+        font-size: $font-size-extra * 1.5
+        padding: 0 $margin-tiny
+    figure.wp-block-image
+      clear: both
+      img
+        max-width: 75vw
+        max-height: 90vh
+        width: auto
+        height: auto
+        padding: 0 $margin-tiny
+      figcaption
+        float: left
+        width: 25vw
+        text-align: left
+        padding: 0 $margin-tiny
+        margin: 0

@@ -7,21 +7,47 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-basic = 12px
-$font-size-extra = 48px
-$font-size-large = 36px
-$font-size-mid = 24px
+$font-size-extra = 135px
+$font-size-big = 90px
+$font-size-large = 60px
+$font-size-mid = 27px
+$font-size-basic = 21px
 $font-size-small = 18px
-$font-size-tiny = 8px
+$font-size-tiny = 16px
+$font-size-micro = 11px
+
+.font-size-extra
+  font-size: $font-size-extra * .5
+.font-size-big
+  font-size: $font-size-big * .5
+.font-size-large
+  font-size: $font-size-large * .6
+.font-size-mid
+  font-size: $font-size-mid * .6
+.font-size-basic
+  font-size: $font-size-basic * .8
+.font-size-small
+  font-size: $font-size-small * .8
+.font-size-tiny
+  font-size: $font-size-tiny * .9
+.font-size-micro
+  font-size: $font-size-micro * .9
+
+font-sizes($font-size-basic * .8)
 
 grid-maker(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
+// BORDER
 
 .border-bottom
   border-bottom: 1px solid $color-black
+
+.border-right
+  border-right: 1px solid $color-black
+
+// BACKGROUND
 
 .background-grey-lite
   background-color: $color-grey-lite
@@ -32,6 +58,8 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 .background-yellow
   background-color: $color-yellow
 
+//
+
 #main-container
   min-height: 100vh
 
@@ -41,6 +69,69 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 .post-highlight
   order: 0
 
-.block-category
+.block-category, .post-tag
   border: 1px solid $color-black
   padding: 0 .2em
+
+.post-tag
+  border-radius: .3em
+
+#quick-info
+  p
+    margin-bottom: 0
+
+// ARTICLE
+#article-content
+  & > *
+    display: block
+    width: 100%
+  p
+    padding: 0 $margin-tiny
+  hr.wp-block-separator
+    flex-basis: 100%
+    max-width: 100%
+    border: 0
+    height: 1px
+    background-color: $color-black
+  blockquote.wp-block-quote
+    font-family: $font-serif
+    position: relative
+    p
+      width: calc('(100% / 12) * 10')
+      margin-left: calc('100% / 12')
+      padding: 0 $margin-tiny
+      font-size: $font-size-big
+      margin-top: $margin-basic
+    &:before
+      content: '\00201C' // left double quotation mark
+      position: absolute
+      left: 0
+      top: 0
+      padding: 0 $margin-tiny
+      font-size: $font-size-extra * 1.5
+  .swiper-container
+    max-height: 90vh
+    figure
+      margin: 0
+      width: 100%
+      height: 100%
+      position: relative
+      img
+        max-height: 100%
+        max-width: 100%
+        height: auto
+        width: auto
+
+
+
+// SHARE
+.share-options
+  width: 100%
+  display: none
+
+.share-holder
+  &.show
+    .share-indicator
+      display: none
+    .share-options
+      display: flex
