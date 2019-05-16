@@ -266,7 +266,7 @@ var Site = function () {
       e.preventDefault();
 
       if ($(e.target).hasClass('js-copy-permalink')) {
-        this.copyPermalink();
+        this.copyPermalink(e.target);
       } else {
         this.openSharePopup(e.target);
       }
@@ -276,7 +276,14 @@ var Site = function () {
   }, {
     key: 'copyPermalink',
     value: function copyPermalink(target) {
-      console.log('copy', window.location.href);
+      var url = $(target).attr('data-permalink'),
+          textarea = document.createElement('textarea');
+
+      textarea.value = url;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
     }
   }, {
     key: 'openSharePopup',
@@ -285,8 +292,8 @@ var Site = function () {
           top = this.windowHeight / 2 - 175,
           width = 600,
           height = 350,
-          loc = window.location.href,
-          title = encodeURIComponent(document.title),
+          loc = $(target).attr('data-permalink'),
+          title = encodeURIComponent($(target).attr('data-title')),
           url;
       console.log(title);
       if ($(target).attr('data-social') === 'facebook') {
@@ -296,6 +303,8 @@ var Site = function () {
       } else {
         return;
       }
+
+      console.log(url);
 
       window.open(url, 'share-dialog', 'height=' + height + ',width=' + width + ',left=' + left + ',top=' + top);
     }
