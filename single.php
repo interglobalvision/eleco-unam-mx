@@ -23,7 +23,7 @@ if (have_posts()) {
         <div><span>Category</span></div>
         <div><span>Author</span></div>
       </div>
-      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row">
+      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-mid padding-bottom-large">
         <?php the_content(); ?>
       </div>
       <div class="grid-item item-s-12 no-gutter grid-row text-align-center flex-nowrap border-bottom">
@@ -45,12 +45,15 @@ if (have_posts()) {
         <div class="grid-item flex-grow">
           <?php get_template_part('partials/share'); ?>
         </div>
+      </div>
+      <div class="grid-item item-s-12 no-gutter">
+        <?php get_template_part('partials/tags'); ?>
+      </div>
     </article>
 <?php
   }
 }
 ?>
-    </div>
   </section>
 </main>
 

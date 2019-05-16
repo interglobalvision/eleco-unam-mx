@@ -10,7 +10,7 @@ $margin-large = ($gutter * 5)
 $font-size-extra = 135px
 $font-size-big = 90px
 $font-size-large = 60px
-$font-size-mid = 32px
+$font-size-mid = 27px
 $font-size-basic = 21px
 $font-size-small = 18px
 $font-size-tiny = 16px
@@ -69,9 +69,12 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 .post-highlight
   order: 0
 
-.block-category
+.block-category, .post-tag
   border: 1px solid $color-black
   padding: 0 .2em
+
+.post-tag
+  border-radius: .3em
 
 #quick-info
   p
@@ -118,6 +121,8 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
         max-width: 100%
         height: auto
         width: auto
+
+
 
 // SHARE
 .share-options
