@@ -19,7 +19,7 @@ if (have_posts()) {
         <h1 class="font-serif font-size-extra"><?php the_title(); ?></h1>
         <?php the_post_thumbnail(); ?>
       </div>
-      <div class="grid-item item-s-12 justify-between font-size-tiny background-grey-lite border-bottom">
+      <div class="grid-item item-s-12 justify-between font-size-tiny background-grey-lite border-bottom grid-row justify-between">
         <div><span>Category</span></div>
         <div><span>Author</span></div>
       </div>
