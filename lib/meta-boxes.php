@@ -152,7 +152,6 @@ function igv_cmb_metaboxes() {
       	    'image/png',
         	),
       	),
-      	'preview_size' => 200,
       ) );
     }
 
