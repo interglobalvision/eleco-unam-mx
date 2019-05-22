@@ -37,12 +37,22 @@ function create_custom_pages() {
     if (function_exists('pll_set_post_language')) {
       $page_es = get_page_by_path(key(array_slice($page_pair, 0, 1, true)));
       $page_en = get_page_by_path(key(array_slice($page_pair, 1, 1, true)));
+
       pll_set_post_language($page_es->ID, 'es');
       pll_set_post_language($page_en->ID, 'en');
+
       pll_save_post_translations( array(
         'es' => $page_es->ID,
         'en' => $page_en->ID
       ) );
+
+      $template = 'page-' . $page_en->post_name . '.php';
+      $located = locate_template( $template );
+
+      if ( !empty( $located ) ) {
+        update_post_meta( $page_es->ID, '_wp_page_template', $template );
+        update_post_meta( $page_en->ID, '_wp_page_template', $template );
+      }
     }
   }
 }
