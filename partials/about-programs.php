@@ -45,7 +45,9 @@ if (!$is_empty) {
     <?php
       if (!empty($section['image'])) {
     ?>
-    <div><?php echo wp_get_attachment_image($section['image']); ?></div>
+    <div class="text-align-center">
+      <?php echo wp_get_attachment_image($section['image']); ?>
+    </div>
     <?php
       }
     ?>
