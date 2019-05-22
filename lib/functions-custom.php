@@ -2,6 +2,17 @@
 
 // Custom functions (like special queries, etc)
 
+// add global keys
+function igv_set_global_keys(&$array) {
+  foreach ($array as $k => $v) {
+    $array[$k] = array(
+      'id' => $v[0],
+      'es' => $v[1],
+      'en' => $v[2]
+    );
+  }
+}
+
 // set globals
 function igv_theme_globals() {
   global $about_mission_sections;
@@ -13,14 +24,6 @@ function igv_theme_globals() {
     ['vocation','Vocación','Vocation']
   ];
 
-  foreach ($about_mission_sections as $k => $v) {
-    $about_mission_sections[$k] = array(
-      'id' => $v[0],
-      'es' => $v[1],
-      'en' => $v[2]
-    );
-  }
-
   $about_program_sections = [
     ['exhibition','Proyectos de Exposición','Exhibition Projects'],
     ['public','Programa Publico','Public Program'],
@@ -28,13 +31,8 @@ function igv_theme_globals() {
     ['pavilion','Pabellón Eco','Eco Pavilion'],
   ];
 
-  foreach ($about_program_sections as $k => $v) {
-    $about_program_sections[$k] = array(
-      'id' => $v[0],
-      'es' => $v[1],
-      'en' => $v[2]
-    );
-  }
+  igv_set_global_keys($about_mission_sections);
+  igv_set_global_keys($about_program_sections);
 }
 add_action( 'init', 'igv_theme_globals' );
 
