@@ -1,7 +1,6 @@
 <?php
 get_header();
 $lang = get_locale();
-$options = get_site_option('_igv_site_options');
 ?>
 
 <main id="main-content">
