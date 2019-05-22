@@ -73,16 +73,88 @@ function igv_cmb_metaboxes() {
   	),
   ) );
 
-  $visit_page = get_page_by_path('visita');
+  $about_page_es = get_page_by_path('acercade');
+  $about_page_en = get_page_by_path('about');
 
-  if (!empty($visit_page) ) {
+  if (!empty($about_page_es) && !empty($about_page_en)) {
 
-    $visit_metabox = new_cmb2_box( array(
-  		'id'            => $prefix . 'visit_metabox',
-  		'title'         => __( 'Options', 'cmb2' ),
+    $about_mission_metabox = new_cmb2_box( array(
+  		'id'            => $prefix . 'about_mission_metabox',
+  		'title'         => __( 'Misión, Visión, Vocación', 'cmb2' ),
   		'object_types'  => array( 'page', ), // Post type
-      'show_on'      => array( 'key' => 'id', 'value' => array($visit_page->ID) ),
+      'show_on'      => array(
+        'key' => 'id',
+        'value' => array(
+          $about_page_es->ID,
+          $about_page_en->ID
+        )
+      ),
   	) );
+
+    global $about_mission_sections;
+
+    foreach ($about_mission_sections as $section) {
+      $about_mission_metabox->add_field( array(
+      	'name'    => $section['es'],
+      	'desc'    => '',
+      	'id'      => $prefix . 'about_' . $section['id'],
+      	'type'    => 'wysiwyg',
+        'options' => array(
+    	    'media_buttons' => false, // show insert/upload button(s)
+    	    'textarea_rows' => get_option('default_post_edit_rows', 5), // rows="..."
+      	),
+      ) );
+    }
+
+    $about_program_metabox = new_cmb2_box( array(
+  		'id'            => $prefix . 'about_program_metabox',
+  		'title'         => __( 'Descripión de Programas', 'cmb2' ),
+  		'object_types'  => array( 'page', ), // Post type
+      'show_on'      => array(
+        'key' => 'id',
+        'value' => array(
+          $about_page_es->ID,
+          $about_page_en->ID
+        )
+      ),
+  	) );
+
+    global $about_program_sections;
+
+    foreach ($about_program_sections as $section) {
+      $about_program_metabox->add_field( array(
+      	'name'    => $section['es'],
+      	'desc'    => '',
+      	'id'      => $prefix . 'about_' . $section['id'],
+      	'type'    => 'wysiwyg',
+        'options' => array(
+    	    'media_buttons' => false, // show insert/upload button(s)
+    	    'textarea_rows' => get_option('default_post_edit_rows', 5), // rows="..."
+      	),
+      ) );
+
+      $about_program_metabox->add_field( array(
+      	'name'    => $section['es'] . ' URL',
+      	'desc'    => '',
+      	'id'      => $prefix . 'about_' . $section['id'] . '_url',
+      	'type'    => 'text_url',
+      ) );
+
+      $about_program_metabox->add_field( array(
+      	'name'    => $section['es'] . ' imagen',
+      	'desc'    => '',
+      	'id'      => $prefix . 'about_' . $section['id'] . '_image',
+      	'type'    => 'file',
+        'query_args' => array(
+      		'type' => array(
+      		  'image/gif',
+    	      'image/jpeg',
+      	    'image/png',
+        	),
+      	),
+      	'preview_size' => 200,
+      ) );
+    }
 
   }
 
