@@ -66,9 +66,6 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 .flex-grow
   flex-grow: 1
 
-.post-highlight
-  order: 0
-
 .block-category, .post-tag
   border: 1px solid $color-black
   padding: 0 .2em
@@ -123,8 +120,6 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
         height: auto
         width: auto
 
-
-
 // SHARE
 .share-options
   width: 100%
@@ -136,3 +131,14 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
       display: none
     .share-options
       display: flex
+
+// HOME
+#home-side-row
+  display: none
+  order: 0
+
+#home-highlight
+  order: 1
+
+#home-bottom-row
+  order: 2
