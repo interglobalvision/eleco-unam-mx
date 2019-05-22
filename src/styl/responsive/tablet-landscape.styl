@@ -43,9 +43,6 @@
     flex: 1;
     min-width: -webkit-min-content;
 
-  .post-highlight
-    order: 2
-
   // ARTICLE
   #article-content
     p
@@ -74,3 +71,12 @@
         text-align: left
         padding: 0 $margin-tiny
         margin: 0
+
+  // HOME
+  #home-side-row
+    article:nth-child(n+4)
+      display: initial
+
+  #home-bottom-row
+    article:nth-child(-n+6)
+      display: none

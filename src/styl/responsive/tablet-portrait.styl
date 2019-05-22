@@ -35,5 +35,13 @@
   .mobile-only
     display: none !important
 
-  .post-highlight
-    order: 1
+  // HOME
+  #home-side-row
+    display: flex
+    order: 0
+    article:nth-child(n+4)
+      display: none
+
+  #home-bottom-row
+    article:nth-child(-n+3)
+      display: none
