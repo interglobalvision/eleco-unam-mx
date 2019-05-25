@@ -24,14 +24,14 @@ $query = new WP_Query($args);
 
 if ($query->have_posts()) {
 ?>
-      <div class="grid-item item-s-12 background-grey-lite no-gutter grid-row">
-        <div class="grid-item item-s-12 text-align-center font-size-mid"><h2><?php igv_pll_str('Actuales', 'On View'); ?></h2></div>
-        <?php
-          while ($query->have_posts()) {
-            $query->the_post();
-            get_template_part('partials/expo-featured-item');
-          }
-        ?>
-      </div>
+<div class="grid-item item-s-12 background-grey-lite no-gutter grid-row">
+  <div class="grid-item item-s-12 text-align-center font-size-mid"><h2><?php igv_pll_str('Actuales', 'On View'); ?></h2></div>
+  <?php
+    while ($query->have_posts()) {
+      $query->the_post();
+      get_template_part('partials/expo-featured-item');
+    }
+  ?>
+</div>
 <?php
 }
