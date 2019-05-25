@@ -11,38 +11,7 @@ get_header();
 <?php
 get_template_part('partials/evento-archive-future');
 
-$now = time();
-$args = array(
-  'post_type' => 'evento',
-  'posts_per_page' => -1,
-  'orderby' => 'meta_value_num',
-  'order' => 'DESC',
-  'meta_key' => '_igv_expo_date_end',
-  'meta_query' => array(
-    array(
-      'key' => '_igv_expo_datetime',
-      'value' => $now,
-      'compare' => '<=',
-    ),
-  ),
-);
-$past_query = new WP_Query($args);
-
-if ($past_query->have_posts()) {
-  $count = $past_query->post_count;
-  while ($past_query->have_posts()) {
-    $past_query->the_post();
-?>
-  <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
-    <?php the_title(); ?>
-  </article>
-<?php
-  }
-
-  if ($count > 12) {
-    get_template_part('partials/see-more');
-  }
-}
+get_template_part('partials/evento-archive-past');
 ?>
     </div>
   </section>
