@@ -36,11 +36,17 @@ function igv_theme_globals() {
 }
 add_action( 'init', 'igv_theme_globals' );
 
-// eco shortcode
-function eco_shortcode( $atts, $content = null ) {
+// shortcode
+function eleco_shortcode( $atts, $content = null ) {
   $a = shortcode_atts( array(
     'tag' => 'tag',
   ), $atts );
 	return '<span class="inline-tag" data-tag="' . esc_attr($a['tag']) . '">' . $content . '</span>';
 }
-add_shortcode( 'eco', 'eco_shortcode' );
+add_shortcode( 'eco', 'eleco_shortcode' );
+
+// echo string for current language
+function igv_pll_str($es_str, $en_str = false) {
+  $lang = get_locale();
+  echo $lang === 'en_US' && $en_str !== false ? $en_str : $es_str;
+}

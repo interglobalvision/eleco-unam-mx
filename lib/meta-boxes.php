@@ -42,7 +42,7 @@ function igv_cmb_metaboxes() {
   $post_metabox = new_cmb2_box( array(
     'id'            => $prefix . 'post_metabox',
     'title'         => __( 'Options', 'cmb2' ),
-    'object_types'  => array( 'post', ), // Post type
+    'object_types'  => array( 'post','expo','evento' ), // Post type
   ) );
 
   $post_metabox->add_field( array(
@@ -72,6 +72,41 @@ function igv_cmb_metaboxes() {
   		'type' => 'application/pdf', // Make library only display PDFs.
   	),
   ) );
+
+  //EXPO
+
+  $expo_dates_metabox = new_cmb2_box( array(
+    'id'            => $prefix . 'expo_dates_metabox',
+    'title'         => __( 'Dates', 'cmb2' ),
+    'object_types'  => array( 'expo' ), // Post type
+  ) );
+
+  $expo_dates_metabox->add_field( array(
+  	'name' => 'Fecha de inicio',
+  	'id'   => $prefix . 'expo_date_start',
+  	'type' => 'text_date_timestamp',
+  ) );
+
+  $expo_dates_metabox->add_field( array(
+  	'name' => 'Fecha final',
+  	'id'   => $prefix . 'expo_date_end',
+  	'type' => 'text_date_timestamp',
+  ) );
+
+  $expo_details_metabox = new_cmb2_box( array(
+    'id'            => $prefix . 'expo_details_metabox',
+    'title'         => __( 'Details', 'cmb2' ),
+    'object_types'  => array( 'expo' ), // Post type
+  ) );
+
+  $expo_details_metabox->add_field( array(
+  	'name' => 'Nota importante',
+    'desc' => 'Curaduria por, etc.',
+  	'id'   => $prefix . 'expo_note',
+  	'text' => 'text',
+  ) );
+
+  //ABOUT
 
   $about_page_es = get_page_by_path('acercade');
   $about_page_en = get_page_by_path('about');
