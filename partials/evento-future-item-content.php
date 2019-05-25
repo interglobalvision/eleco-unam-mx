@@ -1,0 +1,13 @@
+<a href="<?php the_permalink(); ?>" class="grid-row">
+
+  <div class="grid-item item-s-12 item-m-7 item-l-9 no-gutter grid-row">
+    <div class="grid-item item-s-12 no-gutter grid-row font-size-tiny">
+      <div class="grid-item"><span>Category</span></div>
+      <div class="grid-item"><span>Date</span></div>
+    </div>
+    <div class="grid-item item-s-12 font-serif font-size-big"><h3><?php the_title(); ?></h3></div>
+  </div>
+  <div class="grid-item item-s-12 item-m-5 item-l-3">
+    <?php the_post_thumbnail(); ?>
+  </div>
+</a>
