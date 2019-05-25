@@ -77,7 +77,7 @@ function igv_cmb_metaboxes() {
 
   $expo_dates_metabox = new_cmb2_box( array(
     'id'            => $prefix . 'expo_dates_metabox',
-    'title'         => __( 'Dates', 'cmb2' ),
+    'title'         => __( 'Fechas', 'cmb2' ),
     'object_types'  => array( 'expo' ), // Post type
   ) );
 
@@ -104,6 +104,20 @@ function igv_cmb_metaboxes() {
     'desc' => 'Curaduria por, etc.',
   	'id'   => $prefix . 'expo_note',
   	'text' => 'text',
+  ) );
+
+  //EVENTO
+
+  $evento_datetime_metabox = new_cmb2_box( array(
+    'id'            => $prefix . 'evento_datetime_metabox',
+    'title'         => __( 'Fecha y hora', 'cmb2' ),
+    'object_types'  => array( 'evento' ), // Post type
+  ) );
+
+  $evento_datetime_metabox->add_field( array(
+  	'name' => 'Fecha y hora',
+  	'id'   => $prefix . 'evento_datetime',
+  	'type' => 'text_datetime_timestamp',
   ) );
 
   //ABOUT

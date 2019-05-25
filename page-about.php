@@ -9,9 +9,6 @@ $lang = get_locale();
 if (have_posts()) {
   while (have_posts()) {
     the_post();
-
-    $pdf_es = get_post_meta($post->ID, '_igv_post_pdf_es', true);
-    $pdf_en = get_post_meta($post->ID, '_igv_post_pdf_en', true);
 ?>
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>" style="order: <?php echo $current - 2; ?>">
       <div class="grid-item item-s-12 background-grey-lite">
@@ -26,26 +23,7 @@ if (have_posts()) {
 
       <?php get_template_part('partials/about-programs'); ?>
 
-      <div class="grid-item item-s-12 no-gutter grid-row text-align-center flex-nowrap border-bottom">
-        <?php
-          if ($lang === 'en_US' && !empty($pdf_en)) {
-        ?>
-        <div class="grid-item flex-grow border-right">
-          <a class="link-underline" href="<?php echo $pdf_en; ?>">Download PDF</a>
-        </div>
-        <?php
-          } elseif (!empty($pdf_es)) {
-        ?>
-        <div class="grid-item flex-grow border-right">
-          <a class="link-underline" href="<?php echo $pdf_en; ?>">Descargar PDF</a>
-        </div>
-        <?php
-          }
-        ?>
-        <div class="grid-item flex-grow">
-          <?php get_template_part('partials/share'); ?>
-        </div>
-      </div>
+      <?php get_template_part('partials/share-pdf'); ?>
     </article>
 <?php
   }
