@@ -30,15 +30,15 @@ get_template_part('partials/seo');
 
   <header id="header" class="background-grey-lite font-size-small">
     <div class="grid-row font-uppercase border-bottom justify-center padding-top-tiny padding-bottom-tiny">
-      <nav id="header-nav" class="grid-row grid-item item-s-12 item-m-12 item-l-auto flex-grow">
-        <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
-      </nav>
-      <div class="grid-item item-s-12 item-m-12 item-l-auto">
-        <h1 class="text-align-center font-size-small">
+      <div id="header-title" class="grid-item item-s-12 item-m-12 item-l-auto">
+        <h1 class="font-size-small">
           <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
         </h1>
       </div>
-      <div id="header-lang" class="grid-row justify-end grid-item item-s-12 item-m-12 item-l-auto text-align-right flex-grow">
+      <nav id="header-nav" class="grid-row grid-item item-s-12 item-m-12 item-l-auto">
+        <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
+      </nav>
+      <div id="header-lang" class="grid-row justify-end grid-item item-s-12 item-m-12 item-l-auto text-align-right">
         <ul>
           <?php pll_the_languages(array('hide_current'=>1)); ?>
         </ul>
