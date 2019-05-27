@@ -83,7 +83,7 @@ function igv_expo_dates($id) {
   return $dates;
 }
 
-function igv_author($id) {
+function igv_post_author($id) {
   $authors = get_the_terms($id, 'author');
   if (!empty($authors)) {
     $author_count = count($authors);
