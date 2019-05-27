@@ -39,12 +39,20 @@
 
   ul.menu
     li
-      display: inline-block
       margin-right: $margin-small
 
   #header-title, #header-lang
     flex: 1;
     min-width: -webkit-min-content;
+
+  #header-title
+    order: 1
+
+  #header-nav
+    order: 2
+
+  #header-lang
+    order: 3
 
   // ARTICLE
 
