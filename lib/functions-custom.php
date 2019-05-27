@@ -48,5 +48,32 @@ add_shortcode( 'eco', 'eleco_shortcode' );
 // echo string for current language
 function igv_pll_str($es_str, $en_str = false) {
   $lang = get_locale();
-  echo $lang === 'en_US' && $en_str !== false ? $en_str : $es_str;
+  return $lang === 'en_US' && $en_str !== false ? $en_str : $es_str;
+}
+
+function igv_pll_cat($es_str, $en_str = false, $id) {
+  $cats = get_the_category($id);
+  $cat = !empty($cats) ? $cats[0] : igv_pll_str($es_str,$en_str);
+  return $cat;
+}
+
+function igv_evento_datetime($id) {
+  $date_format = 'D j M Y H:i';
+  $timestamp = get_post_meta($id, '_igv_evento_datetime', true);
+  $datetime = date_i18n('D j M Y H:i', $timestamp);
+  return $datetime;
+}
+
+function igv_expo_dates($id) {
+  $date_format = 'D j M Y';
+  $timestamp_start = get_post_meta($id, '_igv_expo_date_start', true);
+  $timestamp_end = get_post_meta($id, '_igv_expo_date_end', true);
+  $dates = '';
+  if (!empty($timestamp_start)) {
+    $dates = date_i18n($date_format, $timestamp_start);
+    if (!empty($timestamp_end)) {
+      $dates .= '— ' . date_i18n($date_format, $timestamp_end);
+    }
+  }
+  return $dates;
 }

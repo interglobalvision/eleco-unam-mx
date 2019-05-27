@@ -2,8 +2,8 @@
   <a href="<?php the_permalink(); ?>" class="grid-row">
     <div class="grid-item item-s-12 item-m-9 item-l-10 no-gutter grid-row">
       <div class="grid-item item-s-12 no-gutter grid-row font-size-tiny">
-        <div class="grid-item"><span>Category</span></div>
-        <div class="grid-item"><span>Date</span></div>
+        <div class="grid-item"><span><?php echo igv_pll_cat('Evento','Event',$post->ID); ?></span></div>
+        <div class="grid-item"><span><?php echo igv_evento_datetime($post->ID); ?></span></div>
       </div>
       <div class="grid-item item-s-12 font-serif"><h3><?php the_title(); ?></h3></div>
     </div>
