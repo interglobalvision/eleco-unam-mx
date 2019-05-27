@@ -6,29 +6,30 @@ add_action( 'init', 'create_project_taxonomies', 0 );
 function create_project_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
-		'name'              => _x( 'Types', 'taxonomy general name', 'igv' ),
-		'singular_name'     => _x( 'Type', 'taxonomy singular name', 'igv' ),
-		'search_items'      => __( 'Search Types', 'igv' ),
-		'all_items'         => __( 'All Types', 'igv' ),
-		'parent_item'       => __( 'Parent Type', 'igv' ),
-		'parent_item_colon' => __( 'Parent Type:', 'igv' ),
-		'edit_item'         => __( 'Edit Type', 'igv' ),
-		'update_item'       => __( 'Update Type', 'igv' ),
-		'add_new_item'      => __( 'Add New Type', 'igv' ),
-		'new_item_name'     => __( 'New Type Name', 'igv' ),
-		'menu_name'         => __( 'Type', 'igv' ),
+		'name'              => _x( 'Autores', 'taxonomy general name', 'igv' ),
+		'singular_name'     => _x( 'Autor', 'taxonomy singular name', 'igv' ),
+		'search_items'      => __( 'Buscar Autores', 'igv' ),
+		'all_items'         => __( 'Todos Autores', 'igv' ),
+		'parent_item'       => __( 'Parent Autor', 'igv' ),
+		'parent_item_colon' => __( 'Parent Autor:', 'igv' ),
+		'edit_item'         => __( 'Editar Autor', 'igv' ),
+		'update_item'       => __( 'Actualizar Autor', 'igv' ),
+		'add_new_item'      => __( 'Añadir Autor', 'igv' ),
+		'new_item_name'     => __( 'Nombre de nuevo Autor', 'igv' ),
+		'menu_name'         => __( 'Autor', 'igv' ),
 	);
 
 	$args = array(
-		'hierarchical'      => true,
+		'hierarchical'      => false,
 		'labels'            => $labels,
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'type' ),
+		'rewrite'           => array( 'slug' => 'autor' ),
+    'show_in_rest' => true,
 	);
 
-	register_taxonomy( 'type', array( 'project' ), $args );
+	register_taxonomy( 'author', array( 'post' ), $args );
 
 	// Add new taxonomy, NOT hierarchical (like tags)
 	$labels = array(
