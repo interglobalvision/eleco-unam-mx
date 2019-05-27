@@ -8,7 +8,7 @@ $note = get_post_meta($post->ID, '_igv_expo_note', true);
     </div>
     <div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
       <div class="grid-item item-s-12 no-gutter grid-row font-size-tiny">
-        <div class="grid-item item-s-4"><span><?php echo igv_pll_cat('Exposición', 'Exhibition', $post->ID); ?></span></div>
+        <div class="grid-item item-s-4"><span class="block-category"><?php echo igv_pll_cat('Exposición', 'Exhibition', $post->ID); ?></span></div>
         <div class="grid-item item-s-8"><span><?php echo !empty($note) ? $note : ''; ?></span></div>
       </div>
       <div class="grid-item item-s-12 font-serif font-size-big"><h3><?php the_title(); ?></h3></div>

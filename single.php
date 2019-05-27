@@ -15,8 +15,8 @@ if (have_posts()) {
         <h1 class="font-serif font-size-extra"><?php the_title(); ?></h1>
         <?php the_post_thumbnail(); ?>
       </div>
-      <div class="grid-item item-s-12 justify-between font-size-tiny background-grey-lite border-bottom grid-row justify-between">
-        <div><span>Category</span></div>
+      <div class="grid-item item-s-12 justify-between font-size-tiny background-grey-lite border-bottom grid-row justify-between padding-top-tiny padding-bottom-tiny">
+        <div><span class="block-category"><?php echo igv_pll_cat('Entrada', 'Post', $post->ID); ?></span></div>
         <div><span>Author</span></div>
       </div>
       <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-mid padding-bottom-large">
