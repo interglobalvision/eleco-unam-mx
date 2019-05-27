@@ -46,7 +46,11 @@ class Site {
         .removeClass('blocks-gallery-item');
 
       var mySwiper = new Swiper ('.swiper-container', {
-        loop: true
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loopedSlides: 5,
+        slideToClickedSlide: true
       });
     }
   }
@@ -115,7 +119,6 @@ class Site {
       loc = $(target).attr('data-permalink'),
       title = encodeURIComponent($(target).attr('data-title')),
       url;
-      console.log(title);
     if ($(target).attr('data-social') === 'facebook') {
       url = 'https://facebook.com/sharer/sharer.php?u=' + loc;
     } else if ($(target).attr('data-social') === 'twitter') {
@@ -123,8 +126,6 @@ class Site {
     } else {
       return;
     }
-
-    console.log(url);
 
     window.open(url, 'share-dialog', 'height=' + height +',width=' + width +',left=' + left +',top=' + top);
   }

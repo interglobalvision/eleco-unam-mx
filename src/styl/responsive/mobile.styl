@@ -112,12 +112,18 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
       padding: 0 $margin-tiny
       font-size: $font-size-extra * 1.5
   .swiper-container
-    background-color: $color-grey-dark
+    background-color: $color-black
     max-height: 90vh
+    padding: $margin-mid 0
+    .swiper-slide
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 70vw
     figure
       margin: 0
-      width: 100%
-      height: 100%
+      width: auto
+      height: auto
       position: relative
       img
         max-height: 100%
