@@ -1,4 +1,4 @@
-  <footer id="footer" class="grid-column flex-grow">
+  <footer id="footer" class="grid-column flex-grow padding-top-large">
     <div class="grid-row justify-between">
       <nav class="grid-item item-s-12 item-l-auto">
         <?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>

@@ -29,7 +29,7 @@ get_template_part('partials/seo');
 <section id="main-container" class="grid-column">
 
   <header id="header" class="background-grey-lite font-size-small">
-    <div class="grid-row font-uppercase border-bottom justify-center">
+    <div class="grid-row font-uppercase border-bottom justify-center padding-top-tiny padding-bottom-tiny">
       <nav id="header-nav" class="grid-row grid-item item-s-12 item-m-12 item-l-auto flex-grow">
         <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
       </nav>

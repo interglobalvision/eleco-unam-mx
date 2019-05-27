@@ -1,3 +1,17 @@
 @media screen and (min-width: 1280px)
+  $gutter = 40px
 
-  grid-maker(100%)
+  $margin-micro = ($gutter / 5)
+  $margin-tiny = ($gutter / 2.5)
+  $margin-small = ($gutter / 1.5)
+  $margin-basic = ($gutter)
+  $margin-mid = ($gutter * 1.5)
+  $margin-large = ($gutter * 2)
+
+  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+  grid-maker(100%, $gutter, l)
+
+  // FOOTER
+  #footer
+    padding-top: $gutter * 5
