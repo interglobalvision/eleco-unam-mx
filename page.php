@@ -14,7 +14,7 @@ if (have_posts()) {
     $pdf_en = get_post_meta($post->ID, '_igv_post_pdf_en', true);
 ?>
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>" style="order: <?php echo $current - 2; ?>">
-      <div class="grid-item item-s-12 background-grey-lite">
+      <div class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
         <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
       </div>
       <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-mid padding-bottom-large">
