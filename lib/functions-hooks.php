@@ -50,8 +50,6 @@ function create_custom_pages() {
       $template = 'page-' . $page_en->post_name . '.php';
       $located = locate_template( $template );
 
-      var_dump($page_en->post_name); var_dump(!empty( $located ));
-
       if ( !empty( $located ) ) {
         update_post_meta( $page_es->ID, '_wp_page_template', $template );
         update_post_meta( $page_en->ID, '_wp_page_template', $template );
