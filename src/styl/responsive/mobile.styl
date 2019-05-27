@@ -84,6 +84,29 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 
 // ARTICLE
 
+$header-image-height = 250px
+
+#single-header
+  position: relative
+  min-height: $header-image-height + ($margin-mid * 2)
+
+#single-title-holder
+  position: relative
+  z-index: 1
+
+#single-header-image-holder
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  height: 100%
+  width: 100%
+  background-position: center
+  background-repeat: no-repeat
+  background-size: auto $header-image-height
+  z-index: 0
+
 #article-content
   & > *
     display: block
