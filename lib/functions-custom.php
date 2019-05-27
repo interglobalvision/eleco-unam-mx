@@ -53,8 +53,13 @@ function igv_pll_str($es_str, $en_str = false) {
 
 function igv_pll_cat($es_str, $en_str = false, $id) {
   $cats = get_the_category($id);
-  $cat = !empty($cats) ? $cats[0] : igv_pll_str($es_str,$en_str);
-  return $cat;
+  $the_cat = igv_pll_str($es_str,$en_str);
+  if (!empty($cats)) {
+    if ($cats[0]->slug !== 'uncategorized') {
+      $the_cat = $cats[0]->name;
+    }
+  }
+  return $the_cat;
 }
 
 function igv_evento_datetime($id) {

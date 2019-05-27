@@ -1,4 +1,4 @@
-<div class="grid-row border-bottom background-grey-lite">
+<div class="grid-row border-bottom background-grey-lite padding-top-mid padding-bottom-mid">
   <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
     <a href="<?php the_permalink() ?>">
       <?php the_post_thumbnail(); ?>
