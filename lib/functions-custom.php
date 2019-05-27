@@ -82,3 +82,23 @@ function igv_expo_dates($id) {
   }
   return $dates;
 }
+
+function igv_author($id) {
+  $authors = get_the_terms($id, 'author');
+  if (!empty($authors)) {
+    $author_count = count($authors);
+    if ($author_count > 1) {
+      $author_list = '';
+      foreach($authors as $k => $v) {
+        $author_list .= '<span class="u-inline-block">' . $authors[$k]->name;
+        if ($k < ($author_count - 1)) {
+          $author_list .= ',&nbsp;';
+        }
+        $author_list .= '</span>';
+      }
+      return $author_list;
+    } else {
+      return $authors[0]->name;
+    }
+  }
+}
