@@ -2,8 +2,8 @@
 $options = get_site_option('_igv_site_options');
 $lang = get_locale();
 ?>
-<div id="quick-info" class="grid-row border-bottom justify-between background-grey-lite font-size-small">
-  <div class="grid-item item-s-12 item-m-6 item-l-auto">
+<div id="quick-info" class="grid-row border-bottom justify-between background-grey-lite font-size-small padding-top-tiny">
+  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny">
     <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Address' : 'Dirección'; ?></h4>
     <div>
       <?php
@@ -15,7 +15,7 @@ $lang = get_locale();
       ?>
     </div>
   </div>
-  <div class="grid-item item-s-12 item-m-6 item-l-auto">
+  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny">
     <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Hours' : 'Horario'; ?></h4>
     <div>
       <?php
@@ -27,12 +27,12 @@ $lang = get_locale();
       ?>
     </div>
   </div>
-  <div class="grid-item item-s-12 item-m-6 item-l-auto">
+  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny">
     <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Subscribe' : 'Suscribir'; ?></h4>
     <form>
     </form>
   </div>
-  <div class="grid-item item-s-12 item-m-6 item-l-auto">
+  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny">
     <h4 class="font-uppercase font-size-tiny"><?php echo $lang === 'en_US' ? 'Follow' : 'Seguir'; ?></h4>
     <ul class="u-inline-list">
       <?php
