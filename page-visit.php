@@ -10,12 +10,15 @@ $lang = get_locale();
 if (have_posts()) {
   while (have_posts()) {
     the_post();
+    $admission = get_post_meta($post->ID, '_igv_visit_admission', true);
+    $transport = get_post_meta($post->ID, '_igv_visit_transport', true);
+    $guided = get_post_meta($post->ID, '_igv_visit_guided', true);
 ?>
-    <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>" class="font-size-mid">
-      <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid border-bottom">
+    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>" class="font-size-mid">
+      <header class="background-grey-lite padding-top-mid padding-bottom-mid border-bottom">
         <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
       </header>
-      <div class="grid-item item-s-12 background-grey-lite border-bottom no-gutter grid-row padding-top-basic">
+      <div class="background-grey-lite border-bottom grid-row padding-top-basic">
         <div class="grid-item item-s-12 item-m-6 padding-bottom-basic">
           <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Ubicación', 'Location'); ?></h4>
           <div class="p-no-margin-bottom">
@@ -39,6 +42,52 @@ if (have_posts()) {
               }
             ?>
           </div>
+        </div>
+      </div>
+      <div class="background-grey-lite grid-row padding-top-mid">
+        <div class="grid-item item-s-12 item-m-6 padding-bottom-mid" id="map-holder">
+          <?php
+            echo !empty($options['generalinfo_map_embed']) ? $options['generalinfo_map_embed'] : '';
+          ?>
+        </div>
+        <div class="grid-item item-s-12 item-m-6 padding-bottom-mid font-size-zero">
+          <?php
+            echo !empty($options['generalinfo_exterior_photo']) ? wp_get_attachment_image($options['generalinfo_exterior_photo_id'], 'full') : '';
+          ?>
+        </div>
+      </div>
+      <div class="border-bottom grid-row padding-top-basic">
+        <div class="grid-item item-s-12 item-m-6 item-l-3 padding-bottom-basic">
+          <?php if (!empty($admission)) { ?>
+          <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Admisión', 'Admission'); ?></h4>
+          <div class="p-no-margin-bottom">
+            <?php echo apply_filters('the_content', $admission); ?>
+          </div>
+          <?php } ?>
+        </div>
+        <div class="grid-item item-s-12 item-m-6 item-l-3 padding-bottom-basic">
+          <?php if (!empty($transport)) { ?>
+          <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('¿Cómo llegar?', 'Getting here'); ?></h4>
+          <div class="p-no-margin-bottom">
+            <?php echo apply_filters('the_content', $transport); ?>
+          </div>
+          <?php } ?>
+        </div>
+        <div class="grid-item item-s-12 item-m-6 item-l-3 padding-bottom-basic">
+          <?php if (!empty($options['generalinfo_contact'])) { ?>
+          <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Contacto', 'Contact'); ?></h4>
+          <div class="p-no-margin-bottom">
+            <?php echo apply_filters('the_content', $options['generalinfo_contact']); ?>
+          </div>
+          <?php } ?>
+        </div>
+        <div class="grid-item item-s-12 item-m-6 item-l-3 padding-bottom-basic">
+          <?php if (!empty($guided)) { ?>
+          <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Visitas guiadas', 'Guided visits'); ?></h4>
+          <div class="p-no-margin-bottom">
+            <?php echo apply_filters('the_content', $guided); ?>
+          </div>
+          <?php } ?>
         </div>
       </div>
     </article>

@@ -191,5 +191,44 @@ function igv_cmb_metaboxes() {
     }
 
   }
+
+  //VISIT
+
+  $visit_page_es = get_page_by_path('visita');
+  $visit_page_en = get_page_by_path('visit');
+
+  if (!empty($visit_page_es) && !empty($visit_page_en)) {
+
+    $visit_metabox = new_cmb2_box( array(
+  		'id'            => $prefix . 'visit_metabox',
+  		'title'         => __( 'Options', 'cmb2' ),
+  		'object_types'  => array( 'page', ), // Post type
+      'show_on'      => array(
+        'key' => 'id',
+        'value' => array(
+          $visit_page_es->ID,
+          $visit_page_en->ID
+        )
+      ),
+  	) );
+
+    $visit_metabox->add_field( array(
+      'name'    => esc_html__( 'Admision', 'cmb2' ),
+      'id'      => $prefix . 'visit_admission',
+      'type'    => 'textarea_small',
+    ) );
+
+    $visit_metabox->add_field( array(
+      'name'    => esc_html__( 'Como llegar', 'cmb2' ),
+      'id'      => $prefix . 'visit_transport',
+      'type'    => 'textarea_small',
+    ) );
+
+    $visit_metabox->add_field( array(
+      'name'    => esc_html__( 'Visitas guiadas', 'cmb2' ),
+      'id'      => $prefix . 'visit_guided',
+      'type'    => 'textarea_small',
+    ) );
+  }
 }
 ?>

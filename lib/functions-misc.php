@@ -49,3 +49,21 @@ function custom_login_logo() {
 }
 add_action( 'login_head', 'custom_login_logo' );
  */
+
+//* Add CSS directly into the admin head
+function igv_custom_wp_admin_style_head() {
+?>
+<style>
+  .cmb2-id-generalinfo-contact .mce-btn {
+    display: none;
+  }
+  .cmb2-id-generalinfo-contact #mceu_9 {
+    display: inline-block;
+  }
+  #generalinfo_contact-html {
+    display: none;
+  }
+</style>
+<?php
+}
+add_action( 'admin_head', 'igv_custom_wp_admin_style_head' );
