@@ -85,6 +85,7 @@ function igv_expo_dates($id) {
 
 function igv_post_author($id) {
   $authors = get_the_terms($id, 'author');
+  $default_author = 'El Eco';
   if (!empty($authors)) {
     $author_count = count($authors);
     if ($author_count > 1) {
@@ -100,5 +101,7 @@ function igv_post_author($id) {
     } else {
       return $authors[0]->name;
     }
+  } else {
+    return $default_author;
   }
 }

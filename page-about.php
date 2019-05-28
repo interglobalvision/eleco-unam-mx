@@ -14,8 +14,8 @@ if (have_posts()) {
       <div class="grid-item item-s-12 background-grey-lite">
         <h1 class="font-serif font-size-extra text-align-center padding-top-mid padding-bottom-mid"><?php the_title(); ?></h1>
       </div>
-      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-mid">
-        <h2 class="font-serif font-size-big text-align-center"><?php echo $lang === 'en_US' ? 'History' : 'Historia'; ?></h2>
+      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-large">
+        <h2 class="font-serif font-size-big text-align-center padding-bottom-mid"><?php echo $lang === 'en_US' ? 'History' : 'Historia'; ?></h2>
         <?php the_content(); ?>
       </div>
 

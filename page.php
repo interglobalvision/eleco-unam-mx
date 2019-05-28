@@ -17,7 +17,7 @@ if (have_posts()) {
       <div class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
         <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
       </div>
-      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-mid padding-bottom-large">
+      <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-large padding-bottom-large">
         <?php the_content(); ?>
       </div>
       <div class="grid-item item-s-12 no-gutter grid-row text-align-center flex-nowrap border-bottom">
