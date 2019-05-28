@@ -71,7 +71,7 @@ add_action( 'init', 'register_igv_nav_menus' );
 
 // Filter except length to 20 words.
 function igv_custom_excerpt_length( $length ) {
-  return 20;
+  return 15;
 }
 add_filter( 'excerpt_length', 'igv_custom_excerpt_length', 999 );
 
