@@ -33,6 +33,7 @@ class Site {
     lazySizes.init();
     this.initSwiper();
     this.bindShareLinks();
+    this.fixWidows();
   }
 
   initSwiper() {
@@ -133,6 +134,7 @@ class Site {
   fixWidows() {
     // utility class mainly for use on headines to avoid widows [single words on a new line]
     $('.js-fix-widows').each(function(){
+      console.log($(this));
       var string = $(this).html();
       string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
       $(this).html(string);

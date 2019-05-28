@@ -1,7 +1,7 @@
 @media screen and (min-width: 1366px)
   $gutter = 50px
 
-  $margin-micro = ($gutter / 5)
+  $margin-micro = ($gutter / 4)
   $margin-tiny = ($gutter / 2.5)
   $margin-small = ($gutter / 1.5)
   $margin-basic = ($gutter)
@@ -59,3 +59,13 @@
       margin: $margin-basic 0 $margin-mid
       figure
         padding: $margin-mid 0
+
+  // HOME
+
+  #post-featured-holder
+    position: relative
+    min-height: $header-image-height + ($margin-mid * 2)
+
+  #post-featured-image-holder
+    background-position: ($gutter / 2) center
+    background-size: auto $header-image-height

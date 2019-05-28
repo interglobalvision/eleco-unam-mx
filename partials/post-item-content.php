@@ -3,7 +3,7 @@
     <div><span class="block-category"><?php echo igv_pll_cat('Entrada', 'Post', $post->ID); ?></span></div>
     <div><span><?php echo igv_post_author($post->ID); ?></span></div>
   </div>
-  <?php the_post_thumbnail(); ?>
-  <h2 class="font-serif margin-top-micro"><?php the_title(); ?></h2>
+  <?php the_post_thumbnail('archive-thumb'); ?>
+  <h2 class="font-serif margin-top-micro font-size-mid"><?php the_title(); ?></h2>
   <div class="font-size-tiny margin-top-micro"><?php the_excerpt(); ?></div>
 </a>

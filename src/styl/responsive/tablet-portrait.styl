@@ -43,6 +43,12 @@
 
   // HOME
 
+  $header-image-height = 300px
+
+  #post-featured-image-holder
+    background-position: ($gutter / 2) center
+    background-size: auto $header-image-height
+
   #home-side-row
     display: flex
     order: 0
@@ -54,8 +60,6 @@
       display: none
 
   // ARTICLE
-
-  $header-image-height = 300px
 
   #single-header
     min-height: $header-image-height + ($margin-mid * 2)
