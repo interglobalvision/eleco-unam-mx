@@ -74,3 +74,12 @@ function igv_custom_excerpt_length( $length ) {
   return 20;
 }
 add_filter( 'excerpt_length', 'igv_custom_excerpt_length', 999 );
+
+// Change excerpt ellipse
+function igv_excerpt_more( $more ) {
+	if ( is_admin() ) {
+		return $more;
+	}
+	return '&nbsp;&mdash;';
+ }
+ add_filter( 'excerpt_more', 'igv_excerpt_more', 999 );
