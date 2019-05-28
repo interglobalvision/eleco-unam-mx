@@ -46,23 +46,9 @@ function igv_cmb_metaboxes() {
   ) );
 
   $post_metabox->add_field( array(
-  	'name'    => 'PDF (español)',
+  	'name'    => 'PDF',
   	'desc'    => '',
-  	'id'      => $prefix . 'post_pdf_es',
-  	'type'    => 'file',
-  	'text'    => array(
-  		'add_upload_file_text' => 'Añadir PDF' // Change upload button text. Default: "Add or Upload File"
-  	),
-  	// query_args are passed to wp.media's library query.
-  	'query_args' => array(
-  		'type' => 'application/pdf', // Make library only display PDFs.
-  	),
-  ) );
-
-  $post_metabox->add_field( array(
-  	'name'    => 'PDF (inglés)',
-  	'desc'    => '',
-  	'id'      => $prefix . 'post_pdf_en',
+  	'id'      => $prefix . 'post_pdf',
   	'type'    => 'file',
   	'text'    => array(
   		'add_upload_file_text' => 'Añadir PDF' // Change upload button text. Default: "Add or Upload File"
@@ -205,6 +191,5 @@ function igv_cmb_metaboxes() {
     }
 
   }
-
 }
 ?>
