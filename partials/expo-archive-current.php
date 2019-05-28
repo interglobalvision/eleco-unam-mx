@@ -25,7 +25,7 @@ $query = new WP_Query($args);
 if ($query->have_posts()) {
 ?>
 <div class="grid-item item-s-12 background-grey-lite no-gutter grid-row">
-  <div class="grid-item item-s-12 text-align-center font-size-mid"><h2><?php echo igv_pll_str('Actuales', 'On View'); ?></h2></div>
+  <div class="grid-item item-s-12 text-align-center font-size-mid padding-top-mid padding-bottom-mid"><h2><?php echo igv_pll_str('Actuales', 'On View'); ?></h2></div>
   <?php
     while ($query->have_posts()) {
       $query->the_post();

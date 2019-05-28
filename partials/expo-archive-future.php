@@ -19,7 +19,7 @@ $query = new WP_Query($args);
 if ($query->have_posts()) {
 ?>
 <div class="grid-item item-s-12 background-grey-dark no-gutter grid-row font-color-white">
-  <div class="grid-item item-s-12 text-align-center font-size-mid"><h2><?php echo igv_pll_str('Proximas', 'Upcoming'); ?></h2></div>
+  <div class="grid-item item-s-12 text-align-center font-size-mid padding-top-mid padding-bottom-mid"><h2><?php echo igv_pll_str('Proximas', 'Upcoming'); ?></h2></div>
   <?php
     while ($query->have_posts()) {
       $query->the_post();
