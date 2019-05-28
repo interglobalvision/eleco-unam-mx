@@ -116,18 +116,6 @@ function igv_register_theme_options_metabox() {
   ) );
 
   $site_options->add_field( array(
-    'name'    => esc_html__( 'Admision', 'cmb2' ),
-    'id'      => 'generalinfo_admission',
-    'type'    => 'textarea_small',
-  ) );
-
-  $site_options->add_field( array(
-    'name'    => esc_html__( 'Como llegar', 'cmb2' ),
-    'id'      => 'generalinfo_transport',
-    'type'    => 'textarea_small',
-  ) );
-
-  $site_options->add_field( array(
     'name'    => esc_html__( 'Contacto', 'cmb2' ),
     'id'      => 'generalinfo_contact',
     'type'    => 'wysiwyg',
@@ -137,12 +125,6 @@ function igv_register_theme_options_metabox() {
 	    'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the `<style>` tags, can use "scoped".
 	    'editor_class' => '', // add extra class(es) to the editor textarea
   	),
-  ) );
-
-  $site_options->add_field( array(
-    'name'    => esc_html__( 'Visitas guiadas', 'cmb2' ),
-    'id'      => 'generalinfo_guided',
-    'type'    => 'textarea_small',
   ) );
 
   // Social Media variables
