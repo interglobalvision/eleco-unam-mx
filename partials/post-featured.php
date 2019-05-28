@@ -1,6 +1,6 @@
 <div class="grid-row border-bottom background-grey-lite padding-top-mid padding-bottom-mid" id="post-featured-holder">
   <article <?php post_class('grid-item item-s-12 no-gutter grid-row'); ?> id="post-<?php the_ID(); ?>">
-    <div id="post-featured-image-holder" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID, 'full'); ?>)"></div>
+    <div id="post-featured-image-holder" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID, 'header-featured'); ?>)"></div>
     <a href="<?php the_permalink() ?>" class="grid-item no-gutter item-s-12 grid-row">
       <div class="grid-item no-gutter item-s-12 item-m-8 offset-m-4 item-l-6 offset-l-6 grid-row font-size-tiny margin-bottom-small">
         <div class="grid-item item-s-6 item-l-4">

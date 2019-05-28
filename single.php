@@ -15,7 +15,7 @@ if (have_posts()) {
         <div id="single-title-holder" class="item-s-12 item-m-11 item-l-10">
           <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
         </div>
-        <div id="single-header-image-holder" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID, 'full'); ?>)"></div>
+        <div id="single-header-image-holder" style="background-image: url(<?php echo get_the_post_thumbnail_url($post->ID, 'header-featured'); ?>)"></div>
       </header>
       <div class="grid-item item-s-12 font-size-tiny background-grey-lite border-bottom grid-row justify-between align-items-center padding-top-tiny padding-bottom-tiny">
         <div><span class="block-category"><?php echo igv_pll_cat('Entrada', 'Post', $post->ID); ?></span></div>
