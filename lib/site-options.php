@@ -90,6 +90,13 @@ function igv_register_theme_options_metabox() {
   ) );
 
   $site_options->add_field( array(
+    'name' => esc_html__( 'Google map embed', 'cmb2' ),
+    'id'   => 'generalinfo_map_embed',
+    'type' => 'textarea_code',
+    'default' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5130860677154!2d-99.16122639999999!3d19.4334331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8ccbdf3d5ab%3A0xc524d8eeb0f7637e!2sEl+Eco!5e0!3m2!1sen!2smx!4v1559005049438!5m2!1sen!2smx" frameborder="0" style="border:0"></iframe>',
+  ) );
+
+  $site_options->add_field( array(
     'name'    => esc_html__( 'Mailchimp Action', 'cmb2' ),
     'id'      => 'mailchimp_action',
     'type'    => 'text',
