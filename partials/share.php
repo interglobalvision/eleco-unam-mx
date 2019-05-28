@@ -10,7 +10,7 @@
       <a class="js-social-share link-underline" href="#" data-social="twitter" data-permalink="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>">Twitter</a>
     </li>
     <li class="grid-item">
-      <a class="js-social-share js-copy-permalink link-underline" href="#" data-permalink="<?php the_permalink(); ?>"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
+      <a class="copy-trigger js-social-share js-copy-permalink link-underline" href="#" data-permalink="<?php the_permalink(); ?>"><?php echo $lang === 'en_US' ? 'Copy' : 'Copiar'; ?></a>
     </li>
   </ul>
 </div>
