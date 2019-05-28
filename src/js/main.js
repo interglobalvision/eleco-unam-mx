@@ -4,6 +4,7 @@
 // Import dependencies
 import lazySizes from 'lazysizes';
 import Swiper from 'swiper';
+import Mailchimp from './mailchimp';
 
 // Import style
 import '../styl/site.styl';
@@ -143,3 +144,4 @@ class Site {
 }
 
 new Site();
+new Mailchimp();
