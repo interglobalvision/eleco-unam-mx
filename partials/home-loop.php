@@ -12,7 +12,7 @@ while (have_posts()) {
 
   if ($current === 1) {
 ?>
-  <div class="grid-row border-bottom padding-bottom-mid">
+  <div class="grid-row border-bottom padding-bottom-basic">
 <?php
     get_template_part('partials/post-highlight');
   }
@@ -25,7 +25,7 @@ while (have_posts()) {
 
   if ($current >= 2 && $current <= 7) {
 ?>
-      <article <?php post_class('grid-item item-s-12 item-l-6 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
+      <article <?php post_class('grid-item item-s-12 item-l-6 text-align-center padding-top-basic'); ?> id="post-<?php the_ID(); ?>">
         <?php get_template_part('partials/post-item-content'); ?>
       </article>
 <?php
