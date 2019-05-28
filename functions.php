@@ -6,6 +6,7 @@ function scripts_and_styles_method() {
   $templateuri = get_template_directory_uri();
 
   $javascriptMain = $templateuri . '/dist/js/main.js';
+  $javascriptSearch = $templateuri . '/dist/js/search.min.js';
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
@@ -17,11 +18,16 @@ function scripts_and_styles_method() {
     'isAdmin' => $is_admin,
     'mailchimp' => !empty($site_options['mailchimp_action']) ? $site_options['mailchimp_action'] : null,
     'lang' => get_locale(),
+    'rest_search_posts' => rest_url( 'wp/v2/posts?search=%s' ),
   );
 
   wp_register_script('javascript-main', $javascriptMain);
   wp_localize_script('javascript-main', 'WP', $javascriptVars);
   wp_enqueue_script('javascript-main', $javascriptMain, '', '', true);
+
+  wp_register_script('javascript-search', $javascriptSearch);
+  wp_localize_script('javascript-search', 'WP', $javascriptVars);
+  wp_enqueue_script('javascript-search', $javascriptSearch, '', '', true);
 
   // Enqueue style
   wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.css' );
