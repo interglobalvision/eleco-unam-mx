@@ -70,7 +70,7 @@ class Mailchimp {
   */
   successMessage(response) {
     let msg = '';
-    let successMsg = 'You\'ve been successfully subscribed';
+    let successMsg = WP.lang === 'en_US' ? 'You\'ve been successfully subscribed' : 'Has sido suscrito exitosamente';
 
     if (response.result === 'success') {
 
@@ -80,6 +80,8 @@ class Mailchimp {
       // Set class .valid on form elements
       this.$reply.removeClass('error').addClass('valid');
       this.$email.removeClass('error').addClass('valid');
+
+      this.$email.val('');
 
     } else {
       // Set class .error on form elements
@@ -110,6 +112,14 @@ class Mailchimp {
         index = -1;
         msg = response.msg;
       }
+
+      if (msg === 'An email address must contain a single @') {
+        msg = WP.lang === 'en_US' ? 'Your email is missing the @' : 'A tu email le falta el @';
+      } else if (msg === 'The domain portion of the email address is invalid (the portion after the @: )') {
+        msg = WP.lang === 'en_US' ? 'Your email\'s domain doesn\'t look right' : 'El dominio de tu email no se ve correcto';
+      } else if (msg === 'This email cannot be added to this list. Please enter a different email address.') {
+        msg = WP.lang === 'en_US' ? 'Please use a different email' : 'Por favor use otro email';
+      }
     }
 
     if (this.alreadySubscribed(msg)) {
@@ -119,6 +129,8 @@ class Mailchimp {
       // Set class .valid on form elements
       this.$reply.removeClass('error').addClass('valid');
       this.$email.removeClass('error').addClass('valid');
+
+      this.$email.val('');
     }
 
     // Show message

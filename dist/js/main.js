@@ -318,7 +318,6 @@ var Site = function () {
     value: function fixWidows() {
       // utility class mainly for use on headines to avoid widows [single words on a new line]
       $('.js-fix-widows').each(function () {
-        console.log($(this));
         var string = $(this).html();
         string = string.replace(/ ([^ ]*)$/, '&nbsp;$1');
         $(this).html(string);
@@ -10076,7 +10075,7 @@ var Mailchimp = function () {
     key: 'successMessage',
     value: function successMessage(response) {
       var msg = '';
-      var successMsg = 'You\'ve been successfully subscribed';
+      var successMsg = WP.lang === 'en_US' ? 'You\'ve been successfully subscribed' : 'Has sido suscrito exitosamente';
 
       if (response.result === 'success') {
 
@@ -10086,6 +10085,8 @@ var Mailchimp = function () {
         // Set class .valid on form elements
         this.$reply.removeClass('error').addClass('valid');
         this.$email.removeClass('error').addClass('valid');
+
+        this.$email.val('');
       } else {
         // Set class .error on form elements
         this.$email.removeClass('valid').addClass('error');
@@ -10114,6 +10115,14 @@ var Mailchimp = function () {
           index = -1;
           msg = response.msg;
         }
+
+        if (msg === 'An email address must contain a single @') {
+          msg = WP.lang === 'en_US' ? 'Your email is missing the @' : 'A tu email le falta el @';
+        } else if (msg === 'The domain portion of the email address is invalid (the portion after the @: )') {
+          msg = WP.lang === 'en_US' ? 'Your email\'s domain doesn\'t look right' : 'El dominio de tu email no se ve correcto';
+        } else if (msg === 'This email cannot be added to this list. Please enter a different email address.') {
+          msg = WP.lang === 'en_US' ? 'Please use a different email' : 'Por favor use otro email';
+        }
       }
 
       if (this.alreadySubscribed(msg)) {
@@ -10123,6 +10132,8 @@ var Mailchimp = function () {
         // Set class .valid on form elements
         this.$reply.removeClass('error').addClass('valid');
         this.$email.removeClass('error').addClass('valid');
+
+        this.$email.val('');
       }
 
       // Show message
