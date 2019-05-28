@@ -5,9 +5,9 @@ get_header();
 <main id="main-content">
   <section id="archive-expo" class="border-bottom">
     <div class="grid-row">
-      <div class="grid-item item-s-12 background-grey-lite border-bottom padding-top-mid padding-bottom-mid">
+      <header class="grid-item item-s-12 background-grey-lite border-bottom padding-top-mid padding-bottom-mid">
         <h1 class="font-serif font-size-extra text-align-center"><?php echo igv_pll_str('Exposiciones', 'Exhibitions'); ?></h1>
-      </div>
+      </header>
 <?php
 get_template_part('partials/expo-archive-current');
 
