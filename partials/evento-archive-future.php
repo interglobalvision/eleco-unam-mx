@@ -20,7 +20,7 @@ if ($query->have_posts()) {
   while ($query->have_posts()) {
     $query->the_post();
 ?>
-<article <?php post_class('grid-item item-s-12 no-gutter background-grey-lite'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('grid-item item-s-12 no-gutter background-grey-lite padding-top-basic padding-bottom-basic'); ?> id="post-<?php the_ID(); ?>">
   <?php get_template_part('partials/evento-future-item-content'); ?>
 </article>
 <?php

@@ -6,7 +6,7 @@
     </div>
     <div class="grid-item item-s-12 font-serif font-size-large"><h3><?php the_title(); ?></h3></div>
   </div>
-  <div class="grid-item item-s-12 item-m-5 item-l-3">
+  <div class="grid-item item-s-12 item-m-5 item-l-3 font-size-zero">
     <?php the_post_thumbnail(); ?>
   </div>
 </a>
