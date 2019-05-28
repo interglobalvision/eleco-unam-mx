@@ -11,11 +11,11 @@ if (have_posts()) {
   while (have_posts()) {
     the_post();
 ?>
-    <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>" class="font-size-mid">
-      <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid border-bottom">
+    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>" class="font-size-mid">
+      <header class="background-grey-lite padding-top-mid padding-bottom-mid border-bottom">
         <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
       </header>
-      <div class="grid-item item-s-12 background-grey-lite border-bottom no-gutter grid-row padding-top-basic">
+      <div class="background-grey-lite border-bottom grid-row padding-top-basic">
         <div class="grid-item item-s-12 item-m-6 padding-bottom-basic">
           <h2 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Ubicación', 'Location'); ?></h4>
           <div class="p-no-margin-bottom">
@@ -39,6 +39,22 @@ if (have_posts()) {
               }
             ?>
           </div>
+        </div>
+      </div>
+      <div class="background-grey-lite grid-row padding-top-mid">
+        <div class="grid-item item-s-12 item-m-6 padding-bottom-mid" id="map-holder">
+          <?php
+            echo !empty($options['generalinfo_map_embed']) ? $options['generalinfo_map_embed'] : '';
+          ?>
+        </div>
+        <div class="grid-item item-s-12 item-m-6 padding-bottom-mid font-size-zero">
+          <?php
+            echo !empty($options['generalinfo_exterior_photo']) ? wp_get_attachment_image($options['generalinfo_exterior_photo_id'], 'full') : '';
+          ?>
+        </div>
+      </div>
+      <div class="border-bottom grid-row padding-top-basic">
+        <div class="grid-item item-s-12 item-m-6 padding-bottom-basic">
         </div>
       </div>
     </article>

@@ -90,6 +90,19 @@ function igv_register_theme_options_metabox() {
   ) );
 
   $site_options->add_field( array(
+    'name'    => esc_html__( 'Foto del exterior', 'cmb2' ),
+    'id'      => 'generalinfo_exterior_photo',
+    'type'    => 'file',
+    'query_args' => array(
+      'type' => array(
+        'image/gif',
+        'image/jpeg',
+        'image/png',
+      ),
+    ),
+  ) );
+
+  $site_options->add_field( array(
     'name' => esc_html__( 'Google map embed', 'cmb2' ),
     'id'   => 'generalinfo_map_embed',
     'type' => 'textarea_code',
@@ -100,6 +113,36 @@ function igv_register_theme_options_metabox() {
     'name'    => esc_html__( 'Mailchimp Action', 'cmb2' ),
     'id'      => 'mailchimp_action',
     'type'    => 'text',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Admision', 'cmb2' ),
+    'id'      => 'generalinfo_admission',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Como llegar', 'cmb2' ),
+    'id'      => 'generalinfo_transport',
+    'type'    => 'textarea_small',
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Contacto', 'cmb2' ),
+    'id'      => 'generalinfo_contact',
+    'type'    => 'wysiwyg',
+    'options' => array(
+	    'media_buttons' => false, // show insert/upload button(s)
+	    'textarea_rows' => get_option('default_post_edit_rows', 3), // rows="..."
+	    'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the `<style>` tags, can use "scoped".
+	    'editor_class' => '', // add extra class(es) to the editor textarea
+  	),
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Visitas guiadas', 'cmb2' ),
+    'id'      => 'generalinfo_guided',
+    'type'    => 'textarea_small',
   ) );
 
   // Social Media variables
