@@ -97,18 +97,25 @@ ul#social-list
 .font-size-zero
   font-size: 0
 
+a:focus
+  outline-color: $color-yellow
+
+.background-yellow
+  a:focus
+    outline-color: $color-white
+
 // FORM
 
 input, button
   appearance: none
   background: transparent
+  &:focus
+    outline-color: $color-yellow
 
 input
   border: 1px solid $color-black
   font-family: $font-sans
   padding: .2em
-  &:focus
-    outline-color: $color-yellow
 
 button
   font-family: $font-sans
