@@ -1,6 +1,6 @@
 @media screen and (min-width: 720px)
 
-  $gutter = 20px
+  $gutter = 30px
 
   $margin-micro = ($gutter / 4)
   $margin-tiny = ($gutter / 2.5)
@@ -10,27 +10,25 @@
   $margin-large = ($gutter * 2)
 
   .font-size-extra
-    font-size: $font-size-extra * .8
+    font-size: $font-size-extra * .6
   .font-size-big
-    font-size: $font-size-big * .8
+    font-size: $font-size-big * .6
   .font-size-large
-    font-size: $font-size-large * .8
+    font-size: $font-size-large * .6
   .font-size-mid
-    font-size: $font-size-mid * .8
+    font-size: $font-size-mid * .6
   .font-size-basic
-    font-size: $font-size-basic * .8
+    font-size: $font-size-basic * .6
   .font-size-small
-    font-size: $font-size-small * .8
+    font-size: $font-size-small * .7
   .font-size-tiny
-    font-size: $font-size-tiny * .8
+    font-size: $font-size-tiny * .7
   .font-size-micro
-    font-size: $font-size-micro * .8
+    font-size: $font-size-micro * .7
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   grid-maker(100%, $gutter, m)
-
-  font-sizes($font-size-basic * .8)
 
   .mobile-only
     display: none !important
@@ -97,5 +95,9 @@
 
   // FOOTER
 
+  // FOOTER
+
   #footer
     padding-top: $gutter * 5
+    li.menu-item
+      display: inline-block

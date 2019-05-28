@@ -1,7 +1,7 @@
-$gutter = 15px
+$gutter = 25px
 
-$margin-micro = 5px
-$margin-tiny = ($gutter / 2.5)
+$margin-micro = 8px
+$margin-tiny = ($gutter / 2)
 $margin-small = ($gutter / 1.5)
 $margin-basic = ($gutter)
 $margin-mid = ($gutter * 1.5)
@@ -32,8 +32,6 @@ $font-size-micro = 11px
   font-size: $font-size-tiny * .9
 .font-size-micro
   font-size: $font-size-micro * .9
-
-font-sizes($font-size-basic * .8)
 
 grid-maker(100%, $gutter, s)
 
@@ -98,6 +96,33 @@ ul#social-list
 
 .font-size-zero
   font-size: 0
+
+// FORM
+
+input, button
+  appearance: none
+  background: transparent
+
+input
+  border: 1px solid $color-black
+  font-family: $font-sans
+  padding: .2em
+  &:focus
+    outline-color: $color-yellow
+
+button
+  font-family: $font-sans
+  border: none
+  text-decoration: underline
+  padding: .2em .4em
+  margin-left: 1em
+  text-transform: uppercase
+
+#mailchimp-email
+  width: 100%
+
+#mailchimp-response
+  margin-top: .5em
 
 // MENU
 
@@ -247,6 +272,7 @@ $header-image-height = 250px
 #footer
   padding-top: $gutter * 5
   li.menu-item
+    display: block
     a
       text-decoration: underline
 #unam-logo

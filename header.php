@@ -29,18 +29,18 @@ get_template_part('partials/seo');
 <section id="main-container" class="grid-column">
 
   <header id="header" class="background-grey-lite font-size-small">
-    <div class="grid-row font-uppercase border-bottom padding-top-tiny padding-bottom-tiny">
-      <div id="header-title" class="grid-item item-s-auto">
+    <div class="grid-row font-uppercase border-bottom padding-top-tiny">
+      <div id="header-title" class="grid-item item-s-auto padding-bottom-tiny">
         <h1 class="font-size-small">
           <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
         </h1>
       </div>
-      <div id="header-lang" class="grid-row justify-end grid-item item-s-auto text-align-right">
+      <div id="header-lang" class="grid-row justify-end grid-item item-s-auto text-align-right padding-bottom-tiny">
         <ul>
           <?php pll_the_languages(array('hide_current'=>1)); ?>
         </ul>
       </div>
-      <nav id="header-nav" class="grid-row grid-item item-s-12 item-l-auto">
+      <nav id="header-nav" class="grid-row grid-item item-s-12 item-l-auto padding-bottom-tiny">
         <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
       </nav>
     </div>

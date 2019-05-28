@@ -40,7 +40,7 @@ if (($lang === 'en_US' && !empty($options['generalinfo_hours_en'])) || !empty($o
 
 if (!empty($options['mailchimp_action'])) {
 ?>
-  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny" id="mailchimp-form-holder">
+  <div class="grid-item item-s-11 item-m-5 item-l-3" id="mailchimp-form-holder">
     <h4 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Suscribir', 'Subscribe'); ?></h4>
     <?php get_template_part('partials/mailchimp-form'); ?>
   </div>
@@ -49,7 +49,7 @@ if (!empty($options['mailchimp_action'])) {
 
 if (!empty($options['socialmedia_instagram']) || !empty($options['socialmedia_facebook_url']) || !empty($options['socialmedia_twitter'])) {
 ?>
-  <div class="grid-item item-s-12 item-m-6 item-l-auto padding-bottom-tiny">
+  <div class="grid-item item-s-12 item-m-6 offset-m-1 item-l-auto offset-l-0 padding-bottom-tiny">
     <h4 class="font-uppercase font-size-tiny margin-bottom-half-em"><?php echo igv_pll_str('Seguir', 'Follow'); ?></h4>
     <ul class="u-inline-list" id="social-list">
       <?php
