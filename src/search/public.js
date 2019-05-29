@@ -2,27 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchForm from './components/searchForm';
 
-class Search {
+const searchFormElement  = <SearchForm />;
+const searchFields = document.getElementsByClassName('search-field');
 
-  constructor() {
-    // Bind functions
-    this.onReady = this.onReady.bind(this);
+if( searchFields.length ) {
 
-    $(document).ready(this.onReady);
-  }
-
-  onReady() {
-    const searchField = $('#search-field');
-    const searchFormElement = <SearchForm />;
-
-    if (searchField.length) {
-      console.log(searchField);
-      ReactDOM.render(
-        searchFormElement,
-        searchField
-      );
-    }
+  for( let i=0; i < searchFields.length; i++ ) {
+    console.log( searchFields[ i ]);
+    ReactDOM.render(
+      searchFormElement,
+      searchFields[ i ]
+    );
   }
 }
-
-export default Search;
