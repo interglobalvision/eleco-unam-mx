@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import SearchForm from './components/searchForm';
 
 const searchFormElement  = <SearchForm />;
-const searchFields = document.getElementsByClassName('search-field');
+const searchHolder = document.getElementById('search-holder');
 
-if( searchFields.length ) {
-
-  for( let i=0; i < searchFields.length; i++ ) {
-    console.log( searchFields[ i ]);
-    ReactDOM.render(
-      searchFormElement,
-      searchFields[ i ]
-    );
-  }
+if (searchHolder) {
+  ReactDOM.render(
+    searchFormElement,
+    searchHolder
+  );
+} else {
+  console.error('no search!');
+  $('#search-holder').remove();
 }
