@@ -12,28 +12,28 @@ export default class SearchResults extends React.Component {
     if( this.props.loading ) {
       // We are loading the results.
 
-      results = <p>Loading</p>;
+      results = <div className='grid-item'>{WP.lang === 'en_US' ? 'Searching...' : 'Buscando...'}</div>;
 
     } else if( this.props.results.length > 0 ) {
       // Results loaded and there are some of it.
 
-      const _results = this.props.results.map( result => {
+      const queryResults = this.props.results.map( result => {
         return (
           <SearchResult key={result.id} result={result}/>
         ); // SearchResult is a new component.
       });
 
-      results = <ul>{_results}</ul>;
+      results = <div className='grid-row justify-center'>{queryResults}</div>;
 
     } else if ( this.props.searched ) {
 
       // Results loaded, but none found.
-      results = <p>Nothing Found</p>;
+      results = <div className='grid-item'>Nothing Found</div>;
 
     }
 
     return (
-      <div>{results}</div>
+      <div className='grid-row justify-center'>{results}</div>
     )
   }
 }
