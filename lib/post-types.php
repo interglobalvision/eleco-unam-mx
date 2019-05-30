@@ -42,7 +42,7 @@ function register_cpt_evento() {
     'labels' => $labels,
     'hierarchical' => false,
 
-    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 
     'public' => true,
     'show_ui' => true,
@@ -87,7 +87,7 @@ function register_cpt_expo() {
     'labels' => $labels,
     'hierarchical' => false,
 
-    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 
     'public' => true,
     'show_ui' => true,
