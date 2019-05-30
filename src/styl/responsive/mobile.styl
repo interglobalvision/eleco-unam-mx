@@ -17,21 +17,21 @@ $font-size-tiny = 16px
 $font-size-micro = 11px
 
 .font-size-extra
-  font-size: $font-size-extra * .5
+  font-size: $font-size-extra * .3
 .font-size-big
-  font-size: $font-size-big * .5
+  font-size: $font-size-big * .4
 .font-size-large
   font-size: $font-size-large * .6
 .font-size-mid
-  font-size: $font-size-mid * .6
+  font-size: $font-size-mid * .7
 .font-size-basic
-  font-size: $font-size-basic * .8
+  font-size: $font-size-basic * .7
 .font-size-small
-  font-size: $font-size-small * .8
+  font-size: $font-size-small * .7
 .font-size-tiny
-  font-size: $font-size-tiny * .9
+  font-size: $font-size-tiny * .7
 .font-size-micro
-  font-size: $font-size-micro * .9
+  font-size: $font-size-micro * .7
 
 grid-maker(100%, $gutter, s)
 
@@ -144,6 +144,57 @@ ul.menu
   li
     display: inline-block
     margin-right: $margin-small
+
+// SEARCH
+
+$transition-time = 300ms
+
+$search-height = 34px
+
+#search-spacer
+  position: relative
+  height: $search-height
+  width: 0
+
+#search-holder
+  position: absolute
+  width: 100%
+  z-index: 100
+
+#search-wrapper
+  background-color: $color-grey-lite
+  color: $color-black
+  transition: color $transition-time ease-out, background-color $transition-time ease-out
+  &.active
+    color: $color-white
+    background-color: $color-grey-dark
+    #search-trigger
+      cursor: default
+    #search-field
+      height: auto
+      min-height: 600px
+
+#search-field
+  height: 0px
+  min-height: 0px
+  width: 100%
+  overflow: hidden
+  transition: min-height $transition-time ease-out, height $transition-time ease-out
+
+#search-trigger
+  user-select: none
+  cursor: pointer
+
+#search-input
+  color: inherit
+  border: none
+  width: 100%
+  &:focus
+    outline: none
+
+.search-result
+  .block-category
+    border-color: $color-white
 
 // HOME
 
