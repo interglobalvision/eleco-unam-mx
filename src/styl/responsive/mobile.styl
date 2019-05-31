@@ -235,6 +235,16 @@ body.search-active
     visibility: hidden
     pointer-events: none
 
+body.not-mobile
+  #search-input
+    border: 0
+    &::placeholder
+      color: transparent
+  #search-close
+    display: none
+  #search-title
+    visibility: visible
+
 // HOME
 
 $header-image-height = 250px
