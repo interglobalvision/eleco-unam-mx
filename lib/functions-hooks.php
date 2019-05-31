@@ -81,5 +81,26 @@ function igv_excerpt_more( $more ) {
 		return $more;
 	}
 	return '&nbsp;&mdash;';
- }
- add_filter( 'excerpt_more', 'igv_excerpt_more', 999 );
+}
+add_filter( 'excerpt_more', 'igv_excerpt_more', 999 );
+
+add_filter( 'allowed_block_types', 'igv_allowed_block_types' );
+function igv_allowed_block_types( $allowed_blocks ) {
+	return array(
+		'core/image',
+		'core/paragraph',
+		'core/heading',
+		'core/list',
+    'core/gallery',
+    'core/list',
+    'core/quote',
+    'core/audio',
+    'core/video',
+    'core/pullquote',
+    'core/separator',
+    'core-embed/twitter',
+    'core-embed/youtube',
+    'core-embed/instagram',
+    'core-embed/vimeo'
+	);
+}
