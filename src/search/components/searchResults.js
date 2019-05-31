@@ -12,7 +12,11 @@ export default class SearchResults extends React.Component {
     if( this.props.loading ) {
       // We are loading the results.
 
-      results = <div className='grid-item'>{WP.lang === 'en_US' ? 'Searching...' : 'Buscando...'}</div>;
+      results = (
+        <div className='padding-bottom-small grid-column justify-center flex-grow'>
+          <div className='grid-item'>{WP.lang === 'en_US' ? 'Searching...' : 'Buscando...'}</div>
+        </div>
+      )
 
     } else if( this.props.results.length > 0 ) {
       // Results loaded and there are some of it.
@@ -23,17 +27,24 @@ export default class SearchResults extends React.Component {
         ); // SearchResult is a new component.
       });
 
-      results = <div className='grid-row justify-center'>{queryResults}</div>;
+      results = (
+        <div className='padding-bottom-small grid-column justify-around flex-grow'>
+          <div className='grid-row justify-center'>{queryResults}</div>
+          <div className='grid-item'><a href={'/search/' + this.props.query} className='link-underline'>View nore results</a></div>
+        </div>
+      )
 
     } else if ( this.props.searched ) {
 
       // Results loaded, but none found.
-      results = <div className='grid-item'>Nothing Found</div>;
+      results = (
+        <div className='padding-bottom-small grid-column justify-center flex-grow'>
+          <div className='grid-item'>{WP.lang === 'en_US' ? 'Nothing found' : 'Nada encontrado'}</div>
+        </div>
+      )
 
     }
 
-    return (
-      <div className='grid-row justify-center'>{results}</div>
-    )
+    return results
   }
 }

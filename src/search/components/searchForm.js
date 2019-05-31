@@ -11,6 +11,7 @@ export default class SearchForm extends React.Component {
       loading: false, // Are we still loading the previous results?
       searched: false, // Are we actually even searching (any words in input)?
       active: false,
+      query: null,
     }
 
     this.getResults = this.getResults.bind(this)
@@ -32,7 +33,7 @@ export default class SearchForm extends React.Component {
     if( search && search.length > 2 ) {
 
       // We are loading and searching
-      this.setState({ loading: true, searched: true })
+      this.setState({ loading: true, searched: true, query: search })
 
       // Let's change the %s into the search param of our REST URL.
       let url  = WP.restSearchPosts.replace( '%s', search )
@@ -75,7 +76,7 @@ export default class SearchForm extends React.Component {
 
   render() {
     const wrapperClasses = this.state.active ? 'border-bottom active' : 'border-bottom';
-    console.log('rerender')
+
     return (
       <div id='search-wrapper' className={wrapperClasses} onMouseLeave={this.handleMouseLeave}>
         <div id='search-trigger'
@@ -83,13 +84,11 @@ export default class SearchForm extends React.Component {
           <h3>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3>
         </div>
 
-        <div id='search-field' className='text-align-center'>
+        <div id='search-field' className='text-align-center grid-column'>
           <div>
             <input ref={this.searchInput} id='search-input' className='font-size-large text-align-center' type='text' onKeyUp={this.getResults} />
           </div>
-          <div className='padding-bottom-small'>
-            <SearchResults searched={this.state.searched} loading={this.state.loading} results={this.state.results}/>
-          </div>
+          <SearchResults searched={this.state.searched} loading={this.state.loading} results={this.state.results} query={this.state.query}/>
         </div>
       </div>
     )
