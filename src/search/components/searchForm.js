@@ -86,7 +86,7 @@ export default class SearchForm extends React.Component {
 
   render() {
     return (
-      <div id='search-wrapper' className='border-bottom' onMouseLeave={this.handleMouseLeave}>
+      <div id='search-wrapper' className='border-bottom' onMouseLeave={this.deactivateSearch}>
         <div id='search-trigger' className='text-align-center padding-top-micro padding-bottom-micro grid-row'>
           <div className="grid-item item-s-6 offset-s-3"><h3 id='search-title' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
           <div id='search-close' className='grid-item item-s-3 grid-row justify-end align-items-center' onTouchEnd={this.deactivateSearch}><div>&#10005;</div></div>
