@@ -4,6 +4,7 @@
 // Import dependencies
 import lazySizes from 'lazysizes';
 import Swiper from 'swiper';
+import MobileDetect from 'mobile-detect';
 import Mailchimp from './mailchimp';
 
 // Import style
@@ -35,6 +36,16 @@ class Site {
     this.initSwiper();
     this.bindShareLinks();
     this.fixWidows();
+    this.detectMobile();
+  }
+
+  detectMobile() {
+    var md = new MobileDetect(window.navigator.userAgent);
+    if (md.mobile()) {
+      $('body').addClass('is-mobile');
+    } else {
+      $('body').addClass('not-mobile');
+    }
   }
 
   initSwiper() {
