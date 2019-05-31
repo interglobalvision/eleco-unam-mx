@@ -165,30 +165,34 @@ $search-height = 34px
   background-color: $color-grey-lite
   color: $color-black
   transition: color $transition-time ease-out, background-color $transition-time ease-out
+  will-change: color, background-color
   &.active
     color: $color-white
     background-color: $color-grey-dark
     #search-trigger
       cursor: default
     #search-field
-      height: auto
-      min-height: 600px
+      height: 600px
+      opacity: 1
 
 #search-field
-  height: 0px
-  min-height: 0px
+  height: 50px
+  padding-top: 50px
   width: 100%
   overflow: hidden
-  transition: min-height $transition-time ease-out, height $transition-time ease-out
+  transition: height $transition-time ease-out
 
 #search-trigger
   user-select: none
   cursor: pointer
+  position: absolute
+  width: 100%
 
 #search-input
   color: inherit
   border: none
   width: 100%
+  padding-bottom: 0
   &:focus
     outline: none
 

@@ -7,12 +7,23 @@ export default class SearchResult extends React.Component {
 
   render() {
     const item = this.props.result
-    console.log(item)
+    let catName = item.cat_name;
+
+    if (!item.cat_name) {
+      if (item.type === 'expo') {
+        catName = WP.lang === 'en_US' ? 'Exhibition' : 'Exposición'
+      } else if (item.type === 'evento') {
+        catName = WP.lang === 'en_US' ? 'Event' : 'Evento'
+      } else {
+        catName = WP.lang === 'en_US' ? 'Post' : 'Entrada'
+      }
+    }
+    
     return (
       <div className='search-result grid-item item-s-12 item-m-4 item-l-3 margin-top-basic'>
         <a href={item.link}>
           <div className='grid-row justify-around font-size-tiny margin-bottom-micro'>
-            <div><span className='block-category'>{item.cat_name}</span></div>
+            <div><span className='block-category'>{catName}</span></div>
             <div><span>Author</span></div>
           </div>
           <div className='font-size-zero'><img src={item.fimg_url} /></div>

@@ -62,32 +62,32 @@ export default class SearchForm extends React.Component {
         active: true,
       })
     }
-    this.searchInput.current.focus()
+    setTimeout(() => {
+      this.searchInput.current.focus()
+    }, 500)
   }
 
   handleMouseLeave() {
     this.setState({
       active: false,
     })
-    this.searchInput.current.blur()
   }
 
   render() {
-    const wrapperClasses = this.state.active ? 'grid-row border-bottom active' : 'grid-row border-bottom';
-
+    const wrapperClasses = this.state.active ? 'border-bottom active' : 'border-bottom';
+    console.log('rerender')
     return (
-      <div id="search-wrapper" className={wrapperClasses} onMouseLeave={this.handleMouseLeave}>
-        <div id="search-trigger"
-          className="grid-item item-s-12 text-align-center padding-top-micro padding-bottom-micro" onClick={this.handleTriggerClick}
-        >
+      <div id='search-wrapper' className={wrapperClasses} onMouseLeave={this.handleMouseLeave}>
+        <div id='search-trigger'
+          className='text-align-center padding-top-micro padding-bottom-micro' onClick={this.handleTriggerClick}>
           <h3>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3>
         </div>
 
-        <div id="search-field" className="grid-item item-s-12 no-gutter text-align-center grid-column">
-          <div className='padding-top-micro'>
-            <input ref={this.searchInput} id="search-input" className="font-size-large text-align-center" type="text" onKeyUp={this.getResults} />
+        <div id='search-field' className='text-align-center'>
+          <div>
+            <input ref={this.searchInput} id='search-input' className='font-size-large text-align-center' type='text' onKeyUp={this.getResults} />
           </div>
-          <div class="padding-bottom-small flex-grow">
+          <div className='padding-bottom-small'>
             <SearchResults searched={this.state.searched} loading={this.state.loading} results={this.state.results}/>
           </div>
         </div>
