@@ -27,7 +27,6 @@ $font-serif = 'Wremena', font-stack('Georgia')
 
 // ******************************************************
 
-
 // TYPOGRAPHY
 
 @import '~globie-styl-library/type'
@@ -95,6 +94,37 @@ img
 
 .desktop-only
   display: none !important
+
+// ******************************************************
+
+// ELLIPSE
+
+@keyframes ellipse-1
+  from
+    opacity: 0
+  25%
+    opacity: 1
+
+@keyframes ellipse-2
+  from
+    opacity: 0
+  50%
+    opacity: 1
+
+@keyframes ellipse-3
+  from
+    opacity: 0
+  75%
+    opacity: 1
+
+.ellipse span
+  animation: ellipse-1 500ms infinite steps(1)
+
+.ellipse span:first-child + span
+  animation-name: ellipse-2
+
+.ellipse span:first-child + span + span
+  animation-name: ellipse-3
 
 // ******************************************************
 

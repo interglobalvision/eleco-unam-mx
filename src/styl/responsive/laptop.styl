@@ -39,6 +39,14 @@
 
   $search-height = 40px
 
+  body.search-active
+    #search-field
+      height: 700px
+
+  #search-input
+    width: calc('100vw - ' + $margin-basic)
+    margin: 0 ($margin-basic / 2)
+
   #search-spacer
     height: $search-height
 
@@ -58,6 +66,12 @@
     background-size: auto $header-image-height
 
   #article-content
+    p
+      padding: 0 $margin-tiny
+    ul,ol
+      padding: 0 $margin-mid
+      ul,ol
+        padding-left: $margin-small
     hr.wp-block-separator
       margin: $margin-small 0 $margin-basic
     .swiper-container

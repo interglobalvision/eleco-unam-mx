@@ -44,6 +44,6 @@ get_template_part('partials/seo');
         <?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
       </nav>
     </div>
-    <div id="search-holder"><</div>
+    <div id="search-holder"></div>
     <div id="search-spacer"></div>
   </header>

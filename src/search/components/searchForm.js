@@ -15,8 +15,8 @@ export default class SearchForm extends React.Component {
     }
 
     this.getResults = this.getResults.bind(this)
-    this.handleTriggerClick = this.handleTriggerClick.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.activateSearch = this.activateSearch.bind(this)
+    this.deactivateSearch = this.deactivateSearch.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
 
     this.searchInput = React.createRef()
@@ -25,10 +25,6 @@ export default class SearchForm extends React.Component {
   }
 
   handleKeyUp(e) {
-    if( this.state.loading ) {
-      return
-    }
-
     // Get the input value
     const search = e.target.value
 
@@ -69,36 +65,36 @@ export default class SearchForm extends React.Component {
     }) // We got the results, we are not loading anymore
   }
 
-  handleTriggerClick() {
-    if (!this.state.active) {
-      this.setState({
-        active: true,
-      })
-    }
+  activateSearch() {
+    console.log('activate');
+    this.setState({
+      active: true,
+    })
+    $('body').addClass('search-active')
     setTimeout(() => {
       this.searchInput.current.focus()
     }, 500)
   }
 
-  handleMouseLeave() {
+  deactivateSearch() {
     this.setState({
       active: false,
     })
+    $('body').removeClass('search-active')
+    this.searchInput.current.blur()
   }
 
   render() {
-    const wrapperClasses = this.state.active ? 'border-bottom active' : 'border-bottom';
-
     return (
-      <div id='search-wrapper' className={wrapperClasses} onMouseLeave={this.handleMouseLeave}>
-        <div id='search-trigger'
-          className='text-align-center padding-top-micro padding-bottom-micro' onClick={this.handleTriggerClick}>
-          <h3>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3>
+      <div id='search-wrapper' className='border-bottom' onMouseLeave={this.handleMouseLeave}>
+        <div id='search-trigger' className='text-align-center padding-top-micro padding-bottom-micro grid-row'>
+          <div className="grid-item item-s-6 offset-s-3"><h3 id='search-title' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
+          <div id='search-close' className='grid-item item-s-3 grid-row justify-end align-items-center' onTouchEnd={this.deactivateSearch}><div>&#10005;</div></div>
         </div>
 
-        <div id='search-field' className='text-align-center grid-column'>
+        <div id='search-field' className='text-align-center'>
           <div>
-            <input ref={this.searchInput} id='search-input' className='font-size-large text-align-center' type='text' onKeyUp={this.handleKeyUp} />
+            <input ref={this.searchInput} id='search-input' className='font-size-large text-align-center' type='text' onKeyUp={this.handleKeyUp} placeholder={WP.lang === 'en_US' ? 'Search' : 'Buscar'} autoComplete='off' autoCorrect='off' autoCapitalize='off' spellCheck='false' />
           </div>
           <SearchResults searched={this.state.searched} loading={this.state.loading} results={this.state.results} query={this.state.query}/>
         </div>

@@ -43,8 +43,38 @@
 
   $search-height = 34px
 
+  body.search-active
+    #header
+      pointer-events: auto
+    #main-content, #footer
+      display: block
+    #search-trigger
+      position: absolute
+    #search-holder
+      top: auto
+    #search-field
+      opacity: 1
+      height: 500px
+      min-height: unset
+      pointer-events: auto
+
   #search-spacer
     height: $search-height
+
+  #search-input
+    width: calc('100vw - ' + $margin-basic)
+    margin: 0 ($margin-basic / 2)
+
+  #search-field
+    opacity: 0
+    display: flex
+    flex-direction: column
+    transition: height $transition-time ease-out, opacity $transition-time ease-out
+    visibility: visible
+    pointer-events: none
+
+  .search-result
+    margin-bottom: 0
 
   // HOME
 
@@ -73,6 +103,12 @@
     background-size: auto $header-image-height
 
   #article-content
+    p
+      padding: 0 $margin-tiny
+    ul,ol
+      padding: 0 $margin-mid
+      ul,ol
+        padding-left: $margin-small
     hr.wp-block-separator
       margin: $margin-basic 0 $margin-mid
     .swiper-container
@@ -99,8 +135,6 @@
       max-height: 100px
       height: auto
       width: auto
-
-  // FOOTER
 
   // FOOTER
 

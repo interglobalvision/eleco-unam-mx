@@ -139,6 +139,7 @@ button
 
 #header-lang
   flex: 1
+  pointer-events: none
 
 ul.menu
   li
@@ -149,7 +150,7 @@ ul.menu
 
 $transition-time = 300ms
 
-$search-height = 34px
+$search-height = 33px
 
 #search-spacer
   position: relative
@@ -166,21 +167,12 @@ $search-height = 34px
   color: $color-black
   transition: color $transition-time ease-out, background-color $transition-time ease-out
   will-change: color, background-color
-  &.active
-    color: $color-white
-    background-color: $color-grey-dark
-    #search-trigger
-      cursor: default
-    #search-field
-      height: 700px
-      opacity: 1
 
 #search-field
-  height: 50px
-  padding-top: 50px
+  height: $search-height
+  padding-top: $search-height
   width: 100%
-  overflow: hidden
-  transition: height $transition-time ease-out
+  visibility: hidden
 
 #search-trigger
   user-select: none
@@ -191,14 +183,57 @@ $search-height = 34px
 #search-input
   color: inherit
   border: none
-  width: 100%
-  padding-bottom: 0
+  width: calc('100vw - ' + $margin-basic)
+  margin: 0 ($margin-basic / 2)
+  border: 0
+  border-bottom: 1px solid $color-white
+  border-radius: 0
   &:focus
     outline: none
+  &::placeholder
+    color: $color-grey-light
+
+#search-close
+  pointer-events: none
+  padding-right: $margin-small
+  visibility: hidden
 
 .search-result
+  margin-bottom: $margin-basic
   .block-category
     border-color: $color-white
+
+.search-message-holder
+  margin-bottom: $margin-large
+
+body.search-active
+  #header
+    pointer-events: none
+  #main-content, #footer
+    display: none
+  #search-holder
+    top: 0
+  #search-wrapper
+    pointer-events: auto
+    width: 100vw
+    color: $color-white
+    background-color: $color-grey-dark
+  #search-trigger
+    cursor: default
+    z-index: 200
+    position: fixed
+  #search-field
+    visibility: visible
+    z-index: 100
+    height: auto
+    min-height: 100vh
+  #search-close
+    visibility: visible
+    pointer-events: auto
+    font-size: 1.2em
+  #search-title
+    visibility: hidden
+    pointer-events: none
 
 // HOME
 
@@ -250,6 +285,20 @@ $header-image-height = 250px
     width: 100%
   p
     padding: 0 $margin-tiny
+  ul,ol
+    padding: 0 $margin-mid
+    margin-bottom: .5rem
+    ul,ol
+      padding-left: $margin-small
+      padding-right: 0
+      margin: 0
+      margin-top: .5rem
+    li
+      margin-bottom: .5rem
+  ul
+    list-style-type: circle
+  ol
+    list-style-type: upper-roman
   hr.wp-block-separator
     flex-basis: 100%
     max-width: 100%
