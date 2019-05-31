@@ -27,10 +27,12 @@ export default class SearchResults extends React.Component {
         ); // SearchResult is a new component.
       });
 
+      const searchUrl = WP.lang === 'en_US' ? '/en/search/' + this.props.query : '/search/' + this.props.query
+
       results = (
         <div className='padding-bottom-small grid-column justify-around flex-grow'>
           <div className='grid-row justify-center'>{queryResults}</div>
-          <div className='grid-item'><a href={'/search/' + this.props.query} className='link-underline'>View nore results</a></div>
+          <div className='grid-item'><a href={searchUrl} className='link-underline'>View nore results</a></div>
         </div>
       )
 

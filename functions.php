@@ -12,13 +12,15 @@ function scripts_and_styles_method() {
 
   $site_options = get_site_option('_igv_site_options');
 
+  $lang = get_locale() === 'en_US' ? 'en' : 'es';
+
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
     'isAdmin' => $is_admin,
     'mailchimp' => !empty($site_options['mailchimp_action']) ? $site_options['mailchimp_action'] : null,
     'lang' => get_locale(),
-    'restSearchPosts' => rest_url( 'wp/v2/multiple-post-type?search=%s&per_page=3&type[]=post&type[]=expo&type[]=evento&type[]=page' ),
+    'restSearchPosts' => rest_url( 'wp/v2/multiple-post-type?search=%s&per_page=3&lang=' . $lang . '&type[]=post&type[]=expo&type[]=evento&type[]=page' ),
   );
 
   wp_register_script('javascript-main', $javascriptMain);
