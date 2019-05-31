@@ -14,7 +14,7 @@ export default class SearchResults extends React.Component {
 
       results = (
         <div className='padding-bottom-small grid-column justify-center flex-grow'>
-          <div className='grid-item'>{WP.lang === 'en_US' ? 'Searching...' : 'Buscando...'}</div>
+          <div className='grid-item'><span>{WP.lang === 'en_US' ? 'Searching...' : 'Buscando...'}</span></div>
         </div>
       )
 
@@ -29,10 +29,12 @@ export default class SearchResults extends React.Component {
 
       const searchUrl = WP.lang === 'en_US' ? '/en/search/' + this.props.query : '/search/' + this.props.query
 
+      const viewMore = this.props.results.length > 3 ? <div className='grid-item'><a href={searchUrl} className='link-underline'>{WP.lang === 'en_US' ? 'View more results' : 'Ver más resultados'}</a></div> : '';
+
       results = (
-        <div className='padding-bottom-small grid-column justify-around flex-grow'>
+        <div className='padding-bottom-small grid-column justify-between flex-grow'>
           <div className='grid-row justify-center'>{queryResults}</div>
-          <div className='grid-item'><a href={searchUrl} className='link-underline'>View nore results</a></div>
+          {viewMore}
         </div>
       )
 
@@ -41,7 +43,7 @@ export default class SearchResults extends React.Component {
       // Results loaded, but none found.
       results = (
         <div className='padding-bottom-small grid-column justify-center flex-grow'>
-          <div className='grid-item'>{WP.lang === 'en_US' ? 'Nothing found' : 'Nada encontrado'}</div>
+          <div className='grid-item'><span>{WP.lang === 'en_US' ? 'Nothing found' : 'Nada encontrado'}</span></div>
         </div>
       )
 
