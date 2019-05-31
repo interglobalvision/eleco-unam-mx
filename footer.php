@@ -9,10 +9,10 @@
     </div>
     <div class="grid-row justify-between background-grey-lite flex-grow font-size-micro padding-top-micro padding-bottom-micro">
       <div class="grid-item item-s-12 item-l-auto">
-        Bien hecho en la CDMX por <a href="https://interglobal.vision" class="link-underline">Interglobal Vision</a>
+        <?php echo igv_pll_str('Bien hecho en la CDMX por', 'Made in Mexico City by'); ?> <a href="https://interglobal.vision" class="link-underline">Interglobal Vision</a>
       </div>
       <div class="grid-item item-s-12 item-l-auto">
-        Todos los derechos reservados <?php echo date("Y"); ?>.
+        <?php echo igv_pll_str('Todos los derechos reservados ', 'All rights reserved ') . date("Y"); ?>.
       </div>
     </div>
   </footer>
