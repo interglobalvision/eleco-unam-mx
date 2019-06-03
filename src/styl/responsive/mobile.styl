@@ -17,21 +17,21 @@ $font-size-tiny = 16px
 $font-size-micro = 11px
 
 .font-size-extra
-  font-size: $font-size-extra * .5
+  font-size: $font-size-extra * .3
 .font-size-big
-  font-size: $font-size-big * .5
+  font-size: $font-size-big * .4
 .font-size-large
   font-size: $font-size-large * .6
 .font-size-mid
-  font-size: $font-size-mid * .6
+  font-size: $font-size-mid * .7
 .font-size-basic
-  font-size: $font-size-basic * .8
+  font-size: $font-size-basic * .7
 .font-size-small
-  font-size: $font-size-small * .8
+  font-size: $font-size-small * .7
 .font-size-tiny
-  font-size: $font-size-tiny * .9
+  font-size: $font-size-tiny * .7
 .font-size-micro
-  font-size: $font-size-micro * .9
+  font-size: $font-size-micro * .7
 
 grid-maker(100%, $gutter, s)
 
@@ -79,6 +79,10 @@ space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-m
 .block-category, .post-tag
   border: 1px solid $color-black
   padding: 0 .2em
+
+.background-grey-dark
+  .block-category, .post-tag
+    border-color: $color-white
 
 .post-tag
   border-radius: .3em
@@ -135,11 +139,111 @@ button
 
 #header-lang
   flex: 1
+  pointer-events: none
 
 ul.menu
   li
     display: inline-block
     margin-right: $margin-small
+
+// SEARCH
+
+$transition-time = 300ms
+
+$search-height = 33px
+
+#search-spacer
+  position: relative
+  height: $search-height
+  width: 0
+
+#search-holder
+  position: absolute
+  width: 100%
+  z-index: 100
+
+#search-wrapper
+  background-color: $color-grey-lite
+  color: $color-black
+  transition: color $transition-time ease-out, background-color $transition-time ease-out
+  will-change: color, background-color
+
+#search-field
+  height: $search-height
+  padding-top: $search-height
+  width: 100%
+  visibility: hidden
+
+#search-trigger
+  user-select: none
+  cursor: pointer
+  position: absolute
+  width: 100%
+
+#search-input
+  color: inherit
+  border: none
+  width: calc('100vw - ' + $margin-basic)
+  margin: 0 ($margin-basic / 2)
+  border: 0
+  border-bottom: 1px solid $color-white
+  border-radius: 0
+  &:focus
+    outline: none
+  &::placeholder
+    color: $color-grey-light
+
+#search-close
+  pointer-events: none
+  padding-right: $margin-small
+  visibility: hidden
+
+.search-result
+  margin-bottom: $margin-basic
+  .block-category
+    border-color: $color-white
+
+.search-message-holder
+  margin-bottom: $margin-large
+
+body.search-active
+  #header
+    pointer-events: none
+  #main-content, #footer
+    display: none
+  #search-holder
+    top: 0
+  #search-wrapper
+    pointer-events: auto
+    width: 100vw
+    color: $color-white
+    background-color: $color-grey-dark
+  #search-trigger
+    cursor: default
+    z-index: 200
+    position: fixed
+  #search-field
+    visibility: visible
+    z-index: 100
+    height: auto
+    min-height: 100vh
+  #search-close
+    visibility: visible
+    pointer-events: auto
+    font-size: 1.2em
+  #search-title
+    visibility: hidden
+    pointer-events: none
+
+body.not-mobile
+  #search-input
+    border: 0
+    &::placeholder
+      color: transparent
+  #search-close
+    display: none
+  #search-title
+    visibility: visible
 
 // HOME
 
@@ -191,6 +295,20 @@ $header-image-height = 250px
     width: 100%
   p
     padding: 0 $margin-tiny
+  ul,ol
+    padding: 0 $margin-mid
+    margin-bottom: .5rem
+    ul,ol
+      padding-left: $margin-small
+      padding-right: 0
+      margin: 0
+      margin-top: .5rem
+    li
+      margin-bottom: .5rem
+  ul
+    list-style-type: circle
+  ol
+    list-style-type: upper-roman
   hr.wp-block-separator
     flex-basis: 100%
     max-width: 100%

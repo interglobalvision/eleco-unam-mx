@@ -6,10 +6,13 @@ function scripts_and_styles_method() {
   $templateuri = get_template_directory_uri();
 
   $javascriptMain = $templateuri . '/dist/js/main.js';
+  $javascriptSearch = $templateuri . '/dist/js/search.min.js';
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
   $site_options = get_site_option('_igv_site_options');
+
+  $lang = get_locale() === 'en_US' ? 'en' : 'es';
 
   $javascriptVars = array(
     'siteUrl' => home_url(),
@@ -17,11 +20,16 @@ function scripts_and_styles_method() {
     'isAdmin' => $is_admin,
     'mailchimp' => !empty($site_options['mailchimp_action']) ? $site_options['mailchimp_action'] : null,
     'lang' => get_locale(),
+    'restSearchPosts' => rest_url( 'wp/v2/multiple-post-type?search=%s&per_page=4&lang=' . $lang . '&type[]=post&type[]=expo&type[]=evento&type[]=page' ),
   );
 
   wp_register_script('javascript-main', $javascriptMain);
   wp_localize_script('javascript-main', 'WP', $javascriptVars);
   wp_enqueue_script('javascript-main', $javascriptMain, '', '', true);
+
+  wp_register_script('javascript-search', $javascriptSearch);
+  wp_localize_script('javascript-search', 'WP', $javascriptVars);
+  wp_enqueue_script('javascript-search', $javascriptSearch, '', '', true);
 
   // Enqueue style
   wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.css' );
@@ -74,5 +82,30 @@ get_template_part( 'lib/functions-custom' );
 get_template_part( 'lib/functions-filters' );
 get_template_part( 'lib/functions-hooks' );
 get_template_part( 'lib/functions-utility' );
+
+/*
+ * Plugin Name:       WP Rest Api V2 Multiple PostTypes
+ * Plugin URI:        https://github.com/elevati/wp-api-multiple-posttype
+ * Description:       Extension of wp/v2/posts api to allow query multiple post types
+ * Version:           1.0.2
+ * Author:            ElevatiInfotech
+ * Author URI:        https://github.com/elevati
+ * License:           GPL-3.0-or-later
+ */
+/**
+ * WP_REST_Multiple_PostType_Controller class.
+ */
+function init_wp_rest_multiple_posttype_endpoint()
+{
+    if (!class_exists('WP_REST_Multiple_PostType_Controller')) {
+        require_once dirname(__FILE__) . '/lib/endpoints/class-wp-rest-multiple-posttype-controller.php';
+    }
+    $controller = new WP_REST_Multiple_PostType_Controller();
+    $controller->register_routes();
+}
+/**
+ * REST INIT
+ */
+add_action('rest_api_init', 'init_wp_rest_multiple_posttype_endpoint');
 
 ?>

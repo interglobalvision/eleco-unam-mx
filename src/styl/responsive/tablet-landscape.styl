@@ -52,6 +52,17 @@
   #header-lang
     order: 3
 
+  // SEARCH
+
+  $search-height = 35.5px
+
+  #search-input
+    width: calc('100vw - ' + $margin-basic)
+    margin: 0 ($margin-basic / 2)
+
+  #search-spacer
+    height: $search-height
+
   // ARTICLE
 
   $header-image-height = 375px
@@ -67,6 +78,12 @@
       padding: 0 $margin-tiny
       margin-left: 25%
       margin-right: 25%
+    ul,ol
+      padding: 0 $margin-mid
+      margin-left: 25%
+      margin-right: 25%
+      ul,ol
+        padding-left: $margin-small
     hr.wp-block-separator
       margin: $margin-small 0 $margin-basic
     blockquote.wp-block-quote

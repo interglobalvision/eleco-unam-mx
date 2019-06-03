@@ -105,3 +105,40 @@ function igv_post_author($id) {
     return $default_author;
   }
 }
+
+// Include in REST result
+add_action('rest_api_init', 'igv_register_rest_fields' );
+function igv_register_rest_fields(){
+  register_rest_field( array('post','expo','evento'),
+    'fimg_url',
+    array(
+      'get_callback'    => 'get_rest_featured_image',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
+  register_rest_field( array('post','expo','evento'),
+    'cat_name',
+    array(
+      'get_callback'    => 'get_rest_cat_name',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
+}
+function get_rest_featured_image( $object, $field_name, $request ) {
+  if( $object['featured_media'] ){
+    $img = wp_get_attachment_image_src( $object['featured_media'], 'archive-thumb' );
+    return $img[0];
+  }
+  return false;
+}
+function get_rest_cat_name( $object, $field_name, $request ) {
+  if( $object['categories'] ){
+    $cat = get_category($object['categories'][0]);
+    if ( $cat->slug !== 'uncategorized' ) {
+      return $cat->name;
+    }
+  }
+  return false;
+}

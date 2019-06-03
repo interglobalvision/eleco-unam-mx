@@ -2,7 +2,7 @@
 
   $gutter = 30px
 
-  $margin-micro = ($gutter / 4)
+  $margin-micro = 8
   $margin-tiny = ($gutter / 2.5)
   $margin-small = ($gutter / 1.5)
   $margin-basic = ($gutter)
@@ -10,15 +10,15 @@
   $margin-large = ($gutter * 2)
 
   .font-size-extra
-    font-size: $font-size-extra * .6
+    font-size: $font-size-extra * .5
   .font-size-big
-    font-size: $font-size-big * .6
+    font-size: $font-size-big * .5
   .font-size-large
     font-size: $font-size-large * .6
   .font-size-mid
-    font-size: $font-size-mid * .6
+    font-size: $font-size-mid * .7
   .font-size-basic
-    font-size: $font-size-basic * .6
+    font-size: $font-size-basic * .7
   .font-size-small
     font-size: $font-size-small * .7
   .font-size-tiny
@@ -38,6 +38,43 @@
   ul.menu
     li
       margin-right: $margin-small
+
+  // SEARCH
+
+  $search-height = 34px
+
+  body.search-active
+    #header
+      pointer-events: auto
+    #main-content, #footer
+      display: block
+    #search-trigger
+      position: absolute
+    #search-holder
+      top: auto
+    #search-field
+      opacity: 1
+      height: 500px
+      min-height: unset
+      pointer-events: auto
+
+  #search-spacer
+    height: $search-height
+
+  #search-input
+    width: calc('100vw - ' + $margin-basic)
+    margin: 0 ($margin-basic / 2)
+
+  #search-field
+    opacity: 0
+    display: flex
+    flex-direction: column
+    transition: height $transition-time ease-out, opacity $transition-time ease-out
+    visibility: visible
+    pointer-events: none
+
+  .search-result
+    margin-bottom: 0
 
   // HOME
 
@@ -66,6 +103,12 @@
     background-size: auto $header-image-height
 
   #article-content
+    p
+      padding: 0 $margin-tiny
+    ul,ol
+      padding: 0 $margin-mid
+      ul,ol
+        padding-left: $margin-small
     hr.wp-block-separator
       margin: $margin-basic 0 $margin-mid
     .swiper-container
@@ -92,8 +135,6 @@
       max-height: 100px
       height: auto
       width: auto
-
-  // FOOTER
 
   // FOOTER
 

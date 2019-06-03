@@ -37,6 +37,17 @@
     li
       margin-right: $margin-small
 
+  // SEARCH
+
+  $search-height = 50px
+
+  #search-spacer
+    height: $search-height
+
+  #search-input
+    width: calc('100vw - ' + $margin-basic)
+    margin: 0 ($margin-basic / 2)
+
   // FOOTER
 
   #footer
@@ -53,6 +64,12 @@
     background-size: auto $header-image-height
 
   #article-content
+    p
+      padding: 0 $margin-tiny
+    ul,ol
+      padding: 0 $margin-mid
+      ul,ol
+        padding-left: $margin-small
     hr.wp-block-separator
       margin: $margin-small 0 $margin-basic
     .swiper-container

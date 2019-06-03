@@ -42,7 +42,7 @@ function register_cpt_evento() {
     'labels' => $labels,
     'hierarchical' => false,
 
-    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 
     'public' => true,
     'show_ui' => true,
@@ -58,6 +58,7 @@ function register_cpt_evento() {
     'rewrite' => true,
     'capability_type' => 'post',
     'show_in_rest' => true,
+    'taxonomies' => array('post_tag')
   );
 
   register_post_type( 'evento', $args );
@@ -86,7 +87,7 @@ function register_cpt_expo() {
     'labels' => $labels,
     'hierarchical' => false,
 
-    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 
     'public' => true,
     'show_ui' => true,
@@ -101,7 +102,8 @@ function register_cpt_expo() {
     'can_export' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'show_in_rest' => true,    
+    'show_in_rest' => true,
+    'taxonomies' => array('post_tag')
   );
 
   register_post_type( 'expo', $args );
