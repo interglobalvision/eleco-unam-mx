@@ -8,10 +8,10 @@
       </div>
     </div>
     <div class="grid-row justify-between background-grey-lite flex-grow font-size-micro padding-top-micro padding-bottom-micro">
-      <div class="grid-item item-s-12 item-l-auto">
+      <div class="grid-item item-s-12 item-m-auto">
         <?php echo igv_pll_str('Bien hecho en la CDMX por', 'Made in Mexico City by'); ?> <a href="https://interglobal.vision" class="link-underline">Interglobal Vision</a>
       </div>
-      <div class="grid-item item-s-12 item-l-auto">
+      <div class="grid-item item-s-12 item-m-auto">
         <?php echo igv_pll_str('Todos los derechos reservados ', 'All rights reserved ') . date("Y"); ?>.
       </div>
     </div>
