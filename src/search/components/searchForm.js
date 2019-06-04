@@ -1,10 +1,11 @@
-import React from 'react';
-import SearchResults from './searchResults';
+import React from 'react'
+import SearchResults from './searchResults'
+import SearchIcon from './searchIcon'
 
 export default class SearchForm extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       results : [], // Results from search
@@ -88,7 +89,7 @@ export default class SearchForm extends React.Component {
     return (
       <div id='search-wrapper' className='border-bottom' onMouseLeave={this.deactivateSearch}>
         <div id='search-trigger-holder' className='text-align-center grid-row align-items-center'>
-          <div className='search-trigger grid-item item-s-10 offset-s-1 grid-row justify-center align-items-center' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}><h3 id='search-title'>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
+          <div className='search-trigger grid-item item-s-10 offset-s-1 grid-row justify-center align-items-center' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}><SearchIcon /><h3 id='search-title'>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
           <div id='search-close' className='search-trigger grid-item item-s-1 grid-row justify-end align-items-center' onTouchEnd={this.deactivateSearch}><div>&#10005;</div></div>
         </div>
 

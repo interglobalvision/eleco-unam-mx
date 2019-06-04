@@ -210,6 +210,19 @@ $search-height = 33px
 .search-message-holder
   margin-bottom: $margin-large
 
+#search-icon
+  margin-top: -0.1em
+  margin-right: 0.3em
+  width: 11px
+  height: 11px
+  circle, line
+    fill: none
+    stroke: $color-black
+    stroke-miterlimit: 10
+    transition: stroke $transition-time ease-out
+  line
+    stroke-linecap: square
+
 body.search-active
   #header
     pointer-events: none
@@ -238,6 +251,9 @@ body.search-active
   #search-title
     visibility: hidden
     pointer-events: none
+  #search-icon
+    circle, line
+      stroke: $color-white
 
 body.not-mobile
   #search-input

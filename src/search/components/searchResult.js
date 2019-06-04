@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 export default class SearchResult extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
     const item = this.props.result
-    let catName = item.cat_name;
+    let catName = item.cat_name
 
     if (!item.cat_name) {
       if (item.type === 'expo') {
@@ -18,7 +18,7 @@ export default class SearchResult extends React.Component {
         catName = WP.lang === 'en_US' ? 'Post' : 'Entrada'
       }
     }
-    
+
     return (
       <div className='search-result grid-item item-s-12 item-m-4 item-l-3 margin-top-basic'>
         <a href={item.link}>
