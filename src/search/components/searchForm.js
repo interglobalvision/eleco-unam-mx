@@ -47,10 +47,10 @@ export default class SearchForm extends React.Component {
   }
 
   getResults(search) {
-    // We are loading and searching
+    // Loading and searching
     this.setState({ searched: true, query: search })
 
-    // Let's change the %s into the search param of our REST URL.
+    // Change the %s into the search param of REST URL.
     let url  = WP.restSearchPosts.replace( '%s', search )
 
     let json = fetch(url)
@@ -62,7 +62,7 @@ export default class SearchForm extends React.Component {
         results: results,
         loading:false
       })
-    }) // We got the results, we are not loading anymore
+    }) // Got the results, not loading anymore
   }
 
   activateSearch() {
@@ -87,9 +87,9 @@ export default class SearchForm extends React.Component {
   render() {
     return (
       <div id='search-wrapper' className='border-bottom' onMouseLeave={this.deactivateSearch}>
-        <div id='search-trigger' className='text-align-center padding-top-micro padding-bottom-micro grid-row'>
-          <div className="grid-item item-s-6 offset-s-3"><h3 id='search-title' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
-          <div id='search-close' className='grid-item item-s-3 grid-row justify-end align-items-center' onTouchEnd={this.deactivateSearch}><div>&#10005;</div></div>
+        <div id='search-trigger-holder' className='text-align-center grid-row align-items-center'>
+          <div className='search-trigger grid-item item-s-10 offset-s-1 grid-row justify-center align-items-center' onMouseUp={this.activateSearch} onTouchEnd={this.activateSearch}><h3 id='search-title'>{WP.lang === 'en_US' ? 'Search' : 'Buscar'}</h3></div>
+          <div id='search-close' className='search-trigger grid-item item-s-1 grid-row justify-end align-items-center' onTouchEnd={this.deactivateSearch}><div>&#10005;</div></div>
         </div>
 
         <div id='search-field' className='text-align-center'>

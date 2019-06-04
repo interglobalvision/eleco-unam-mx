@@ -169,15 +169,19 @@ $search-height = 33px
   will-change: color, background-color
 
 #search-field
-  height: $search-height
+  height: 0
   padding-top: $search-height
   width: 100%
   visibility: hidden
 
-#search-trigger
+#search-trigger-holder
   user-select: none
   cursor: pointer
   position: absolute
+  width: 100%
+
+.search-trigger
+  height: $search-height
   width: 100%
 
 #search-input
@@ -218,7 +222,7 @@ body.search-active
     width: 100vw
     color: $color-white
     background-color: $color-grey-dark
-  #search-trigger
+  #search-trigger-holder
     cursor: default
     z-index: 200
     position: fixed

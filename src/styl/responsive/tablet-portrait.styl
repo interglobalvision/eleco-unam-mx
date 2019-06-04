@@ -41,14 +41,14 @@
 
   // SEARCH
 
-  $search-height = 34px
+  $search-height = 33px
 
   body.search-active
     #header
       pointer-events: auto
     #main-content, #footer
       display: block
-    #search-trigger
+    #search-trigger-holder
       position: absolute
     #search-holder
       top: auto
@@ -72,9 +72,13 @@
     transition: height $transition-time ease-out, opacity $transition-time ease-out
     visibility: visible
     pointer-events: none
+    padding-top: $search-height
 
   .search-result
     margin-bottom: 0
+
+  .search-trigger
+    height: $search-height
 
   // HOME
 

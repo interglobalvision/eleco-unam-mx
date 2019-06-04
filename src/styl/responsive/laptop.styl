@@ -37,7 +37,7 @@
 
   // SEARCH
 
-  $search-height = 40px
+  $search-height = 39px
 
   body.search-active
     #search-field
@@ -48,6 +48,12 @@
     margin: 0 ($margin-basic / 2)
 
   #search-spacer
+    height: $search-height
+
+  #search-field
+    padding-top: $search-height
+
+  .search-trigger
     height: $search-height
 
   // FOOTER
