@@ -8,7 +8,7 @@ if (!empty($tags)) {
 ?>
   <div class="grid-item">
     <div class="post-tag">
-      <span><?php echo $tag->name; ?></span>
+      <a href="<?php echo get_tag_link($tag->term_id); ?>"><?php echo $tag->name; ?></a>
     </div>
   </div>
 <?php

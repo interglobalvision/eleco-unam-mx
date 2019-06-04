@@ -1,12 +1,11 @@
 <?php
 get_header();
-$query_str = get_search_query();
 ?>
 
 <main id="main-content">
   <section id="page">
     <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
-      <h1 class="font-serif font-size-extra text-align-center"><?php echo igv_pll_str('Busqueda','Search') . ': ' . $query_str ?></h1>
+      <h1 class="font-serif font-size-extra text-align-center"><?php echo get_the_archive_title(); ?></h1>
     </header>
     <div class="grid-row padding-bottom-mid">
 <?php
