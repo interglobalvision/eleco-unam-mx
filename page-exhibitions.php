@@ -3,9 +3,9 @@ get_header();
 ?>
 
 <main id="main-content">
-  <section id="archive-expo" class="border-bottom">
-    <div class="grid-row">
-      <header class="grid-item item-s-12 background-grey-lite border-bottom padding-top-mid padding-bottom-mid">
+  <section id="archive-expo">
+    <div class="grid-row padding-bottom-mid">
+      <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
         <h1 class="font-serif font-size-extra text-align-center"><?php echo igv_pll_str('Exposiciones', 'Exhibitions'); ?></h1>
       </header>
 <?php
@@ -28,14 +28,14 @@ $args = array(
     ),
   ),
 );
-$past_query = new WP_Query($args);
+$wp_query = new WP_Query($args);
 
-if ($past_query->have_posts()) {
-  $count = $past_query->post_count;
-  while ($past_query->have_posts()) {
-    $past_query->the_post();
+if ($wp_query->have_posts()) {
+  $count = $wp_query->post_count;
+  while ($wp_query->have_posts()) {
+    $wp_query->the_post();
 ?>
-  <article <?php post_class('grid-item item-s-12 item-m-6 item-l-4'); ?> id="post-<?php the_ID(); ?>">
+  <article <?php post_class('grid-item item-s-12 item-m-6 item-l-4 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
     <?php get_template_part('partials/expo-item-content'); ?>
   </article>
 <?php
@@ -45,8 +45,10 @@ if ($past_query->have_posts()) {
     get_template_part('partials/see-more');
   }
 }
+wp_reset_query();
 ?>
     </div>
+    <?php get_template_part('partials/expo-years'); ?>
   </section>
 </main>
 

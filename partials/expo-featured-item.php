@@ -1,7 +1,11 @@
 <?php
 $note = get_post_meta($post->ID, '_igv_expo_note', true);
+$count = $wp_query->post_count;
+$current = $wp_query->current_post;
+$classes = 'grid-item item-s-12 no-gutter padding-bottom-mid padding-top-mid';
+if ($current < ($count - 1)) { $classes .= ' border-bottom'; }
 ?>
-<article <?php post_class('grid-item item-s-12 border-bottom no-gutter padding-bottom-mid'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class($classes); ?> id="post-<?php the_ID(); ?>">
   <a href="<?php the_permalink(); ?>" class="grid-row">
     <div class="grid-item item-s-12 item-m-6">
       <?php the_post_thumbnail('header-featured'); ?>

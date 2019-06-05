@@ -58,7 +58,7 @@ function register_cpt_evento() {
     'rewrite' => true,
     'capability_type' => 'post',
     'show_in_rest' => true,
-    'taxonomies' => array('post_tag')
+    'taxonomies' => array('post_tag', 'evento_year')
   );
 
   register_post_type( 'evento', $args );
@@ -103,7 +103,7 @@ function register_cpt_expo() {
     'rewrite' => true,
     'capability_type' => 'post',
     'show_in_rest' => true,
-    'taxonomies' => array('post_tag')
+    'taxonomies' => array('post_tag', 'expo_year')
   );
 
   register_post_type( 'expo', $args );

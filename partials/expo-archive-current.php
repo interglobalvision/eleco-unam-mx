@@ -20,18 +20,19 @@ $args = array(
     ),
   ),
 );
-$query = new WP_Query($args);
+$wp_query = new WP_Query($args);
 
-if ($query->have_posts()) {
+if ($wp_query->have_posts()) {
 ?>
-<div class="grid-item item-s-12 background-grey-lite no-gutter grid-row">
-  <div class="grid-item item-s-12 text-align-center font-size-mid padding-top-mid padding-bottom-mid"><h2><?php echo igv_pll_str('Actuales', 'On View'); ?></h2></div>
+<div class="grid-item item-s-12 background-grey-lite no-gutter grid-row border-top">
+  <div class="grid-item item-s-12 text-align-center font-size-mid padding-top-mid"><h2><?php echo igv_pll_str('Actuales', 'On View'); ?></h2></div>
   <?php
-    while ($query->have_posts()) {
-      $query->the_post();
+    while ($wp_query->have_posts()) {
+      $wp_query->the_post();
       get_template_part('partials/expo-featured-item');
     }
   ?>
 </div>
 <?php
 }
+wp_reset_query();
