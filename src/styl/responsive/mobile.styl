@@ -340,7 +340,7 @@ $header-image-height = 250px
 
 article header
   position: relative
-  
+
 #article-content
   & > *
     display: block
@@ -407,6 +407,15 @@ article header
         max-width: 100%
         height: auto
         width: auto
+  .wp-block-embed
+    display: flex
+    flex-direction: column
+    align-items: center
+  .wp-block-embed, .wp-block-image
+    figcaption
+      font-size: $font-size-tiny
+      color: $color-black
+
 
 // SHARE
 
