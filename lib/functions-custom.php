@@ -55,7 +55,13 @@ function igv_pll_cat($es_str, $en_str = false, $id) {
   $cats = get_the_category($id);
   $the_cat = igv_pll_str($es_str,$en_str);
   if (!empty($cats)) {
-    if ($cats[0]->slug !== 'uncategorized') {
+    if ( $cats[0]->slug !== 'uncategorized'
+      && $cats[0]->slug !== 'uncategorized-es'
+      && $cats[0]->slug !== 'uncategorized-en'
+      && $cats[0]->slug !== 'sin-categoria'
+      && $cats[0]->slug !== 'sin-categoria-es'
+      && $cats[0]->slug !== 'sin-categoria-en'
+    ) {
       $the_cat = $cats[0]->name;
     }
   }
