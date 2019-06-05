@@ -59,6 +59,21 @@ function igv_cmb_metaboxes() {
   	),
   ) );
 
+  $post_metabox->add_field( array(
+    'name' => __( 'Contenidos relacionados', 'cmb2' ),
+    'id' => $prefix . 'post_related',
+    'type' => 'post_search_ajax',
+    'desc' => __( 'Escribe el título', 'cmb2' ),
+    // Optional :
+    'limit' => 10, // Limit selection to X items only (default 1)
+    'sortable' => true,
+    'query_args' => array(
+      'post_type' => array( 'post','expo','evento' ),
+      'post_status' => array( 'publish' ),
+      'posts_per_page' => -1
+    )
+  ) );
+
   //EXPO
 
   $expo_dates_metabox = new_cmb2_box( array(
