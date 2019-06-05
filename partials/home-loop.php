@@ -7,6 +7,7 @@ while (have_posts()) {
 
   if ($current === 0) {
     get_template_part('partials/post-featured');
+    get_template_part('partials/notice');
     get_template_part('partials/quick-info');
   }
 
