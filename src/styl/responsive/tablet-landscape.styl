@@ -97,10 +97,10 @@
     blockquote.wp-block-quote
       p
         padding: 0 $margin-tiny
-        font-size: $font-size-big
+        font-size: $font-size-big * .7
         margin-top: $margin-basic
       &:before
-        font-size: $font-size-extra * 1.5
+        font-size: ($font-size-extra * .7) * 1.5
         padding: 0 $margin-tiny
     figure.wp-block-image
       clear: both
@@ -122,9 +122,11 @@
       margin: $margin-basic 0 $margin-mid
       figure
         padding: $margin-mid 0
+    figure.wp-block-embed
+      padding: 0 $margin-tiny
     .wp-block-embed, .wp-block-image
       figcaption
-        font-size: $font-size-tiny
+        font-size: $font-size-tiny * .7
 
   // HOME
 

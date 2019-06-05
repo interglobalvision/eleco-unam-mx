@@ -376,7 +376,7 @@ article header
       width: calc('(100% / 12) * 10')
       margin-left: calc('100% / 12')
       padding: 0 $margin-tiny
-      font-size: $font-size-big
+      font-size: $font-size-big * .4
       margin-top: $margin-basic
     &:before
       content: '\00201C' // left double quotation mark
@@ -384,7 +384,7 @@ article header
       left: 0
       top: 0
       padding: 0 $margin-tiny
-      font-size: $font-size-extra * 1.5
+      font-size: ($font-size-extra * .3) * 1.5
   .swiper-container
     background-color: $color-grey-dark
     margin: $margin-basic 0 $margin-mid
@@ -407,15 +407,27 @@ article header
         max-width: 100%
         height: auto
         width: auto
-  .wp-block-embed
+  figure.wp-block-embed
     display: flex
-    flex-direction: column
-    align-items: center
+    justify-content: center
+    margin-left: auto
+    margin-right: auto
+    width: calc('100vw - ' + $margin-small)
+    flex-wrap: wrap
+  .wp-block-embed__wrapper
+    max-width: 100%
+    & > *
+      max-width: 100%
   .wp-block-embed, .wp-block-image
     figcaption
-      font-size: $font-size-tiny
+      font-size: $font-size-tiny * .7
       color: $color-black
-
+      display: block
+      flex-basis: 100%
+      max-width: 100%
+  .wp-embed-aspect-16-9
+    iframe
+      max-height: calc('((100vw - ' + $margin-small + ') * 9) / 16')
 
 // SHARE
 
