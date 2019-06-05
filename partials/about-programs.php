@@ -25,16 +25,16 @@ foreach ($program_sections as $k => $v) {
 
 if (!$is_empty) {
 ?>
-<div class="grid-item item-s-12 border-bottom no-gutter grid-row justify-around" id="eleco-program">
-  <div class="grid-item item-s-12">
+<div class="grid-item item-s-12 border-bottom no-gutter grid-row justify-around padding-top-large padding-bottom-basic" id="eleco-program">
+  <div class="grid-item item-s-12 margin-bottom-mid">
     <h2 class="font-serif font-size-big text-align-center"><?php echo $lang === 'en_US' ? 'Program Descriptions' : 'Descripción de Programas'; ?></h2>
   </div>
   <?php
   foreach ($program_sections as $section) {
     if (!empty($section['content'])) {
   ?>
-  <div class="grid-item item-s-12 item-m-6 offset-m-3 item-l-4 offset-l-0">
-    <h3 class="text-align-center font-serif">
+  <div class="grid-item item-s-12 item-m-6 item-l-4 margin-bottom-mid">
+    <h3 class="text-align-center font-serif font-size-item-title margin-bottom-small">
       <?php
         echo !empty($section['url']) ? '<a href="' . $section['url'] . '">' : '';
         echo $lang === 'en_US' ? $section['en'] : $section['es'];
@@ -45,7 +45,7 @@ if (!$is_empty) {
     <?php
       if (!empty($section['image'])) {
     ?>
-    <div class="text-align-center">
+    <div class="text-align-center padding-top-tiny">
       <?php echo wp_get_attachment_image($section['image']); ?>
     </div>
     <?php

@@ -65,7 +65,7 @@ function igv_cmb_metaboxes() {
     'type' => 'post_search_ajax',
     'desc' => __( 'Escribe el título', 'cmb2' ),
     // Optional :
-    'limit' => 10, // Limit selection to X items only (default 1)
+    'limit' => 3, // Limit selection to X items only (default 1)
     'sortable' => true,
     'query_args' => array(
       'post_type' => array( 'post','expo','evento' ),
