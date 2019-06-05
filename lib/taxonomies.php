@@ -6,8 +6,8 @@ add_action( 'init', 'create_project_taxonomies', 0 );
 function create_project_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
-		'name'              => _x( 'Autores', 'taxonomy general name', 'igv' ),
-		'singular_name'     => _x( 'Autor', 'taxonomy singular name', 'igv' ),
+		'name'              => pll__( 'Autores' ),
+		'singular_name'     => pll__( 'Autor' ),
 		'search_items'      => __( 'Buscar Autores', 'igv' ),
 		'all_items'         => __( 'Todos Autores', 'igv' ),
 		'parent_item'       => __( 'Parent Autor', 'igv' ),
@@ -33,8 +33,8 @@ function create_project_taxonomies() {
 
   // Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
-		'name'              => _x( 'Artistas', 'taxonomy general name', 'igv' ),
-		'singular_name'     => _x( 'Artista', 'taxonomy singular name', 'igv' ),
+		'name'              => pll__( 'Artistas' ),
+		'singular_name'     => pll__( 'Artista' ),
 		'search_items'      => __( 'Buscar Artistas', 'igv' ),
 		'all_items'         => __( 'Todos Artistas', 'igv' ),
 		'parent_item'       => __( 'Parent Artista', 'igv' ),
@@ -59,8 +59,8 @@ function create_project_taxonomies() {
 	register_taxonomy( 'artist', array( 'expo', 'evento' ), $args );
 
 	$labels = array(
-    'name'              => _x( 'Años', 'taxonomy general name', 'igv' ),
-    'singular_name'     => _x( 'Año', 'taxonomy singular name', 'igv' ),
+    'name'              => pll__( 'Años', 'taxonomy general name', 'igv' ),
+    'singular_name'     => pll__( 'Año', 'taxonomy singular name', 'igv' ),
     'search_items'      => __( 'Buscar Años', 'igv' ),
     'all_items'         => __( 'Todos Años', 'igv' ),
     'parent_item'       => __( 'Parent Año', 'igv' ),
@@ -86,8 +86,8 @@ function create_project_taxonomies() {
   register_taxonomy( 'expo_year', array( 'expo' ), $args );
 
   $labels = array(
-    'name'              => _x( 'Años', 'taxonomy general name', 'igv' ),
-    'singular_name'     => _x( 'Año', 'taxonomy singular name', 'igv' ),
+    'name'              => pll__( 'Años', 'taxonomy general name', 'igv' ),
+    'singular_name'     => pll__( 'Año', 'taxonomy singular name', 'igv' ),
     'search_items'      => __( 'Buscar Años', 'igv' ),
     'all_items'         => __( 'Todos Años', 'igv' ),
     'parent_item'       => __( 'Parent Año', 'igv' ),
