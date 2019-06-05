@@ -12,6 +12,7 @@ if (have_posts()) {
 ?>
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>">
       <header class="grid-item item-s-12 background-grey-lite">
+        <?php get_template_part('partials/headers/header-about.svg'); ?>
         <h1 class="font-serif font-size-extra text-align-center padding-top-mid padding-bottom-mid"><?php the_title(); ?></h1>
       </header>
       <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-large padding-bottom-large">

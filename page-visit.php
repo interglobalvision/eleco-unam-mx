@@ -16,6 +16,7 @@ if (have_posts()) {
 ?>
     <article <?php post_class(); ?> id="post-<?php the_ID(); ?>" class="font-size-mid">
       <header class="background-grey-lite padding-top-mid padding-bottom-mid border-bottom">
+        <?php get_template_part('partials/headers/header-visit.svg'); ?>
         <h1 class="font-serif font-size-extra text-align-center"><?php the_title(); ?></h1>
       </header>
       <div class="background-grey-lite border-bottom grid-row padding-top-basic">

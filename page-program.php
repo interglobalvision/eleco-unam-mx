@@ -6,6 +6,7 @@ get_header();
   <section id="archive-evento" class="border-bottom">
     <div class="grid-row">
       <header class="grid-item item-s-12 background-grey-lite border-bottom padding-top-mid padding-bottom-mid">
+        <?php get_template_part('partials/headers/header-program.svg'); ?>
         <h1 class="font-serif font-size-extra text-align-center"><?php echo igv_pll_str('Programa', 'Program'); ?></h1>
       </header>
 <?php

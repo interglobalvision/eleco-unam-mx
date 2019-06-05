@@ -6,6 +6,7 @@ get_header();
   <section id="archive-expo">
     <div class="grid-row padding-bottom-mid">
       <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
+        <?php get_template_part('partials/headers/header-exhibitions.svg'); ?>
         <h1 class="font-serif font-size-extra text-align-center"><?php echo igv_pll_str('Exposiciones', 'Exhibitions'); ?></h1>
       </header>
 <?php
