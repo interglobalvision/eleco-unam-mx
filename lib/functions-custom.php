@@ -136,7 +136,13 @@ function get_rest_featured_image( $object, $field_name, $request ) {
 function get_rest_cat_name( $object, $field_name, $request ) {
   if( $object['categories'] ){
     $cat = get_category($object['categories'][0]);
-    if ( $cat->slug !== 'uncategorized' ) {
+    if ( $cat->slug !== 'uncategorized'
+      && $cat->slug !== 'uncategorized-es'
+      && $cat->slug !== 'uncategorized-en'
+      && $cat->slug !== 'sin-categoria'
+      && $cat->slug !== 'sin-categoria-es'
+      && $cat->slug !== 'sin-categoria-en'
+    ) {
       return $cat->name;
     }
   }
