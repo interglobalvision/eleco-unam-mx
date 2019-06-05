@@ -245,5 +245,68 @@ function igv_cmb_metaboxes() {
       'type'    => 'textarea_small',
     ) );
   }
+
+  //DIRECTORY
+
+  $directory_page_es = get_page_by_path('directorio');
+  $directory_page_en = get_page_by_path('directory');
+
+  if (!empty($directory_page_es) && !empty($directory_page_en)) {
+
+    $directory_metabox = new_cmb2_box( array(
+  		'id'            => $prefix . 'directory_metabox',
+  		'title'         => __( 'Directory', 'cmb2' ),
+  		'object_types'  => array( 'page', ), // Post type
+      'show_on'      => array(
+        'key' => 'id',
+        'value' => array(
+          $directory_page_es->ID,
+          $directory_page_en->ID
+        )
+      ),
+  	) );
+
+    $dir_group_id = $directory_metabox->add_field( array(
+    	'id'          => $prefix . 'directory_group',
+    	'type'        => 'group',
+    	'description' => __( '', 'cmb2' ),
+    	'options'     => array(
+    		'group_title'       => __( 'Entrada {#}', 'cmb2' ),
+    		'add_button'        => __( 'Otra entrada', 'cmb2' ),
+    		'remove_button'     => __( 'Quitar entrada', 'cmb2' ),
+    		'sortable'          => true,
+    	),
+    ) );
+
+    $directory_metabox->add_group_field( $dir_group_id, array(
+    	'name' => 'Nombre',
+    	'id'   => 'name',
+    	'type' => 'text',
+    ) );
+
+    $directory_metabox->add_group_field( $dir_group_id, array(
+    	'name' => 'Título',
+    	'id'   => 'title',
+    	'type' => 'text',
+    ) );
+
+    $directory_metabox->add_group_field( $dir_group_id, array(
+    	'name' => 'Nombre',
+    	'id'   => 'name',
+    	'type' => 'text',
+    ) );
+
+    $directory_metabox->add_group_field( $dir_group_id, array(
+    	'name' => 'Telefono',
+    	'id'   => 'phone',
+    	'type' => 'text',
+    ) );
+
+    $directory_metabox->add_group_field( $dir_group_id, array(
+    	'name' => 'Email',
+    	'id'   => 'email',
+    	'type' => 'text',
+    ) );
+  }
 }
 ?>
