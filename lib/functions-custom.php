@@ -51,9 +51,19 @@ function igv_pll_str($es_str, $en_str = false) {
   return $lang === 'en_US' && $en_str !== false ? $en_str : $es_str;
 }
 
-function igv_pll_cat($es_str, $en_str = false, $id) {
+function igv_pll_cat($id) {
   $cats = get_the_category($id);
-  $the_cat = igv_pll_str($es_str,$en_str);
+
+  $the_cat = igv_pll_str('Entrada','Post');
+
+  $type = get_post_type($id);
+  
+  if ($type === 'expo') {
+    $the_cat = igv_pll_str('Exposición','Exhibition');
+  } else if ($type === 'evento') {
+    $the_cat = igv_pll_str('Evento','Event');
+  }
+
   if (!empty($cats)) {
     if ( $cats[0]->slug !== 'uncategorized'
       && $cats[0]->slug !== 'uncategorized-es'

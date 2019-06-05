@@ -2,7 +2,7 @@
   <a href="<?php the_permalink(); ?>" class="grid-row padding-top-basic padding-bottom-basic">
     <div class="grid-item item-s-12 item-m-7 item-l-9 no-gutter grid-column justify-center">
       <div class="grid-item no-gutter grid-row font-size-tiny">
-        <div class="grid-item"><span class="block-category"><?php echo igv_pll_cat('Evento','Event',$post->ID); ?></span></div>
+        <div class="grid-item"><span class="block-category"><?php echo igv_pll_cat($post->ID); ?></span></div>
         <div class="grid-item"><span><?php echo igv_evento_datetime($post->ID); ?></span></div>
       </div>
       <div class="grid-item font-serif font-size-large"><h3><?php the_title(); ?></h3></div>

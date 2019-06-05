@@ -4,7 +4,7 @@
     <a href="<?php the_permalink() ?>" class="grid-item no-gutter item-s-12 grid-row">
       <div class="grid-item no-gutter item-s-12 item-m-8 offset-m-4 item-l-6 offset-l-6 grid-row font-size-tiny margin-bottom-small margin-top-small">
         <div class="grid-item item-s-6 item-l-4">
-          <div class="block-category u-inline-block"><span><?php echo igv_pll_cat('Entrada', 'Post', $post->ID); ?></span></div>
+          <div class="block-category u-inline-block"><span><?php echo igv_pll_cat($post->ID); ?></span></div>
         </div>
         <div class="grid-item item-s-6 item-l-8">
           <div><span><?php echo igv_post_author($post->ID); ?></span></div>

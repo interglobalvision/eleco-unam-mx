@@ -2,7 +2,7 @@
   <article <?php post_class('text-align-center post-highlight grid-column'); ?> id="post-<?php the_ID(); ?>">
     <a href="<?php the_permalink() ?>">
       <div class="grid-row justify-around font-size-tiny margin-bottom-micro">
-        <div class="block-category"><span><?php echo igv_pll_cat('Entrada', 'Post', $post->ID); ?></span></div>
+        <div class="block-category"><span><?php echo igv_pll_cat($post->ID); ?></span></div>
         <div><span><?php echo igv_post_author($post->ID); ?></span></div>
       </div>
       <h2 class="font-serif font-size-big margin-bottom-mid js-fix-widows"><?php the_title(); ?></h2>
