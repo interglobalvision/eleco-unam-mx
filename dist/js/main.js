@@ -157,7 +157,7 @@ exports.document = doc;
 
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* jshint esversion: 6, browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, document */
+/* global $, document, WP */
 
 // Import dependencies
 
@@ -173,15 +173,17 @@ var _swiper = __webpack_require__(4);
 
 var _swiper2 = _interopRequireDefault(_swiper);
 
-var _mobileDetect = __webpack_require__(6);
+var _marquee = __webpack_require__(6);
+
+var _mobileDetect = __webpack_require__(7);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
 
-var _mailchimp = __webpack_require__(8);
+var _mailchimp = __webpack_require__(9);
 
 var _mailchimp2 = _interopRequireDefault(_mailchimp);
 
-__webpack_require__(9);
+__webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -219,6 +221,7 @@ var Site = function () {
       this.bindShareLinks();
       this.fixWidows();
       this.detectMobile();
+      this.initMarquee();
     }
   }, {
     key: 'detectMobile',
@@ -228,6 +231,18 @@ var Site = function () {
         $('body').addClass('is-mobile');
       } else {
         $('body').addClass('not-mobile');
+      }
+    }
+  }, {
+    key: 'initMarquee',
+    value: function initMarquee() {
+      if (WP.notice !== false) {
+        var notice = WP.notice + ' . . .';
+        var $marquee = document.getElementById('notice-holder');
+        var marquee = new _marquee.Marquee($marquee, { rate: -100 });
+        var control = (0, _marquee.loop)(marquee, [function () {
+          return notice;
+        }]);
       }
     }
   }, {
@@ -9996,6 +10011,12 @@ exports.scroll = scroll;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+module.exports = dynamicMarquee;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10954,7 +10975,7 @@ exports.scroll = scroll;
             module.exports = factory();
         };
     } else if (true) {
-        return __webpack_require__(7);
+        return __webpack_require__(8);
     } else if (typeof window !== 'undefined') {
         return function (factory) {
             window.MobileDetect = factory();
@@ -10966,7 +10987,7 @@ exports.scroll = scroll;
 }());
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -10975,7 +10996,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11148,7 +11169,7 @@ var Mailchimp = function () {
 exports.default = Mailchimp;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -1,9 +1,10 @@
 /* jshint esversion: 6, browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, document */
+/* global $, document, WP */
 
 // Import dependencies
 import lazySizes from 'lazysizes';
 import Swiper from 'swiper';
+import { Marquee, loop } from 'marquee';
 import MobileDetect from 'mobile-detect';
 import Mailchimp from './mailchimp';
 
@@ -37,6 +38,7 @@ class Site {
     this.bindShareLinks();
     this.fixWidows();
     this.detectMobile();
+    this.initMarquee();
   }
 
   detectMobile() {
@@ -45,6 +47,15 @@ class Site {
       $('body').addClass('is-mobile');
     } else {
       $('body').addClass('not-mobile');
+    }
+  }
+
+  initMarquee() {
+    if (WP.notice !== false) {
+      var notice = WP.notice + ' . . .';
+      var $marquee = document.getElementById('notice-holder');
+      var marquee = new Marquee($marquee, { rate: -100 });
+      var control = loop(marquee, [() => notice]);
     }
   }
 

@@ -7,6 +7,7 @@ function scripts_and_styles_method() {
 
   $javascriptMain = $templateuri . '/dist/js/main.js';
   $javascriptSearch = $templateuri . '/dist/js/search.min.js';
+  $javascriptMarquee = 'https://cdn.jsdelivr.net/npm/dynamic-marquee@1';
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
@@ -14,14 +15,25 @@ function scripts_and_styles_method() {
 
   $lang = get_locale() === 'en_US' ? 'en' : 'es';
 
+  $notice = false;
+  if ($lang === 'es' && !empty($site_options['notice_es'])) {
+    $notice = $site_options['notice_es'];
+  } else if ($lang === 'en' && !empty($site_options['notice_en'])) {
+    $notice = $site_options['notice_en'];
+  }
+
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
     'isAdmin' => $is_admin,
     'mailchimp' => !empty($site_options['mailchimp_action']) ? $site_options['mailchimp_action'] : null,
     'lang' => get_locale(),
+    'notice' => $notice,
     'restSearchPosts' => rest_url( 'wp/v2/multiple-post-type?search=%s&per_page=4&lang=' . $lang . '&type[]=post&type[]=expo&type[]=evento&type[]=page' ),
   );
+
+  wp_register_script('javascript-marquee', $javascriptMarquee);
+  wp_enqueue_script('javascript-marquee', $javascriptMarquee, '', '', true);
 
   wp_register_script('javascript-main', $javascriptMain);
   wp_localize_script('javascript-main', 'WP', $javascriptVars);
