@@ -17,7 +17,7 @@ if (!empty($related)) {
     while ($query->have_posts()) {
       $query->the_post();
 ?>
-  <article <?php post_class('grid-item item-s-12 item-m-4 item-l-3 text-align-center padding-top-basic'); ?> id="post-<?php the_ID(); ?>">
+  <article <?php post_class('grid-item item-s-12 item-m-4 item-l-3 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
     <?php get_template_part('partials/post-item-content'); ?>
   </article>
 <?php

@@ -1,7 +1,8 @@
 <?php
+$tags = get_the_tags();
 $pdf = get_post_meta($post->ID, '_igv_post_pdf', true);
 ?>
-<div class="grid-item item-s-12 no-gutter grid-row text-align-center flex-nowrap border-bottom">
+<div class="grid-item item-s-12 no-gutter grid-row text-align-center flex-nowrap <?php echo empty($tags) ? 'border-bottom' : ''; ?>">
   <?php
     if (!empty($pdf)) {
   ?>
