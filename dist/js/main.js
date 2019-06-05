@@ -349,8 +349,11 @@ var Site = function () {
       // utility class mainly for use on headines to avoid widows [single words on a new line]
       $('.js-fix-widows').each(function () {
         var string = $(this).html();
-        string = string.replace(/ ([^ ]*)$/, '&nbsp;$1');
-        $(this).html(string);
+        var numWords = string.trim().split(/\s+/).length;
+        if (numWords > 2) {
+          string = string.replace(/ ([^ ]*)$/, '&nbsp;$1');
+          $(this).html(string);
+        }
       });
     }
   }]);
