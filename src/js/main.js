@@ -35,6 +35,7 @@ class Site {
   onReady() {
     lazySizes.init();
     this.initSwiper();
+    //this.initCarousel();
     this.bindShareLinks();
     this.fixWidows();
     this.detectMobile();
@@ -56,6 +57,29 @@ class Site {
       var $marquee = document.getElementById('notice-holder');
       var marquee = new Marquee($marquee, { rate: -100 });
       var control = loop(marquee, [() => notice]);
+    }
+  }
+
+  initCarousel() {
+    const $carousel = $('.wp-block-gallery')
+    if ($carousel.length) {
+      var autoPlay = $('body').hasClass('home') ? true : false;
+
+      $carousel.slick({
+        infinite: true,
+        speed: 400,
+        slidesToShow: 1,
+        centerMode: true,
+        variableWidth: false,
+        dots: false,
+        arrows: false,
+        focusOnSelect: false,
+        rows: 0,
+        autoplay: autoPlay,
+        autoplaySpeed: 4000,
+      });
+
+      $carousel.on('init', this.setSlideHeight);
     }
   }
 
