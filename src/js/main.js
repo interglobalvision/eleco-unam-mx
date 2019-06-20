@@ -92,6 +92,7 @@ class Site {
       $('.blocks-gallery-item')
         .addClass('swiper-slide')
         .removeClass('blocks-gallery-item');
+      $('.swiper-slide .figcaption').addClass('margin-top-small');
 
       var mySwiper = new Swiper ('.swiper-container', {
         loop: true,

@@ -276,6 +276,7 @@ var Site = function () {
       if ($('.wp-block-gallery').length) {
         $('.wp-block-gallery').addClass('swiper-wrapper').removeClass('wp-block-gallery').wrap('<div class="swiper-container"></div>');
         $('.blocks-gallery-item').addClass('swiper-slide').removeClass('blocks-gallery-item');
+        $('.swiper-slide .figcaption').addClass('margin-top-small');
 
         var mySwiper = new _swiper2.default('.swiper-container', {
           loop: true,
