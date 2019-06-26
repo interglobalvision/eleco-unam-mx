@@ -68,6 +68,8 @@ function igv_custom_wp_admin_style_head() {
 }
 add_action( 'admin_head', 'igv_custom_wp_admin_style_head' );
 
-pll_register_string( 'Año', 'Año' );
-pll_register_string( 'Artista', 'Artista' );
-pll_register_string( 'Autor', 'Autor' );
+if (function_exists('pll_register_string')) {
+  pll_register_string( 'Año', 'Año' );
+  pll_register_string( 'Artista', 'Artista' );
+  pll_register_string( 'Autor', 'Autor' );
+}

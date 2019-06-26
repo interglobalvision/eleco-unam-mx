@@ -37,7 +37,11 @@ get_template_part('partials/seo');
       </div>
       <div id="header-lang" class="grid-row justify-end grid-item item-s-auto text-align-right padding-bottom-tiny">
         <ul>
-          <?php pll_the_languages(array('hide_current'=>1)); ?>
+          <?php
+            if (function_exists('pll_the_languages')) {
+              pll_the_languages(array('hide_current'=>1));
+            }
+          ?>
         </ul>
       </div>
       <nav id="header-nav" class="grid-row grid-item item-s-12 item-l-auto padding-bottom-tiny">

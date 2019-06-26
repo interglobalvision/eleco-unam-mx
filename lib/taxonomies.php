@@ -5,9 +5,12 @@ add_action( 'init', 'create_project_taxonomies', 0 );
 // create two taxonomies, types and years for the post type "book"
 function create_project_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
+  $name = function_exists('pll__') ? pll__( 'Autores' ) : __( 'Autores' );
+  $singular_name = function_exists('pll__') ? pll__( 'Autor' ) : __( 'Autor' );
+
 	$labels = array(
-		'name'              => pll__( 'Autores' ),
-		'singular_name'     => pll__( 'Autor' ),
+		'name'              => $name,
+		'singular_name'     => $singular_name,
 		'search_items'      => __( 'Buscar Autores', 'igv' ),
 		'all_items'         => __( 'Todos Autores', 'igv' ),
 		'parent_item'       => __( 'Parent Autor', 'igv' ),
@@ -31,10 +34,12 @@ function create_project_taxonomies() {
 
 	register_taxonomy( 'author', array( 'post' ), $args );
 
-  // Add new taxonomy, make it hierarchical (like categories)
+  $name = function_exists('pll__') ? pll__( 'Artistas' ) : __( 'Artistas' );
+  $singular_name = function_exists('pll__') ? pll__( 'Artista' ) : __( 'Artista' );
+
 	$labels = array(
-		'name'              => pll__( 'Artistas' ),
-		'singular_name'     => pll__( 'Artista' ),
+		'name'              => $name,
+		'singular_name'     => $singular_name,
 		'search_items'      => __( 'Buscar Artistas', 'igv' ),
 		'all_items'         => __( 'Todos Artistas', 'igv' ),
 		'parent_item'       => __( 'Parent Artista', 'igv' ),
@@ -58,9 +63,12 @@ function create_project_taxonomies() {
 
 	register_taxonomy( 'artist', array( 'expo', 'evento' ), $args );
 
+  $name = function_exists('pll__') ? pll__( 'Años' ) : __( 'Años' );
+  $singular_name = function_exists('pll__') ? pll__( 'Año' ) : __( 'Año' );
+
 	$labels = array(
-    'name'              => pll__( 'Años', 'taxonomy general name', 'igv' ),
-    'singular_name'     => pll__( 'Año', 'taxonomy singular name', 'igv' ),
+    'name'              => $name,
+    'singular_name'     => $singular_name,
     'search_items'      => __( 'Buscar Años', 'igv' ),
     'all_items'         => __( 'Todos Años', 'igv' ),
     'parent_item'       => __( 'Parent Año', 'igv' ),
@@ -85,9 +93,12 @@ function create_project_taxonomies() {
 
   register_taxonomy( 'expo_year', array( 'expo' ), $args );
 
+  $name = function_exists('pll__') ? pll__( 'Años' ) : __( 'Años' );
+  $singular_name = function_exists('pll__') ? pll__( 'Año' ) : __( 'Año' );
+
   $labels = array(
-    'name'              => pll__( 'Años', 'taxonomy general name', 'igv' ),
-    'singular_name'     => pll__( 'Año', 'taxonomy singular name', 'igv' ),
+    'name'              => $name,
+    'singular_name'     => $singular_name,
     'search_items'      => __( 'Buscar Años', 'igv' ),
     'all_items'         => __( 'Todos Años', 'igv' ),
     'parent_item'       => __( 'Parent Año', 'igv' ),
