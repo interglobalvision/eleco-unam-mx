@@ -25,8 +25,8 @@ function igv_theme_globals() {
   ];
 
   $about_program_sections = [
-    ['exhibition','Proyectos de Exposición','Exhibition Projects'],
-    ['public','Programa Publico','Public Program'],
+    ['exhibition','Proyectos de exposición','Exhibition Projects'],
+    ['public','Programa publico','Public Program'],
     ['bar','Barra Eco','Eco Bar'],
     ['pavilion','Pabellón Eco','Eco Pavilion'],
     ['residencies','Estancias','Residencies'],
