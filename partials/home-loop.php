@@ -1,9 +1,20 @@
 <?php
 $count = $wp_query->post_count;
+$options = get_site_option('_igv_site_options');
+$lang = pll_current_language();
 
 while (have_posts()) {
   the_post();
-  $current = $wp_query->current_post;
+  $current = empty($options['featured_post_'.$lang]) ? $wp_query->current_post : $wp_query->current_post + 1;
+
+  if (!empty($options['featured_post_'.$lang]) && $current === 1) {
+    $post = get_post( $options['featured_post_'.$lang] );
+    setup_postdata( $post );
+
+    get_template_part('partials/post-featured');
+
+    wp_reset_postdata();
+  }
 
   if ($current === 0) {
     get_template_part('partials/post-featured');
@@ -12,6 +23,10 @@ while (have_posts()) {
   }
 
   if ($current === 1) {
+    if (!empty($options['featured_post_'.$lang])) {
+      get_template_part('partials/notice');
+      get_template_part('partials/quick-info');
+    }
 ?>
   <div class="grid-row border-bottom padding-bottom-basic">
 <?php
