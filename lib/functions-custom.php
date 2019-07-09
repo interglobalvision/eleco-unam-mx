@@ -29,6 +29,7 @@ function igv_theme_globals() {
     ['public','Programa Publico','Public Program'],
     ['bar','Barra Eco','Eco Bar'],
     ['pavilion','Pabellón Eco','Eco Pavilion'],
+    ['residencies','Estancias','Residencies'],
   ];
 
   igv_set_global_keys($about_mission_sections);
@@ -57,7 +58,7 @@ function igv_pll_cat($id) {
   $the_cat = igv_pll_str('Entrada','Post');
 
   $type = get_post_type($id);
-  
+
   if ($type === 'expo') {
     $the_cat = igv_pll_str('Exposición','Exhibition');
   } else if ($type === 'evento') {
