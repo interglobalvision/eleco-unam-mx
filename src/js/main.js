@@ -14,6 +14,7 @@ import '../styl/site.styl';
 class Site {
   constructor() {
     this.mobileThreshold = 601;
+    this.archivePage = 1;
 
     $(window).resize(this.onResize.bind(this));
 
@@ -22,6 +23,7 @@ class Site {
     this.handleNativeShare = this.handleNativeShare.bind(this);
     this.handleShareOption = this.handleShareOption.bind(this);
     this.toggleShareOptions = this.toggleShareOptions.bind(this);
+    this.loadMore = this.loadMore.bind(this);
 
     this.windowWidth = $(window).width();
     this.windowHeight = $(window).height();
@@ -40,6 +42,7 @@ class Site {
     this.fixWidows();
     this.detectMobile();
     this.initMarquee();
+    this.bindLoadMore();
   }
 
   detectMobile() {
@@ -177,6 +180,18 @@ class Site {
     }
 
     window.open(url, 'share-dialog', 'height=' + height +',width=' + width +',left=' + left +',top=' + top);
+  }
+
+  bindLoadMore() {
+    $('#see-more').on('click', this.loadMore);
+  }
+
+  loadMore() {
+    if (!$('#see-more').hasClass('loading')) {
+      $('#see-more').addClass('loading');
+      var archive = $('#main-content').attr('data-archive') + 'page/' + archivePage
+      console.log(archive)
+    }
   }
 
   fixWidows() {

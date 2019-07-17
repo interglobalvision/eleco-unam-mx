@@ -20,7 +20,11 @@ function create_custom_pages() {
     ['prensa' => 'Prensa',
     'press' => 'Press'],
     ['publicaciones' => 'Publicaciones',
-    'publicationes' => 'Publications']
+    'publicationes' => 'Publications'],
+    ['inicio' => 'Inicio',
+    'home' => 'Home'],
+    ['entradas' => 'Entradas',
+    'posts' => 'Posts']
   );
   foreach($custom_pages as $page_pair) {
     foreach($page_pair as $page_name => $page_title) {

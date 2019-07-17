@@ -10,7 +10,7 @@
           <div><span><?php echo igv_post_author($post->ID); ?></span></div>
         </div>
       </div>
-      <div class="grid-item item-s-12 item-m-11 offset-m-1 item-l-10 offset-l-2 item-xl-8 offset-xl-4 margin-bottom-small">
+      <div id="post-featured-title-holder" class="grid-item item-s-12 item-m-11 offset-m-1 item-l-10 offset-l-2 item-xl-8 offset-xl-4 margin-bottom-small">
         <h2 class="font-serif font-size-extra js-fix-widows"><?php the_title(); ?></h2>
       </div>
       <div class="grid-item item-m-12 item-m-4 offset-m-8">

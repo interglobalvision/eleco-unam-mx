@@ -194,6 +194,7 @@ var Site = function () {
     _classCallCheck(this, Site);
 
     this.mobileThreshold = 601;
+    this.archivePage = 1;
 
     $(window).resize(this.onResize.bind(this));
 
@@ -202,6 +203,7 @@ var Site = function () {
     this.handleNativeShare = this.handleNativeShare.bind(this);
     this.handleShareOption = this.handleShareOption.bind(this);
     this.toggleShareOptions = this.toggleShareOptions.bind(this);
+    this.loadMore = this.loadMore.bind(this);
 
     this.windowWidth = $(window).width();
     this.windowHeight = $(window).height();
@@ -223,6 +225,7 @@ var Site = function () {
       this.fixWidows();
       this.detectMobile();
       this.initMarquee();
+      this.bindLoadMore();
     }
   }, {
     key: 'detectMobile',
@@ -368,6 +371,20 @@ var Site = function () {
       }
 
       window.open(url, 'share-dialog', 'height=' + height + ',width=' + width + ',left=' + left + ',top=' + top);
+    }
+  }, {
+    key: 'bindLoadMore',
+    value: function bindLoadMore() {
+      $('#see-more').on('click', this.loadMore);
+    }
+  }, {
+    key: 'loadMore',
+    value: function loadMore() {
+      if (!$('#see-more').hasClass('loading')) {
+        $('#see-more').addClass('loading');
+        var archive = $('#main-content').attr('data-archive') + 'page/' + archivePage;
+        console.log(archive);
+      }
     }
   }, {
     key: 'fixWidows',

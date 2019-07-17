@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<main id="main-content">
+<main id="main-content" data-archive="<?php echo get_post_type_archive_link('expo'); ?>">
   <section id="archive-expo">
     <div class="grid-row padding-bottom-mid">
       <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">

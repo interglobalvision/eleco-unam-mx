@@ -302,6 +302,9 @@ $header-image-height = 250px
   position: relative
   min-height: $header-image-height + ($margin-mid * 2)
 
+#post-featured-title-holder
+  overflow: hidden
+  
 #post-featured-image-holder
   position: absolute
   top: 0
@@ -472,6 +475,32 @@ article header
   iframe
     height: 100%
     width: 100%
+
+// SEE MORE
+
+button#see-more
+  appearance: none
+  background-color: $color-white
+  border: none
+  cursor: pointer
+  margin: 0
+  border-bottom: 1px solid $color-black
+  width: 100%
+  text-decoration: none
+  text-transform: none
+  &:hover
+    text-decoration: underline
+  #see-more-loading
+    display: none
+  &.loading
+    cursor: progress
+    cursor: wait
+    &:hover
+      text-decoration: none
+    #see-more-label
+      display: none
+    #see-more-loading
+      display: block
 
 // FOOTER
 

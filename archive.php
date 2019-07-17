@@ -7,7 +7,7 @@ get_header();
     <header class="grid-item item-s-12 background-grey-lite padding-top-mid padding-bottom-mid">
       <h1 class="font-serif font-size-extra text-align-center"><?php echo get_the_archive_title(); ?></h1>
     </header>
-    <div class="grid-row padding-bottom-mid">
+    <div class="grid-row padding-bottom-mid" id="post-holder">
 <?php
 if (have_posts()) {
   while (have_posts()) {
