@@ -57,8 +57,7 @@ class Site {
   }
 
   initMarquee() {
-    console.log(WP.notice);
-    if (WP.notice !== false) {
+    if (WP.notice !== false && WP.notice !== '') {
       var notice = WP.notice + ' . . .';
       var $marquee = document.getElementById('notice-holder');
       var marquee = new Marquee($marquee, { rate: -100 });
