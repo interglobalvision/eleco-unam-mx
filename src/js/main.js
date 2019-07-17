@@ -24,6 +24,8 @@ class Site {
     this.handleShareOption = this.handleShareOption.bind(this);
     this.toggleShareOptions = this.toggleShareOptions.bind(this);
     this.loadMore = this.loadMore.bind(this);
+    this.handleResult = this.handleResult.bind(this);
+    this.renderItem = this.renderItem.bind(this);
 
     this.windowWidth = $(window).width();
     this.windowHeight = $(window).height();
@@ -183,22 +185,44 @@ class Site {
   }
 
   bindLoadMore() {
+    this.$postHolder = $('.js-post-holder');
+    this.offset = this.$postHolder.attr('data-offset');
+    this.perPage = 20;
     $('#see-more').on('click', this.loadMore);
   }
 
   loadMore() {
     if (!$('#see-more').hasClass('loading')) {
       $('#see-more').addClass('loading');
-      var archive = $('#main-content').attr('data-archive') + 'page/' + archivePage
-      console.log(archive)
+      var url = WP.restLoadMore + 'posts?offset=' + this.offset + '&lang=es' + '?per_page=' + this.perPage;
+      return $.getJSON( url, this.handleResult);
     }
+  }
+
+  handleResult(data, status, xhr) {
+    $('#see-more').removeClass('loading');
+    if (status === 'success') {
+      if (data.length > 0) {
+        console.log(data);
+        this.template = wp.template( 'post-item' );
+        data.forEach(this.renderItem);
+        this.offset = this.offset + this.perPage;
+        if (data.length < this.perPage) {
+          $('#see-more').remove();
+        }
+      }
+    }
+  }
+
+  renderItem(item, template) {
+    this.$postHolder.append( this.template( item ) );
   }
 
   fixWidows() {
     // utility class mainly for use on headines to avoid widows [single words on a new line]
-    $('.js-fix-widows').each(function(){
+    $('.js-fix-widows').each(function() {
       var string = $(this).html();
-      var numWords = string.trim().split(/\s+/).length
+      var numWords = string.trim().split(/\s+/).length;
       if (numWords > 2) {
         string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
         $(this).html(string);

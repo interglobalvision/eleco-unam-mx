@@ -30,6 +30,7 @@ function scripts_and_styles_method() {
     'lang' => get_locale(),
     'notice' => $notice,
     'restSearchPosts' => rest_url( 'wp/v2/multiple-post-type?search=%s&per_page=4&lang=' . $lang . '&type[]=post&type[]=expo&type[]=evento&type[]=page' ),
+    'restLoadMore' => rest_url( 'wp/v2/' ),
   );
 
   wp_register_script('javascript-marquee', $javascriptMarquee);
@@ -42,6 +43,8 @@ function scripts_and_styles_method() {
   wp_register_script('javascript-search', $javascriptSearch);
   wp_localize_script('javascript-search', 'WP', $javascriptVars);
   wp_enqueue_script('javascript-search', $javascriptSearch, '', '', true);
+
+  wp_enqueue_script( 'wp-util' );
 
   // Enqueue style
   wp_enqueue_style( 'style-site', get_stylesheet_directory_uri() . '/dist/css/site.css' );

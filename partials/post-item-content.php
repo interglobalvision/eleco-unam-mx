@@ -1,4 +1,4 @@
-<a href="<?php the_permalink() ?>">
+<a href="<?php the_permalink(); ?>">
   <div class="grid-row justify-around font-size-tiny margin-bottom-micro">
     <div><span class="block-category"><?php
       echo igv_pll_cat($post->ID);

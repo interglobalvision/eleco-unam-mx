@@ -73,3 +73,26 @@ if (function_exists('pll_register_string')) {
   pll_register_string( 'Artista', 'Artista' );
   pll_register_string( 'Autor', 'Autor' );
 }
+
+function polylang_json_api_init() {
+  global $polylang;
+
+  $default = pll_default_language();
+  $langs = pll_languages_list();
+
+  $cur_lang = $_GET['lang'];
+
+  if (!in_array($cur_lang, $langs)) {
+    $cur_lang = $default;
+  }
+
+  $polylang->curlang = $polylang->model->get_language($cur_lang);
+  $GLOBALS['text_direction'] = $polylang->curlang->is_rtl ? 'rtl' : 'ltr';
+}
+
+add_action('rest_api_init', 'polylang_json_api_init');
+
+function igv_templates() {
+  include_once get_stylesheet_directory() . '/templates.php';
+}
+add_action( 'wp_footer', 'igv_templates' );

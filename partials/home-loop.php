@@ -1,8 +1,10 @@
 <?php
 global $home_query;
+global $num_posts;
 $count = $home_query->post_count;
 $options = get_site_option('_igv_site_options');
 $lang = pll_current_language();
+$offset = !empty($options['featured_post_'.$lang]) ? $num_posts - 1 : $num_posts;
 
 while ($home_query->have_posts()) {
   $home_query->the_post();
@@ -58,13 +60,13 @@ while ($home_query->have_posts()) {
   }
 }
 ?>
-    <div class="grid-item item-s-12 no-gutter grid-row" id="home-bottom-row">
+    <div class="grid-item item-s-12 no-gutter grid-row js-post-holder" id="home-bottom-row" data-offset="<?php echo $offset; ?>">
 <?php
 while ($home_query->have_posts()) {
   $home_query->the_post();
   $current = empty($options['featured_post_'.$lang]) ? $home_query->current_post : $home_query->current_post + 1;
 
-  if ($current >= 2 && $current < 20) {
+  if ($current >= 2 && $current < $num_posts) {
 ?>
       <article <?php post_class('grid-item item-s-12 item-m-4 item-l-3 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
         <?php get_template_part('partials/post-item-content'); ?>

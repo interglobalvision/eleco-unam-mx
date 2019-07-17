@@ -142,6 +142,22 @@ function igv_register_rest_fields(){
       'schema'          => null,
     )
   );
+  register_rest_field( array('post'),
+    'post_author',
+    array(
+      'get_callback'    => 'get_rest_author',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
+  register_rest_field( array('post','expo','evento'),
+    'post_thumb',
+    array(
+      'get_callback'    => 'get_rest_post_thumb',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
 }
 function get_rest_featured_image( $object, $field_name, $request ) {
   if( $object['featured_media'] ){
@@ -151,17 +167,11 @@ function get_rest_featured_image( $object, $field_name, $request ) {
   return false;
 }
 function get_rest_cat_name( $object, $field_name, $request ) {
-  if( $object['categories'] ){
-    $cat = get_category($object['categories'][0]);
-    if ( $cat->slug !== 'uncategorized'
-      && $cat->slug !== 'uncategorized-es'
-      && $cat->slug !== 'uncategorized-en'
-      && $cat->slug !== 'sin-categoria'
-      && $cat->slug !== 'sin-categoria-es'
-      && $cat->slug !== 'sin-categoria-en'
-    ) {
-      return $cat->name;
-    }
-  }
-  return false;
+  return igv_pll_cat($object['id']);
+}
+function get_rest_author( $object, $field_name, $request ) {
+  return igv_post_author($object['id']);
+}
+function get_rest_post_thumb( $object, $field_name, $request ) {
+  return get_the_post_thumbnail($id, 'archive-thumb');
 }
