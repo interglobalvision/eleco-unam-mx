@@ -242,6 +242,7 @@ var Site = function () {
   }, {
     key: 'initMarquee',
     value: function initMarquee() {
+      console.log(WP.notice);
       if (WP.notice !== false) {
         var notice = WP.notice + ' . . .';
         var $marquee = document.getElementById('notice-holder');
