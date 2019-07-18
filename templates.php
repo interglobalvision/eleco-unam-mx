@@ -1,4 +1,4 @@
-<script type="text/html" id="tmpl-post-item">
+<script type="text/template" id="tmpl-post-item">
   <article <?php post_class('grid-item item-s-12 item-m-4 item-l-3 text-align-center padding-top-mid'); ?> id="post-{{data.id}}">
     <a href="{{data.link}}">
       <div class="font-size-tiny margin-bottom-micro">
