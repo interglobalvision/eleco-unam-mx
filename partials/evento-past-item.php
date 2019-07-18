@@ -1,4 +1,4 @@
-<article <?php post_class('grid-item item-s-12 no-gutter'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('grid-item item-s-12 no-gutter border-bottom'); ?> id="post-<?php the_ID(); ?>">
   <a href="<?php the_permalink(); ?>" class="grid-row padding-top-small padding-bottom-small">
     <div class="grid-item item-s-12 item-m-9 item-l-10 no-gutter grid-column justify-center">
       <div class="grid-item no-gutter grid-row font-size-tiny margin-bottom-tiny">
@@ -11,4 +11,4 @@
       <?php the_post_thumbnail('archive-event'); ?>
     </div>
   </a>
-</archive>
+</article>
