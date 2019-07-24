@@ -398,6 +398,7 @@ var Site = function () {
       $('#see-more').removeClass('loading');
       if (status === 'success') {
         if (data.length > 0) {
+          console.log(data);
           var templateId = this.$postHolder.attr('data-template') ? this.$postHolder.attr('data-template') : 'post-item';
           this.template = wp.template(templateId);
           data.forEach(this.renderItem);

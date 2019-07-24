@@ -169,6 +169,14 @@ function igv_register_rest_fields(){
       'schema'          => null,
     )
   );
+  register_rest_field( array('post','expo','evento'),
+    'post_thumb_url',
+    array(
+      'get_callback'    => 'get_rest_post_thumb_url',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
   register_rest_field( array('evento'),
     'evento_thumb',
     array(
@@ -201,6 +209,9 @@ function get_rest_author( $object, $field_name, $request ) {
 }
 function get_rest_post_thumb( $object, $field_name, $request ) {
   return get_the_post_thumbnail($object['id'], 'archive-thumb');
+}
+function get_rest_post_thumb_url( $object, $field_name, $request ) {
+  return get_the_post_thumbnail_url($object['id'], 'archive-thumb');
 }
 function get_rest_evento_thumb( $object, $field_name, $request ) {
   return get_the_post_thumbnail($object['id'], 'archive-event');
