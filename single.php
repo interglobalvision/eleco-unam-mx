@@ -9,6 +9,7 @@ $lang = get_locale();
 if (have_posts()) {
   while (have_posts()) {
     the_post();
+    $footnotes = get_post_meta($post->ID, '_igv_footnotes', true);
 ?>
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>" style="order: <?php echo $current - 2; ?>">
       <header id="single-header" class="grid-item item-s-12 background-grey-lite border-bottom padding-top-mid padding-bottom-mid grid-row justify-center align-items-center">
@@ -25,6 +26,20 @@ if (have_posts()) {
       <div id="article-content" class="grid-item item-s-12 border-bottom no-gutter grid-row padding-top-large padding-bottom-large">
         <?php the_content(); ?>
       </div>
+
+      <?php if (!empty($footnotes)) { ?>
+
+        <div class="grid-row justify-center">
+          <div class="grid-item item-s-12 item-m-10 item-l-8">
+            <ol>
+            <?php foreach($footnotes as $index => $footnote) { ?>
+              <li id="footnote-ref-<?php echo $index + 1; ?>"><a href="#article-ref-<?php echo $index + 1; ?>"><?php echo $footnote; ?></a></li>
+            <?php } ?>
+            </ol>
+          </div>
+        </div>
+
+      <?php } ?>
 
       <?php get_template_part('partials/share-pdf'); ?>
 
