@@ -8,24 +8,26 @@
   $margin-mid = ($gutter * 1.5)
   $margin-large = ($gutter * 2)
 
+  $font-size-modifier = .8
+
   .font-size-extra
-    font-size: $font-size-extra * .8
+    font-size: $font-size-extra * $font-size-modifier
   .font-size-big
-    font-size: $font-size-big * .8
+    font-size: $font-size-big * $font-size-modifier
   .font-size-large
-    font-size: $font-size-large * .8
+    font-size: $font-size-large * $font-size-modifier
   .font-size-item-title
-    font-size: $font-size-item-title * .8
+    font-size: $font-size-item-title * $font-size-modifier
   .font-size-mid
-    font-size: $font-size-mid * .8
+    font-size: $font-size-mid * $font-size-modifier
   .font-size-basic
-    font-size: $font-size-basic * .8
+    font-size: $font-size-basic * $font-size-modifier
   .font-size-small
-    font-size: $font-size-small * .8
+    font-size: $font-size-small * $font-size-modifier
   .font-size-tiny
-    font-size: $font-size-tiny * .8
+    font-size: $font-size-tiny * $font-size-modifier
   .font-size-micro
-    font-size: $font-size-micro * .8
+    font-size: $font-size-micro * $font-size-modifier
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -94,7 +96,7 @@
       padding: 0 $margin-tiny
     figure
       figcaption
-        font-size: $font-size-tiny * .8
+        font-size: $font-size-tiny * $font-size-modifier
 
   // HOME
 

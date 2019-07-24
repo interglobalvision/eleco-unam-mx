@@ -12,24 +12,26 @@
 
   grid-maker(100%, $gutter, xxl)
 
+  $font-size-modifier = 1
+
   .font-size-extra
-    font-size: $font-size-extra
+    font-size: $font-size-extra * $font-size-modifier
   .font-size-big
-    font-size: $font-size-big
+    font-size: $font-size-big * $font-size-modifier
   .font-size-large
-    font-size: $font-size-large
+    font-size: $font-size-large * $font-size-modifier
   .font-size-item-title
-    font-size: $font-size-item-title
+    font-size: $font-size-item-title * $font-size-modifier
   .font-size-mid
-    font-size: $font-size-mid
+    font-size: $font-size-mid * $font-size-modifier
   .font-size-basic
-    font-size: $font-size-basic
+    font-size: $font-size-basic * $font-size-modifier
   .font-size-small
-    font-size: $font-size-small
+    font-size: $font-size-small * $font-size-modifier
   .font-size-tiny
-    font-size: $font-size-tiny
+    font-size: $font-size-tiny * $font-size-modifier
   .font-size-micro
-    font-size: $font-size-micro
+    font-size: $font-size-micro * $font-size-modifier
 
   font-sizes($font-size-basic)
 
@@ -88,6 +90,9 @@
       padding: 0 $margin-mid
       ul,ol
         padding-left: $margin-small
+    h2
+      font-size: $font-size-item-title * $font-size-modifier
+      margin-bottom: $margin-small
     hr.wp-block-separator
       margin: $margin-small 0 $margin-basic
     .swiper-container
@@ -100,7 +105,7 @@
       padding: 0 $margin-tiny
     .wp-block-embed, .wp-block-image
       figcaption
-        font-size: $font-size-tiny
+        font-size: $font-size-tiny * $font-size-modifier
 
   // HOME
 

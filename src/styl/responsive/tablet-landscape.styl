@@ -9,24 +9,26 @@
   $margin-mid = ($gutter * 1.5)
   $margin-large = ($gutter * 2)
 
+  $font-size-modifier = .7
+
   .font-size-extra
-    font-size: $font-size-extra * .7
+    font-size: $font-size-extra * $font-size-modifier
   .font-size-big
-    font-size: $font-size-big * .7
+    font-size: $font-size-big * $font-size-modifier
   .font-size-large
-    font-size: $font-size-large * .7
+    font-size: $font-size-large * $font-size-modifier
   .font-size-item-title
-    font-size: $font-size-item-title * .7
+    font-size: $font-size-item-title * $font-size-modifier
   .font-size-mid
-    font-size: $font-size-mid * .7
+    font-size: $font-size-mid * $font-size-modifier
   .font-size-basic
-    font-size: $font-size-basic * .7
+    font-size: $font-size-basic * $font-size-modifier
   .font-size-small
-    font-size: $font-size-small * .7
+    font-size: $font-size-small * $font-size-modifier
   .font-size-tiny
-    font-size: $font-size-tiny * .7
+    font-size: $font-size-tiny * $font-size-modifier
   .font-size-micro
-    font-size: $font-size-micro * .7
+    font-size: $font-size-micro * $font-size-modifier
 
   grid-maker(100%, $gutter, l)
 
@@ -92,15 +94,18 @@
       margin-right: 25%
       ul,ol
         padding-left: $margin-small
+    h2
+      font-size: $font-size-item-title * $font-size-modifier
+      margin-bottom: $margin-small
     hr.wp-block-separator
       margin: $margin-small 0 $margin-basic
     blockquote.wp-block-quote
       p
         padding: 0 $margin-tiny
-        font-size: $font-size-big * .7
+        font-size: $font-size-big * $font-size-modifier
         margin-top: $margin-basic
       &:before
-        font-size: ($font-size-extra * .7) * 1.5
+        font-size: ($font-size-extra * $font-size-modifier) * 1.5
         padding: 0 $margin-tiny
     figure.wp-block-image
       clear: both
@@ -128,7 +133,7 @@
       padding: 0 $margin-tiny
     .wp-block-embed, .wp-block-image
       figcaption
-        font-size: $font-size-tiny * .7
+        font-size: $font-size-tiny * $font-size-modifier
 
   // HOME
 
