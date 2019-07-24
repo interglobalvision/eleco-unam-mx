@@ -41,7 +41,7 @@ while ($home_query->have_posts()) {
 
   if ($current === 2) {
 ?>
-    <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-8 item-xxl-6 no-gutter grid-row" id="home-side-row">
+    <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-4 item-xxl-6 no-gutter grid-row" id="home-side-row">
 <?php
   }
 
