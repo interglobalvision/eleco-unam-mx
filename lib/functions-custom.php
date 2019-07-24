@@ -46,6 +46,17 @@ function eleco_shortcode( $atts, $content = null ) {
 }
 add_shortcode( 'eco', 'eleco_shortcode' );
 
+function footnote_shortcode( $atts ) {
+  $a = shortcode_atts( array(
+    'num' => false,
+  ), $atts );
+  if ($a['num']) {
+  	return '<a id="article-ref-' . $a['num'] . '" href="#footnote-ref-' . $a['num'] . '">[' . $a['num'] . ']</a>';
+  }
+  return;
+}
+add_shortcode( 'footnote', 'footnote_shortcode' );
+
 // echo string for current language
 function igv_pll_str($es_str, $en_str = false) {
   $lang = get_locale();
@@ -158,6 +169,22 @@ function igv_register_rest_fields(){
       'schema'          => null,
     )
   );
+  register_rest_field( array('evento'),
+    'evento_thumb',
+    array(
+      'get_callback'    => 'get_rest_evento_thumb',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
+  register_rest_field( array('evento'),
+    'evento_datetime',
+    array(
+      'get_callback'    => 'get_rest_evento_datetime',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
 }
 function get_rest_featured_image( $object, $field_name, $request ) {
   if( $object['featured_media'] ){
@@ -173,5 +200,29 @@ function get_rest_author( $object, $field_name, $request ) {
   return igv_post_author($object['id']);
 }
 function get_rest_post_thumb( $object, $field_name, $request ) {
-  return get_the_post_thumbnail($id, 'archive-thumb');
+  return get_the_post_thumbnail($object['id'], 'archive-thumb');
 }
+function get_rest_evento_thumb( $object, $field_name, $request ) {
+  return get_the_post_thumbnail($object['id'], 'archive-event');
+}
+function get_rest_evento_datetime( $object, $field_name, $request ) {
+  return igv_evento_datetime($object['id']);
+}
+function filter_rest_evento_query($query_vars, $request) {
+  $now = time();
+  $query_vars['orderby'] = 'meta_value_num';
+  $query_vars['order'] = 'DESC';
+  $query_vars['meta_key'] = '_igv_evento_datetime';
+  $query_vars['meta_query'] = array(
+    array(
+      'key' => '_igv_evento_datetime',
+      'value' => $now,
+      'compare' => '<=',
+    ),
+  );
+  return $query_vars;
+}
+// The filter is named rest_{post_type}_query. So you need to hook a new filter for each
+// of the custom post types you need to sort.
+add_filter( 'rest_evento_query', 'filter_rest_evento_query', 10, 2);
+?>
