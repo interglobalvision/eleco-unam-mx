@@ -41,13 +41,13 @@ while ($home_query->have_posts()) {
 
   if ($current === 2) {
 ?>
-    <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-4 item-xxl-6 no-gutter grid-row" id="home-side-row">
+    <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-6 item-xxl-6 no-gutter grid-row" id="home-side-row">
 <?php
   }
 
   if ($current >= 2 && $current <= 7) {
 ?>
-      <article <?php post_class('grid-item item-s-12 item-xxl-6 text-align-center padding-top-basic'); ?> id="post-<?php the_ID(); ?>">
+      <article <?php post_class('grid-item item-s-12 item-xl-6 text-align-center padding-top-basic'); ?> id="post-<?php the_ID(); ?>">
         <?php get_template_part('partials/post-item-content'); ?>
       </article>
 <?php
