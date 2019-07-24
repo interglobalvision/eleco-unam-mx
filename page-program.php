@@ -11,10 +11,9 @@ get_header();
       </header>
       <?php
         get_template_part('partials/evento-archive-future');
-
-        get_template_part('partials/evento-archive-past');
       ?>
     </div>
+    <?php get_template_part('partials/evento-archive-past'); ?>
   </section>
 </main>
 
