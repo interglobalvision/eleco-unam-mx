@@ -57,9 +57,9 @@ class Site {
   }
 
   initMarquee() {
-    if (WP.notice !== false && WP.notice !== '') {
+    var $marquee = document.getElementById('notice-holder');
+    if (WP.notice !== false && WP.notice !== '' && $marquee) {
       var notice = WP.notice + ' . . .';
-      var $marquee = document.getElementById('notice-holder');
       var marquee = new Marquee($marquee, { rate: -100 });
       var control = loop(marquee, [() => notice]);
     }
@@ -194,7 +194,8 @@ class Site {
   loadMore() {
     if (!$('#see-more').hasClass('loading')) {
       $('#see-more').addClass('loading');
-      var url = WP.restLoadMore + 'posts?offset=' + this.offset + '&lang=es' + '?per_page=' + this.perPage;
+      var postType = this.$postHolder.attr('data-type') ? this.$postHolder.attr('data-type') : 'posts';
+      var url = WP.restLoadMore + postType + '?offset=' + this.offset + '&lang=es' + '?per_page=' + this.perPage;
       return $.getJSON( url, this.handleResult);
     }
   }
@@ -203,8 +204,8 @@ class Site {
     $('#see-more').removeClass('loading');
     if (status === 'success') {
       if (data.length > 0) {
-        console.log(data);
-        this.template = wp.template( 'post-item' );
+        var templateId = this.$postHolder.attr('data-template') ? this.$postHolder.attr('data-template') : 'post-item';
+        this.template = wp.template( templateId );
         data.forEach(this.renderItem);
         this.offset = this.offset + this.perPage;
         if (data.length < this.perPage) {
