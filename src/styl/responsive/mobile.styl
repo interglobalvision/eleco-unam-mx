@@ -17,6 +17,8 @@ $font-size-small = 18px
 $font-size-tiny = 16px
 $font-size-micro = 11px
 
+$font-size-modifier = .7
+
 .font-size-extra
   font-size: $font-size-extra * .3
 .font-size-big
@@ -24,17 +26,17 @@ $font-size-micro = 11px
 .font-size-large
   font-size: $font-size-large * .6
 .font-size-item-title
-  font-size: $font-size-item-title * .7
+  font-size: $font-size-item-title * $font-size-modifier
 .font-size-mid
-  font-size: $font-size-mid * .7
+  font-size: $font-size-mid * $font-size-modifier
 .font-size-basic
-  font-size: $font-size-basic * .7
+  font-size: $font-size-basic * $font-size-modifier
 .font-size-small
-  font-size: $font-size-small * .7
+  font-size: $font-size-small * $font-size-modifier
 .font-size-tiny
-  font-size: $font-size-tiny * .7
+  font-size: $font-size-tiny * $font-size-modifier
 .font-size-micro
-  font-size: $font-size-micro * .7
+  font-size: $font-size-micro * $font-size-modifier
 
 grid-maker(100%, $gutter, s)
 
@@ -365,10 +367,17 @@ article header
       margin-top: .5rem
     li
       margin-bottom: .5rem
+  h2
+    text-align: center
+    font-family: $font-serif
+    padding: 0 $margin-tiny
+    font-size: $font-size-big * .4
+    margin-bottom: $margin-mid
   h3
     text-align: center
     font-family: $font-serif
-    font-size: $font-size-item-title
+    padding: 0 $margin-tiny
+    font-size: $font-size-item-title * $font-size-modifier
     margin-bottom: $margin-small
   ul
     list-style-type: circle
@@ -439,7 +448,7 @@ article header
       max-width: 100%
   .wp-block-embed, .wp-block-image
     figcaption
-      font-size: $font-size-tiny * .7
+      font-size: $font-size-tiny * $font-size-modifier
       color: $color-black
       display: block
       flex-basis: 100%
