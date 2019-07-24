@@ -1,4 +1,4 @@
-<div class="grid-item item-s-12 item-m-6 item-l-8 item-xl-4 item-xxl-6 background-yellow grid-column justify-center padding-top-mid padding-bottom-mid" id="home-highlight">
+<div class="grid-item item-s-12 item-m-6 item-l-8 item-xl-6 item-xxl-6 background-yellow grid-column justify-center padding-top-mid padding-bottom-mid" id="home-highlight">
   <article <?php post_class('text-align-center post-highlight grid-column'); ?> id="post-<?php the_ID(); ?>">
     <a href="<?php the_permalink() ?>">
       <div class="font-size-tiny margin-bottom-micro">

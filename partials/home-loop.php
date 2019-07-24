@@ -68,7 +68,7 @@ while ($home_query->have_posts()) {
 
   if ($current >= 2 && $current < $num_posts) {
 ?>
-      <article <?php post_class('grid-item item-s-12 item-m-6 item-l-4 item-xxl-3 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
+      <article <?php post_class('grid-item item-s-12 item-m-6 item-l-4 item-xl-3 item-xxl-3 text-align-center padding-top-mid'); ?> id="post-<?php the_ID(); ?>">
         <?php get_template_part('partials/post-item-content'); ?>
       </article>
 <?php
