@@ -5,7 +5,7 @@ get_header();
 <main id="main-content" data-archive="<?php echo get_post_type_archive_link('post'); ?>">
   <section id="posts">
 <?php
-$num_posts = 24;
+$num_posts = 25;
 global $num_posts;
 $args = array(
   'post_type' => 'post',
