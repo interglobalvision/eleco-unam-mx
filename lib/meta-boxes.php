@@ -74,6 +74,14 @@ function igv_cmb_metaboxes() {
     )
   ) );
 
+  $post_metabox->add_field( array(
+		'name' => esc_html__( 'Footnotes', 'cmb2' ),
+    'desc' => 'Use [footnote num="#"] en el contenido para generar la referencia',
+		'id'   => $prefix . 'footnotes',
+		'type' => 'text',
+    'repeatable' => 'true',
+	) );
+
   //EXPO
 
   $expo_dates_metabox = new_cmb2_box( array(
