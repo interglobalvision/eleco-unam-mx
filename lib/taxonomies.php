@@ -34,6 +34,35 @@ function create_project_taxonomies() {
 
 	register_taxonomy( 'author', array( 'post' ), $args );
 
+  $name = function_exists('pll__') ? pll__( 'Contribuidores' ) : __( 'Contribuidores' );
+  $singular_name = function_exists('pll__') ? pll__( 'Contribuidor' ) : __( 'Contribuidor' );
+
+	$labels = array(
+		'name'              => $name,
+		'singular_name'     => $singular_name,
+		'search_items'      => __( 'Buscar Contribuidor', 'igv' ),
+		'all_items'         => __( 'Todos Contribuidores', 'igv' ),
+		'parent_item'       => __( 'Parent Contribuidor', 'igv' ),
+		'parent_item_colon' => __( 'Parent Contribuidor:', 'igv' ),
+		'edit_item'         => __( 'Editar Contribuidor', 'igv' ),
+		'update_item'       => __( 'Actualizar Contribuidor', 'igv' ),
+		'add_new_item'      => __( 'Añadir Contribuidor', 'igv' ),
+		'new_item_name'     => __( 'Nombre de nuevo Contribuidor', 'igv' ),
+		'menu_name'         => __( 'Contribuidor', 'igv' ),
+	);
+
+	$args = array(
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'contribuidor' ),
+    'show_in_rest' => true,
+	);
+
+	register_taxonomy( 'contributor', array( 'post' ), $args );
+
   $name = function_exists('pll__') ? pll__( 'Artistas' ) : __( 'Artistas' );
   $singular_name = function_exists('pll__') ? pll__( 'Artista' ) : __( 'Artista' );
 

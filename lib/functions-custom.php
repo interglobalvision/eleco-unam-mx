@@ -112,27 +112,29 @@ function igv_expo_dates($id) {
   return $dates;
 }
 
-function igv_post_author($id) {
-  $authors = get_the_terms($id, 'author');
+function igv_post_author($id, $link = false) {
+  $authors = get_the_terms($id, 'contributor');
   $default_author = 'El Eco';
   if (!empty($authors)) {
     $author_count = count($authors);
-    if ($author_count > 1) {
+    if ($author_count > 0) {
       $author_list = '';
       foreach($authors as $k => $v) {
-        $author_list .= '<span class="u-inline-block">' . $authors[$k]->name;
+        $author_list .= '<span class="u-inline-block">';
+        if ($link) {
+          $author_list .= '<a class="hover-underline" href="' . get_term_link($authors[$k]) . '">' . $authors[$k]->name . '</a>';
+        } else {
+          $author_list .= $authors[$k]->name;
+        }
         if ($k < ($author_count - 1)) {
           $author_list .= ',&nbsp;';
         }
         $author_list .= '</span>';
       }
       return $author_list;
-    } else {
-      return $authors[0]->name;
     }
-  } else {
-    return $default_author;
   }
+  return $default_author;
 }
 
 // Include in REST result
