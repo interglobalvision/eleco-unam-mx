@@ -29,7 +29,8 @@ function igv_theme_globals() {
     ['public','Programa publico','Public Program'],
     ['bar','Barra Eco','Eco Bar'],
     ['pavilion','Pabellón Eco','Eco Pavilion'],
-    ['residencies','Estancias','Residencies'],
+    ['residencies','Estancias de Trabajo','Work Residencies'],
+    ['goeritz','Cátedra Goeritz','Goeritz Cathedral'],
   ];
 
   igv_set_global_keys($about_mission_sections);
