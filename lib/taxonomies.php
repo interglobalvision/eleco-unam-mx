@@ -151,5 +151,32 @@ function create_project_taxonomies() {
   );
 
   register_taxonomy( 'evento_year', array( 'evento' ), $args );
+
+  $labels = array(
+    'name'              => $name,
+    'singular_name'     => $singular_name,
+    'search_items'      => __( 'Buscar Tipos', 'igv' ),
+    'all_items'         => __( 'Todos Tipos', 'igv' ),
+    'parent_item'       => __( 'Parent Tipo', 'igv' ),
+    'parent_item_colon' => __( 'Parent Tipo:', 'igv' ),
+    'edit_item'         => __( 'Editar Tipo', 'igv' ),
+    'update_item'       => __( 'Actualizar Tipo', 'igv' ),
+    'add_new_item'      => __( 'Añadir Tipo', 'igv' ),
+    'new_item_name'     => __( 'Nombre de nuevo Tipo', 'igv' ),
+    'menu_name'         => __( 'Tipo', 'igv' ),
+  );
+
+  $args = array(
+    'hierarchical'      => true,
+    'labels'            => $labels,
+    'show_ui'           => true,
+    'show_admin_column' => true,
+    'query_var'         => true,
+    'rewrite'           => array( 'slug' => 'tipo-de-evento' ),
+    'has_archive' => true,
+    'show_in_rest' => true,
+  );
+
+  register_taxonomy( 'evento_type', array( 'evento' ), $args );
 }
 ?>
