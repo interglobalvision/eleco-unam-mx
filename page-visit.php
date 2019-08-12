@@ -46,16 +46,18 @@ if (have_posts()) {
         </div>
       </div>
       <div class="background-grey-lite grid-row padding-top-mid">
-        <div class="grid-item item-s-12 item-m-6 padding-bottom-mid" id="map-holder">
+        <div class="grid-item item-s-12 <?php echo !empty($options['generalinfo_exterior_photo']) ? 'item-m-6' : ''; ?> padding-bottom-mid" id="map-holder">
           <?php
             echo !empty($options['generalinfo_map_embed']) ? $options['generalinfo_map_embed'] : '';
           ?>
         </div>
+        <?php if (!empty($options['generalinfo_exterior_photo'])) { ?>
         <div class="grid-item item-s-12 item-m-6 padding-bottom-mid font-size-zero">
           <?php
             echo !empty($options['generalinfo_exterior_photo']) ? wp_get_attachment_image($options['generalinfo_exterior_photo_id'], 'full') : '';
           ?>
         </div>
+        <?php } ?>
       </div>
       <div class="border-bottom grid-row padding-top-basic">
         <div class="grid-item item-s-12 item-m-6 item-l-3 padding-bottom-basic">
