@@ -1,6 +1,6 @@
 <?php
 $now = time();
-$num_posts = 2;
+$num_posts = 24;
 $args = array(
   'post_type' => 'evento',
   'orderby' => 'meta_value_num',

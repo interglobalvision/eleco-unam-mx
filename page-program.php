@@ -11,9 +11,13 @@ get_header();
       </header>
       <?php
         get_template_part('partials/evento-archive-future');
+        wp_reset_postdata();
       ?>
     </div>
-    <?php get_template_part('partials/evento-archive-past'); ?>
+    <?php
+      get_template_part('partials/evento-archive-past');
+      wp_reset_postdata();
+    ?>
   </section>
 </main>
 

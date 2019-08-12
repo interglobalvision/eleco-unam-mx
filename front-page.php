@@ -25,6 +25,7 @@ if ( $home_query->have_posts() ) {
     get_template_part('partials/see-more');
   }
 }
+wp_reset_postdata();
 ?>
   </section>
 </main>
