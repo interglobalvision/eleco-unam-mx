@@ -29,7 +29,7 @@ if (have_posts()) {
 
       <?php if (!empty($footnotes)) { ?>
 
-        <div class="grid-row justify-center">
+        <div class="grid-row justify-center item-s-12">
           <div class="grid-item item-s-12 item-m-10 item-l-8">
             <ol>
             <?php foreach($footnotes as $index => $footnote) { ?>
