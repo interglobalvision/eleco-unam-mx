@@ -26,7 +26,7 @@ function igv_theme_globals() {
 
   $about_program_sections = [
     ['exhibition','Proyectos de exposición','Exhibition Projects'],
-    ['public','Programa publico','Public Program'],
+    ['public','Programa público','Public Program'],
     ['bar','Barra Eco','Eco Bar'],
     ['pavilion','Pabellón Eco','Eco Pavilion'],
     ['residencies','Estancias de Trabajo','Work Residencies'],
@@ -74,6 +74,7 @@ function igv_pll_cat($id) {
   if ($type === 'expo') {
     $the_cat = igv_pll_str('Exposición','Exhibition');
   } else if ($type === 'evento') {
+    $cats = get_the_terms($id, 'evento_type');
     $the_cat = igv_pll_str('Evento','Event');
   }
 
@@ -113,7 +114,8 @@ function igv_expo_dates($id) {
 }
 
 function igv_post_author($id, $link = false) {
-  $authors = get_the_terms($id, 'contributor');
+  $post = get_post( $id );
+  $authors = $post->post_type === 'post' ? get_the_terms($id, 'contributor') : get_the_terms($id, 'artist');
   $default_author = 'El Eco';
   if (!empty($authors)) {
     $author_count = count($authors);
