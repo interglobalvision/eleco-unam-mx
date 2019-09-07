@@ -35,6 +35,8 @@
 
   font-sizes($font-size-basic)
 
+  $header-image-height = 500px
+
   // MENU
 
   ul.menu
@@ -74,8 +76,6 @@
     padding-top: $gutter * 5
 
   // ARTICLE
-
-  $header-image-height = 500px
 
   #single-header
     min-height: $header-image-height + ($margin-mid * 2)
@@ -119,8 +119,17 @@
 
   #post-featured-holder
     position: relative
-    min-height: $header-image-height + ($margin-mid * 2)
+    min-height: $header-image-height + ($margin-mid * 3)
 
   #post-featured-image-holder
-    background-position: ($gutter / 2) center
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    height: $header-image-height + ($margin-mid * 2)
+    width: 100%
+
+  #post-featured-image
+    background-position: $gutter 100%
     background-size: auto $header-image-height

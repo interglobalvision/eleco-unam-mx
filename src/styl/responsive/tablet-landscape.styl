@@ -34,6 +34,8 @@
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
+  $header-image-height = 375px
+
   .desktop-only
     display: initial !important
 
@@ -80,8 +82,6 @@
     height: $search-height
 
   // ARTICLE
-
-  $header-image-height = 375px
 
   #single-header
     min-height: $header-image-height + ($margin-mid * 2)
@@ -157,8 +157,21 @@
 
   // HOME
 
+  #post-featured-holder
+    position: relative
+    min-height: $header-image-height + ($margin-mid * 3)
+
   #post-featured-image-holder
-    background-position: ($gutter / 2) center
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    height: $header-image-height + ($margin-mid * 2)
+    width: 100%
+
+  #post-featured-image
+    background-position: $gutter 100%
     background-size: auto $header-image-height
 
   #home-side-row

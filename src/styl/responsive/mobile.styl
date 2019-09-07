@@ -42,6 +42,8 @@ grid-maker(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
+$header-image-height = 250px
+
 // ADMIN
 
 #cmb2-id-generalinfo-contact
@@ -145,12 +147,13 @@ svg.header-doodle
   margin-left: 1em
   line-height: 1.5
 
-.detail-thumb-holder
+.detail-thumb-holder, #post-featured-image-holder
   height: 60vw
 
-.post-item-thumb
-  background-position: center
+.post-item-thumb, #post-featured-image
+  background-position: center center
   background-size: cover
+  background-repeat: no-repeat
 
 .hover-underline:hover
   text-decoration: underline !important
@@ -313,22 +316,15 @@ body.is-not-mobile
 
 // HOME
 
-$header-image-height = 250px
-
-#post-featured-holder
-  position: relative
-  min-height: $header-image-height + ($margin-mid * 2)
+#post-featured-cat-holder
+  justify-content: center
 
 #post-featured-title-holder
   overflow: hidden
+  text-align: center
 
-#post-featured-image-holder
-  width: 100%
-  height: 200px
-  background-position: center
-  background-repeat: no-repeat
-  background-size: auto $header-image-height
-  z-index: 0
+#post-featured-excerpt-holder
+  text-align: center
 
 // ARTICLE
 

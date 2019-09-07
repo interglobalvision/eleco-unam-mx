@@ -34,6 +34,8 @@
 
   grid-maker(100%, $gutter, m)
 
+  $header-image-height = 300px
+
   .mobile-only
     display: none !important
 
@@ -94,7 +96,9 @@
 
   // HOME
 
-  $header-image-height = 300px
+  #post-featured-holder
+    position: relative
+    min-height: $header-image-height + ($margin-mid * 3)
 
   #post-featured-image-holder
     position: absolute
@@ -102,10 +106,18 @@
     bottom: 0
     left: 0
     right: 0
-    height: 100%
+    height: $header-image-height + ($margin-mid * 2)
     width: 100%
-    background-position: ($gutter / 2) center
+
+  #post-featured-image
+    background-position: $gutter 100%
     background-size: auto $header-image-height
+
+  #post-featured-title-holder, #post-featured-excerpt-holder
+    text-align: left
+
+  #post-featured-cat-holder
+    justify-content: space-around
 
   #home-side-row
     display: flex
