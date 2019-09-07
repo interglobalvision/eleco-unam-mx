@@ -107,7 +107,7 @@ function igv_expo_dates($id) {
   if (!empty($timestamp_start)) {
     $dates = date_i18n($date_format, $timestamp_start);
     if (!empty($timestamp_end)) {
-      $dates .= '— ' . date_i18n($date_format, $timestamp_end);
+      $dates .= ' — ' . date_i18n($date_format, $timestamp_end);
     }
   }
   return $dates;
