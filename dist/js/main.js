@@ -236,7 +236,7 @@ var Site = function () {
       if (md.mobile()) {
         $('body').addClass('is-mobile');
       } else {
-        $('body').addClass('not-mobile');
+        $('body').addClass('is-not-mobile');
       }
     }
   }, {
