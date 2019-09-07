@@ -5,11 +5,11 @@ $years = get_terms( array(
 ) );
 if (!empty($years)) {
 ?>
-    <div class="grid-row justify-center background-yellow padding-top-small padding-bottom-small font-size-mid">
+    <div class="grid-row justify-center background-yellow padding-top-small font-size-mid">
 <?php
   foreach ( $years as $year ) {
 ?>
-      <div class="grid-item">
+      <div class="grid-item margin-bottom-small">
         <div class="post-tag">
           <a href="<?php echo get_tag_link($year->term_id); ?>"><?php echo $year->name; ?></a>
         </div>
